@@ -1167,39 +1167,45 @@ function IntentionalLeader() {
             {[
               {
                 quote:
-                  "Six months ago I was answering my phone at 10pm every night. Now my team runs the weekly operations meeting without me in the room. I went hunting for a weekend and nobody called.",
-                name: "Co-op General Manager",
-                company: "Upper Midwest · 220 employees",
+                  "Ran a full anhydrous busy season with zero accidents and zero support calls — because expectations were set proactively before the season started.",
+                name: "Joe",
+                company: "Operations leadership · ag retail",
               },
               {
                 quote:
-                  "I thought I had a culture problem. Turns out I had a clarity problem. In 90 days we renamed what we were actually trying to do and half the friction disappeared.",
-                name: "Ag Retail CEO",
-                company: "Western Plains · 12 locations",
+                  "Ran team meetings at two new locations for the first time in three months, surfaced delegation gaps I didn't know existed, and got them running independently.",
+                name: "Matt",
+                company: "Multi-location manager",
               },
               {
                 quote:
-                  "I finally know who's ready, who's stuck, and who's leaving. I haven't slept this well in three years. Succession went from a fear to a Tuesday agenda item.",
-                name: "Family Farm Operator",
-                company: "Iowa · 4th generation",
+                  "A calmer spring with noticeably fewer support calls — directly attributable to leading proactively instead of reacting to whatever blew up that day.",
+                name: "Mitch",
+                company: "Branch leader",
               },
               {
                 quote:
-                  "The Friday voice check-in sounds small. It is not small. Five minutes a week is the only thing I've ever done consistently as a leader and it changed everything downstream.",
-                name: "VP of Operations",
-                company: "Regional Grain Co-op",
+                  "Equipped my operations team with everything they needed for spring up front. They ran it self-sufficiently without me in the middle of every decision.",
+                name: "Leah",
+                company: "Operations leader",
               },
               {
                 quote:
-                  "Jericho caught a pattern in how I was talking to my management team that I'd had for fifteen years and never seen. Two weeks later three people told me unprompted that something felt different.",
-                name: "Owner / President",
-                company: "Independent Ag Retailer",
+                  "Built a full structured calendar all the way through next March. I've shifted from reactive to proactive leadership for the first time in my career.",
+                name: "Doug",
+                company: "General manager",
               },
               {
                 quote:
-                  "We surfaced almost half a million in revenue inside our existing customer base just by being intentional about who we were calling and why. The course paid for itself in the first 60 days.",
-                name: "Sales Director",
-                company: "Crop Inputs Distributor",
+                  "Our team exceeded our March 31 delivery goal by 45%. The intentionality showed up in the numbers.",
+                name: "Logan Ag team",
+                company: "Sales & operations",
+              },
+              {
+                quote:
+                  "Customer conversations got dramatically better. Smaller customers are calling unprompted to say they feel treated the same as the big ones.",
+                name: "Bo",
+                company: "Customer-facing leader",
               },
             ].map((t, i) => (
               <Card
