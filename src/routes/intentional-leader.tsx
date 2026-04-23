@@ -28,6 +28,7 @@ import { useServerFn } from "@tanstack/react-start";
 import { submitInvoiceRequest } from "@/utils/invoice.functions";
 import momentumLogoWhite from "@/assets/momentum-logo-white.png";
 import ialPodcastLogo from "@/assets/intentional-ag-leader-podcast.png";
+import markJewellPhoto from "@/assets/mark-jewell.jpg";
 import { usePageAnalytics, trackEvent } from "@/hooks/use-analytics";
 
 export const Route = createFileRoute("/intentional-leader")({
@@ -799,11 +800,13 @@ function IntentionalLeader() {
           <SectionLabel>Your host & guide</SectionLabel>
           <div className="grid md:grid-cols-[1fr_2fr] gap-10 items-start">
             <div className="rounded-lg border border-[hsl(var(--ial-border))] bg-[hsl(var(--ial-surface))] p-6 flex flex-col items-center text-center">
-              <img
-                src={ialPodcastLogo}
-                alt="Intentional Agribusiness Leader Podcast"
-                className="w-full max-w-[220px] mb-4"
-              />
+              <div className="w-full aspect-[3/4] max-w-[260px] mb-5 overflow-hidden rounded-lg border border-[hsl(var(--ial-border))]">
+                <img
+                  src={markJewellPhoto}
+                  alt="Mark Jewell, host of The Intentional Agribusiness Leader Podcast"
+                  className="w-full h-full object-cover"
+                />
+              </div>
               <div className="text-xs uppercase tracking-[0.2em] text-[hsl(var(--ial-text-muted))] mb-2">
                 Hosted by
               </div>
