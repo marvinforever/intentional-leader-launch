@@ -10,6 +10,7 @@ import {
   ArrowUpRight,
   Mic,
   Sparkles,
+  BookOpen,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -902,7 +903,7 @@ function IntentionalLeader() {
             another binder on the shelf.
           </p>
 
-          <div className="grid md:grid-cols-3 gap-5">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
             <div className="rounded-lg border border-[hsl(var(--ial-border))] bg-[hsl(var(--ial-bg))] p-6">
               <div className="w-12 h-12 rounded-lg bg-[hsl(var(--ial-green-deep))] text-white flex items-center justify-center mb-4">
                 <Headphones className="w-6 h-6" />
@@ -954,6 +955,24 @@ function IntentionalLeader() {
                 Jericho — our proprietary AI coaching engine — learns as you
                 learn and delivers resources, prompts, and coaching specific to
                 the challenges you're actually facing this week.
+              </p>
+            </div>
+
+            <div className="rounded-lg border border-[hsl(var(--ial-border))] bg-[hsl(var(--ial-bg))] p-6">
+              <div className="w-12 h-12 rounded-lg bg-[hsl(var(--ial-green-deep))] text-white flex items-center justify-center mb-4">
+                <BookOpen className="w-6 h-6" />
+              </div>
+              <div className="text-xs uppercase tracking-wider text-[hsl(var(--ial-green-deep))] font-bold mb-2">
+                Conversational Guidebook
+              </div>
+              <h3 className="font-[family-name:var(--font-playfair)] text-2xl font-bold mb-3 text-[hsl(var(--ial-text))]">
+                Plug-and-play for your team meetings.
+              </h3>
+              <p className="text-[hsl(var(--ial-text-muted))] leading-relaxed">
+                Every organization gets a fully-guided conversational guidebook
+                — coach the principles yourself or drop the discussion vignettes
+                into your team meetings to curate intentional conversation
+                around the topics that matter.
               </p>
             </div>
           </div>
