@@ -178,10 +178,28 @@ export function usePageAnalytics(pageName: string) {
     window.addEventListener("pagehide", onUnload);
     window.addEventListener("beforeunload", onUnload);
 
+    const onClick = (e: MouseEvent) => {
+      const target = e.target as HTMLElement | null;
+      if (!target) return;
+      const el = target.closest<HTMLElement>("[data-track-cta]");
+      if (!el) return;
+      const name = el.dataset.trackCta || "unknown_cta";
+      const section = el.dataset.trackCtaSection || undefined;
+      trackEvent("cta_click", name, {
+        section,
+        metadata: {
+          href: (el as HTMLAnchorElement).href || undefined,
+          text: el.innerText?.slice(0, 80),
+        },
+      });
+    };
+    document.addEventListener("click", onClick, { capture: true });
+
     return () => {
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("pagehide", onUnload);
       window.removeEventListener("beforeunload", onUnload);
+      document.removeEventListener("click", onClick, { capture: true } as EventListenerOptions);
       observer.disconnect();
       flush();
     };
