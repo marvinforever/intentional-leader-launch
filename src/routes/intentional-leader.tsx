@@ -60,17 +60,20 @@ const MARK_PHONE = "402-881-986";
 const DEADLINE = new Date("2026-06-02T05:59:00Z").getTime();
 
 const useCountdown = () => {
-  const [now, setNow] = useState(Date.now());
+  // Start at null so SSR + first client render match (no time-based diff).
+  // After mount, tick every second.
+  const [now, setNow] = useState<number | null>(null);
   useEffect(() => {
+    setNow(Date.now());
     const t = setInterval(() => setNow(Date.now()), 1000);
     return () => clearInterval(t);
   }, []);
-  const diff = Math.max(0, DEADLINE - now);
+  const diff = now === null ? 0 : Math.max(0, DEADLINE - now);
   const days = Math.floor(diff / 86400000);
   const hours = Math.floor((diff % 86400000) / 3600000);
   const minutes = Math.floor((diff % 3600000) / 60000);
   const seconds = Math.floor((diff % 60000) / 1000);
-  return { days, hours, minutes, seconds };
+  return { days, hours, minutes, seconds, mounted: now !== null };
 };
 
 const SectionLabel = ({ children }: { children: React.ReactNode }) => (
