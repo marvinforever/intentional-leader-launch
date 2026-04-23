@@ -827,11 +827,10 @@ function IntentionalLeader() {
               "Beck's Hybrids",
               "Cultura Technologies",
               "The Pendleton Group",
-              "AFA",
-              "Dean Harder",
-              "Innovative Ag",
-              "Valley Ag",
-              "Streamline Ag",
+              "Stateline Cooperative",
+              "Logan Ag Service",
+              "WinField United",
+              "BASF",
             ].map((name) => (
               <div
                 key={name}
