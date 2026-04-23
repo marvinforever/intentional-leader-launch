@@ -35,6 +35,7 @@ export const submitInvoiceRequest = createServerFn({ method: "POST" })
       source: "intentional-leader-landing",
       received_at: new Date().toISOString(),
       program: "The Intentional Agribusiness Leader",
+      notify_email: "mark@themomentumcompany.com",
       amount_usd: amount * seatCount,
       seat_count: seatCount,
       ...data,
