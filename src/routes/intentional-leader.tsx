@@ -1237,7 +1237,7 @@ function IntentionalLeader() {
             {[
               { name: "Beck's Hybrids", src: logoBecks },
               { name: "Cultura Technologies", src: logoCultura },
-              { name: "The Pendleton Group", src: logoPendleton },
+              { name: "Legacy Agripartners", src: logoLegacy },
               { name: "Stateline Cooperative", src: logoStateline },
               { name: "Logan Ag Service", src: logoLogan, dark: true },
               { name: "WinField United", src: logoWinfield },
