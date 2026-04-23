@@ -479,12 +479,16 @@ function IntentionalLeader() {
       a: "30-day satisfaction guarantee. If it's not a fit in the first 30 days, we refund in full.",
     },
     {
-      q: "When does the cohort start?",
-      a: "Flexible. Start any time — Jericho adapts to your pace. Live group calls run on a published quarterly cadence.",
+      q: "When does the program begin?",
+      a: "August 1. From there it's 90 days of move-at-your-own-pace work — Jericho, the AI coach, adapts to your schedule. The only fixed dates on the calendar are three monthly half-day (3-hour) live sessions hosted by Mark.",
     },
     {
       q: "How much time does it take?",
-      a: "15–20 minutes per day. The Friday voice check-in takes 5 minutes.",
+      a: "15–20 minutes per day inside Jericho, plus the Friday voice check-in (5 minutes), plus one 3-hour monthly live session with Mark. Everything else moves at your pace across the 90 days.",
+    },
+    {
+      q: "How much 1:1 coaching do I actually get?",
+      a: "Heavy. Unlimited 1:1 coaching with Jericho for the full 90 days — voice or text, whenever you need it. Plus direct access to Mark on the three monthly half-day sessions and inside the program for the questions Jericho can't answer.",
     },
   ];
 
@@ -536,8 +540,13 @@ function IntentionalLeader() {
         style={{ background: "var(--ial-gradient-hero)" }}
        data-track-section="hero">
         <div className="container max-w-6xl mx-auto px-6 py-24 md:py-32 relative z-10">
-          <div className="inline-flex items-center px-4 py-2 rounded-full border border-[hsl(var(--ial-green))]/40 bg-[hsl(var(--ial-green))]/10 text-[hsl(var(--ial-green-soft))] text-xs font-semibold tracking-wider uppercase mb-8">
-            Only 10 Company Spots for Early Bird · Closes June 1
+          <div className="flex flex-wrap items-center gap-2 mb-8">
+            <div className="inline-flex items-center px-4 py-2 rounded-full border border-[hsl(var(--ial-green))]/40 bg-[hsl(var(--ial-green))]/10 text-[hsl(var(--ial-green-soft))] text-xs font-semibold tracking-wider uppercase">
+              Only 10 Company Spots for Early Bird · Closes June 1
+            </div>
+            <div className="inline-flex items-center px-4 py-2 rounded-full border border-[hsl(var(--ial-text))]/20 bg-[hsl(var(--ial-text))]/5 text-[hsl(var(--ial-text))] text-xs font-semibold tracking-wider uppercase">
+              Program Begins August 1
+            </div>
           </div>
           <h1 className="font-[family-name:var(--font-playfair)] text-5xl md:text-7xl font-black leading-[1.05] mb-6 max-w-5xl">
             In 90 days, your team starts operating more{" "}
@@ -1322,10 +1331,10 @@ function IntentionalLeader() {
               </div>
               <ul className="space-y-3 mb-8 flex-1">
                 {[
-                  "Full 90-day Jericho experience",
-                  "Unlimited 1:1 Coaching inside Jericho",
+                  "Begins August 1 · move at your own pace for 90 days",
+                  "Unlimited 1:1 coaching with Jericho — entire 90 days",
+                  "3 monthly half-day (3-hour) live sessions with Mark",
                   "Friday voice check-ins",
-                  "All 3 live group calls with Mark",
                   "Your Day 90 Intentional Leader Report",
                 ].map((x) => (
                   <li
