@@ -854,6 +854,36 @@ function IntentionalLeader() {
         </div>
       </section>
 
+      {/* INLINE CTA */}
+      <section className="py-16 border-t border-[hsl(var(--ial-border))] bg-[hsl(var(--ial-bg))]">
+        <div className="container max-w-4xl mx-auto px-6 text-center">
+          <h3 className="font-[family-name:var(--font-playfair)] text-2xl md:text-3xl font-bold mb-6 text-[hsl(var(--ial-text))]">
+            Ready to bring this into your team?
+          </h3>
+          <div className="flex flex-wrap justify-center gap-3">
+            <Button
+              asChild
+              size="lg"
+              className="bg-[hsl(var(--ial-green))] hover:bg-[hsl(var(--ial-green-deep))] text-white font-semibold h-14 px-8"
+            >
+              <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer">
+                Book a Call
+              </a>
+            </Button>
+            <Button
+              asChild
+              size="lg"
+              variant="outline"
+              className="border-2 border-[hsl(var(--ial-green-deep))] bg-transparent text-[hsl(var(--ial-green-deep))] hover:bg-[hsl(var(--ial-green-deep))] hover:text-white font-semibold h-14 px-8"
+            >
+              <a href={STRIPE_INDIVIDUAL_URL} target="_blank" rel="noopener noreferrer">
+                Buy Now
+              </a>
+            </Button>
+          </div>
+        </div>
+      </section>
+
       {/* PROOF */}
       <section className="py-24 border-t border-[hsl(var(--ial-border))]">
         <div className="container max-w-5xl mx-auto px-6 text-center">
