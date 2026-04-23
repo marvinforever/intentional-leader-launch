@@ -10,6 +10,7 @@ import {
   ArrowUpRight,
   Mic,
   Sparkles,
+  BookOpen,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
