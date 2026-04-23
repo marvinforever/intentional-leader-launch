@@ -674,6 +674,109 @@ function IntentionalLeader() {
         </div>
       </section>
 
+      {/* HOST - MARK JEWELL */}
+      <section className="py-24 border-t border-[hsl(var(--ial-border))]">
+        <div className="container max-w-5xl mx-auto px-6">
+          <SectionLabel>Your host & guide</SectionLabel>
+          <div className="grid md:grid-cols-[1fr_2fr] gap-10 items-start">
+            <div className="rounded-lg border border-[hsl(var(--ial-border))] bg-[hsl(var(--ial-surface))] p-6 flex flex-col items-center text-center">
+              <img
+                src={ialPodcastLogo}
+                alt="Intentional Agribusiness Leader Podcast"
+                className="w-full max-w-[220px] mb-4"
+              />
+              <div className="text-xs uppercase tracking-[0.2em] text-[hsl(var(--ial-text-muted))] mb-2">
+                Hosted by
+              </div>
+              <div className="text-xl font-bold text-[hsl(var(--ial-text))]">
+                Mark Jewell
+              </div>
+              <div className="text-sm text-[hsl(var(--ial-text-muted))]">
+                Co-founder, The Momentum Company
+              </div>
+            </div>
+            <div>
+              <h2 className="font-[family-name:var(--font-playfair)] text-3xl md:text-5xl font-bold mb-6 leading-[1.1]">
+                Built by the host of ag's{" "}
+                <span className="text-[hsl(var(--ial-green-deep))]">
+                  #1 leadership podcast.
+                </span>
+              </h2>
+              <div className="space-y-5 text-lg text-[hsl(var(--ial-text-muted))] leading-relaxed">
+                <p>
+                  Mark Jewell hosts{" "}
+                  <span className="text-[hsl(var(--ial-text))] font-semibold">
+                    The Intentional Agribusiness Leader Podcast
+                  </span>{" "}
+                  — the agriculture industry's #1 leadership-focused podcast,
+                  with thousands of weekly listens and{" "}
+                  <span className="text-[hsl(var(--ial-text))] font-semibold">
+                    50,000+ hours of intentional leadership talk
+                  </span>{" "}
+                  consumed by an incredible audience across the first 216+
+                  episodes.
+                </p>
+                <p>
+                  Mark is co-founder of{" "}
+                  <span className="text-[hsl(var(--ial-text))] font-semibold">
+                    The Momentum Company
+                  </span>
+                  , a human capital consulting firm 100% dedicated to helping
+                  ag leaders curate environments where their people can thrive.
+                </p>
+              </div>
+              <div className="mt-8 grid sm:grid-cols-3 gap-3">
+                <div className="rounded-lg border border-[hsl(var(--ial-border))] bg-[hsl(var(--ial-bg))] p-4 text-center">
+                  <div className="text-2xl font-bold text-[hsl(var(--ial-green-deep))]">
+                    216+
+                  </div>
+                  <div className="text-xs uppercase tracking-wider text-[hsl(var(--ial-text-muted))]">
+                    Episodes
+                  </div>
+                </div>
+                <div className="rounded-lg border border-[hsl(var(--ial-border))] bg-[hsl(var(--ial-bg))] p-4 text-center">
+                  <div className="text-2xl font-bold text-[hsl(var(--ial-green-deep))]">
+                    50K+
+                  </div>
+                  <div className="text-xs uppercase tracking-wider text-[hsl(var(--ial-text-muted))]">
+                    Hours consumed
+                  </div>
+                </div>
+                <div className="rounded-lg border border-[hsl(var(--ial-border))] bg-[hsl(var(--ial-bg))] p-4 text-center">
+                  <div className="text-2xl font-bold text-[hsl(var(--ial-green-deep))]">
+                    #1
+                  </div>
+                  <div className="text-xs uppercase tracking-wider text-[hsl(var(--ial-text-muted))]">
+                    In ag leadership
+                  </div>
+                </div>
+              </div>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <Button
+                  asChild
+                  size="lg"
+                  className="bg-[hsl(var(--ial-green))] hover:bg-[hsl(var(--ial-green-deep))] text-white font-semibold"
+                >
+                  <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer">
+                    Book a Call with Mark
+                  </a>
+                </Button>
+                <Button
+                  asChild
+                  size="lg"
+                  variant="outline"
+                  className="border-2 border-[hsl(var(--ial-green-deep))] bg-transparent text-[hsl(var(--ial-green-deep))] hover:bg-[hsl(var(--ial-green-deep))] hover:text-white font-semibold"
+                >
+                  <a href={STRIPE_INDIVIDUAL_URL} target="_blank" rel="noopener noreferrer">
+                    Buy Now
+                  </a>
+                </Button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* PROBLEMS */}
       <section className="py-24 border-t border-[hsl(var(--ial-border))]">
         <div className="container max-w-6xl mx-auto px-6">
@@ -747,6 +850,36 @@ function IntentionalLeader() {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* INLINE CTA */}
+      <section className="py-16 border-t border-[hsl(var(--ial-border))] bg-[hsl(var(--ial-bg))]">
+        <div className="container max-w-4xl mx-auto px-6 text-center">
+          <h3 className="font-[family-name:var(--font-playfair)] text-2xl md:text-3xl font-bold mb-6 text-[hsl(var(--ial-text))]">
+            Ready to bring this into your team?
+          </h3>
+          <div className="flex flex-wrap justify-center gap-3">
+            <Button
+              asChild
+              size="lg"
+              className="bg-[hsl(var(--ial-green))] hover:bg-[hsl(var(--ial-green-deep))] text-white font-semibold h-14 px-8"
+            >
+              <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer">
+                Book a Call
+              </a>
+            </Button>
+            <Button
+              asChild
+              size="lg"
+              variant="outline"
+              className="border-2 border-[hsl(var(--ial-green-deep))] bg-transparent text-[hsl(var(--ial-green-deep))] hover:bg-[hsl(var(--ial-green-deep))] hover:text-white font-semibold h-14 px-8"
+            >
+              <a href={STRIPE_INDIVIDUAL_URL} target="_blank" rel="noopener noreferrer">
+                Buy Now
+              </a>
+            </Button>
           </div>
         </div>
       </section>
@@ -887,6 +1020,39 @@ function IntentionalLeader() {
                 {name}
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* INLINE CTA 2 */}
+      <section className="py-16 border-t border-[hsl(var(--ial-border))] bg-[hsl(var(--ial-surface))]">
+        <div className="container max-w-4xl mx-auto px-6 text-center">
+          <h3 className="font-[family-name:var(--font-playfair)] text-2xl md:text-3xl font-bold mb-3 text-[hsl(var(--ial-text))]">
+            Convinced? Lock your seat before the price moves.
+          </h3>
+          <p className="text-[hsl(var(--ial-text-muted))] mb-6">
+            Early bird ends June 1 — then prices go up 50%.
+          </p>
+          <div className="flex flex-wrap justify-center gap-3">
+            <Button
+              asChild
+              size="lg"
+              className="bg-[hsl(var(--ial-green))] hover:bg-[hsl(var(--ial-green-deep))] text-white font-semibold h-14 px-8"
+            >
+              <a href={STRIPE_INDIVIDUAL_URL} target="_blank" rel="noopener noreferrer">
+                Buy Now
+              </a>
+            </Button>
+            <Button
+              asChild
+              size="lg"
+              variant="outline"
+              className="border-2 border-[hsl(var(--ial-green-deep))] bg-transparent text-[hsl(var(--ial-green-deep))] hover:bg-[hsl(var(--ial-green-deep))] hover:text-white font-semibold h-14 px-8"
+            >
+              <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer">
+                Book a Call
+              </a>
+            </Button>
           </div>
         </div>
       </section>
