@@ -506,7 +506,7 @@ function IntentionalLeader() {
             from those conversations.
           </p>
           <p className="text-base text-[hsl(var(--ial-text-muted))] max-w-2xl leading-relaxed mb-10 italic">
-            Co-op GMs. Ag retail presidents. Family operators. Ag-tech founders.
+            Co-op GMs. Ag Retail CEO's. Family operators. Ag-tech founders.
             You told us what's keeping you up at night. We intentionally built
             the resource that gets you to the other side of it.
           </p>
