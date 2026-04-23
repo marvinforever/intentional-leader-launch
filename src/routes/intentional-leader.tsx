@@ -556,9 +556,6 @@ function IntentionalLeader() {
             <div className="inline-flex items-center px-4 py-2 rounded-full border border-[hsl(var(--ial-green))]/40 bg-[hsl(var(--ial-green))]/10 text-[hsl(var(--ial-green-soft))] text-xs font-semibold tracking-wider uppercase">
               Only 10 Company Spots for Early Bird · Closes June 1
             </div>
-            <div className="inline-flex items-center px-4 py-2 rounded-full border border-[hsl(var(--ial-text))]/20 bg-[hsl(var(--ial-text))]/5 text-[hsl(var(--ial-text))] text-xs font-semibold tracking-wider uppercase">
-              Program Begins August 1
-            </div>
           </div>
           <h1 className="font-[family-name:var(--font-playfair)] text-5xl md:text-7xl font-black leading-[1.05] mb-6 max-w-5xl">
             In 90 days, your team starts operating more{" "}
