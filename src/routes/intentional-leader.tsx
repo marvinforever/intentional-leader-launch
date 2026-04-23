@@ -800,11 +800,18 @@ function IntentionalLeader() {
           <SectionLabel>Your host & guide</SectionLabel>
           <div className="grid md:grid-cols-[1fr_2fr] gap-10 items-start">
             <div className="rounded-lg border border-[hsl(var(--ial-border))] bg-[hsl(var(--ial-surface))] p-6 flex flex-col items-center text-center">
-              <div className="w-full aspect-[3/4] max-w-[260px] mb-5 overflow-hidden rounded-lg border border-[hsl(var(--ial-border))]">
+              <div className="relative w-full max-w-[260px] mb-5">
+                <div className="aspect-[3/4] overflow-hidden rounded-lg border border-[hsl(var(--ial-border))]">
+                  <img
+                    src={markJewellPhoto}
+                    alt="Mark Jewell, host of The Intentional Agribusiness Leader Podcast"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
                 <img
-                  src={markJewellPhoto}
-                  alt="Mark Jewell, host of The Intentional Agribusiness Leader Podcast"
-                  className="w-full h-full object-cover"
+                  src={ialPodcastLogo}
+                  alt="Intentional Agribusiness Leader Podcast"
+                  className="absolute -bottom-4 -right-4 w-20 h-20 rounded-full bg-white p-1 shadow-lg ring-1 ring-[hsl(var(--ial-border))]"
                 />
               </div>
               <div className="text-xs uppercase tracking-[0.2em] text-[hsl(var(--ial-text-muted))] mb-2">
