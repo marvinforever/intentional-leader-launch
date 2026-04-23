@@ -676,6 +676,113 @@ function IntentionalLeader() {
         </div>
       </section>
 
+      {/* PROBLEMS */}
+      <section className="py-24 border-t border-[hsl(var(--ial-border))]">
+        <div className="container max-w-6xl mx-auto px-6">
+          <SectionLabel>
+            The three things every ag leader is wrestling with
+          </SectionLabel>
+          <h2 className="font-[family-name:var(--font-playfair)] text-4xl md:text-5xl font-bold mb-6 max-w-3xl">
+            You already know the pain. Here's what 90 days does about it.
+          </h2>
+          <p className="text-lg text-[hsl(var(--ial-text-muted))] max-w-3xl leading-relaxed mb-12">
+            We didn't invent these. They surfaced — over and over — in 216+
+            recorded conversations with co-op GMs, ag retailers, family
+            operators, ag-tech founders, and biological, seed, and biotech
+            companies. If they sound familiar, that's
+            because the people running organizations like yours have been
+            saying the same thing for years.
+          </p>
+          <Problems />
+        </div>
+      </section>
+
+      {/* TRANSFORMATION */}
+      <section className="py-28 border-t border-[hsl(var(--ial-border))] bg-[hsl(var(--ial-surface))]">
+        <div className="container max-w-6xl mx-auto px-6">
+          <SectionLabel>What 90 Days Changes</SectionLabel>
+          <h2 className="font-[family-name:var(--font-playfair)] text-4xl md:text-6xl font-bold mb-6 max-w-4xl leading-[1.05]">
+            The version of your organization waiting on the other side of 90
+            days.
+          </h2>
+          <p className="text-lg text-[hsl(var(--ial-text-muted))] max-w-3xl leading-relaxed mb-16 italic">
+            Every "after" line below is built from a real pattern we heard
+            repeatedly across the podcast.
+          </p>
+          <Transformation />
+        </div>
+      </section>
+
+      {/* UNIFICATION */}
+      <section className="py-28 border-t border-[hsl(var(--ial-border))] bg-[hsl(var(--ial-green-deep))] text-white">
+        <div className="container max-w-5xl mx-auto px-6 text-center">
+          <div className="text-xs font-semibold tracking-[0.3em] uppercase text-white/70 mb-6">
+            The Momentum Company · Unification leads
+          </div>
+          <h2 className="font-[family-name:var(--font-playfair)] text-4xl md:text-6xl font-bold mb-10 leading-[1.05]">
+            Less tension. More trust.
+            <br />
+            <span className="italic opacity-90">Unification leads.</span>
+          </h2>
+          <p className="text-xl md:text-2xl text-white/85 max-w-3xl mx-auto leading-relaxed mb-12">
+            The biggest shift leaders report isn't a new framework or a tighter
+            scorecard — it's how their team feels on a Tuesday afternoon.
+          </p>
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 text-left">
+            {[
+              { from: "Tension", to: "Trust" },
+              { from: "Friction", to: "Flow" },
+              { from: "Miscommunication", to: "Clarity" },
+              { from: "Resentment", to: "Respect" },
+              { from: "Division", to: "Unity" },
+              { from: "Hesitation", to: "Momentum" },
+            ].map(({ from, to }) => (
+              <div
+                key={from}
+                className="p-6 bg-white/10 border border-white/15 rounded-lg backdrop-blur-sm"
+              >
+                <div className="text-sm uppercase tracking-wider text-white/60 line-through mb-2">
+                  {from}
+                </div>
+                <div className="text-2xl md:text-3xl font-bold font-[family-name:var(--font-playfair)]">
+                  {to}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* INLINE CTA */}
+      <section className="py-16 border-t border-[hsl(var(--ial-border))] bg-[hsl(var(--ial-bg))]">
+        <div className="container max-w-4xl mx-auto px-6 text-center">
+          <h3 className="font-[family-name:var(--font-playfair)] text-2xl md:text-3xl font-bold mb-6 text-[hsl(var(--ial-text))]">
+            Ready to bring this into your team?
+          </h3>
+          <div className="flex flex-wrap justify-center gap-3">
+            <Button
+              asChild
+              size="lg"
+              className="bg-[hsl(var(--ial-green))] hover:bg-[hsl(var(--ial-green-deep))] text-white font-semibold h-14 px-8"
+            >
+              <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer">
+                Book a Call
+              </a>
+            </Button>
+            <Button
+              asChild
+              size="lg"
+              variant="outline"
+              className="border-2 border-[hsl(var(--ial-green-deep))] bg-transparent text-[hsl(var(--ial-green-deep))] hover:bg-[hsl(var(--ial-green-deep))] hover:text-white font-semibold h-14 px-8"
+            >
+              <a href={STRIPE_INDIVIDUAL_URL} target="_blank" rel="noopener noreferrer">
+                Buy Now
+              </a>
+            </Button>
+          </div>
+        </div>
+      </section>
+
       {/* HOST - MARK JEWELL */}
       <section className="py-24 border-t border-[hsl(var(--ial-border))]">
         <div className="container max-w-5xl mx-auto px-6">
@@ -854,113 +961,6 @@ function IntentionalLeader() {
           <p className="mt-10 text-center text-base md:text-lg text-[hsl(var(--ial-text-muted))] italic max-w-2xl mx-auto">
             Completely adaptive. The more you bring, the sharper it gets.
           </p>
-        </div>
-      </section>
-
-      {/* PROBLEMS */}
-      <section className="py-24 border-t border-[hsl(var(--ial-border))]">
-        <div className="container max-w-6xl mx-auto px-6">
-          <SectionLabel>
-            The three things every ag leader is wrestling with
-          </SectionLabel>
-          <h2 className="font-[family-name:var(--font-playfair)] text-4xl md:text-5xl font-bold mb-6 max-w-3xl">
-            You already know the pain. Here's what 90 days does about it.
-          </h2>
-          <p className="text-lg text-[hsl(var(--ial-text-muted))] max-w-3xl leading-relaxed mb-12">
-            We didn't invent these. They surfaced — over and over — in 216+
-            recorded conversations with co-op GMs, ag retailers, family
-            operators, ag-tech founders, and biological, seed, and biotech
-            companies. If they sound familiar, that's
-            because the people running organizations like yours have been
-            saying the same thing for years.
-          </p>
-          <Problems />
-        </div>
-      </section>
-
-      {/* TRANSFORMATION */}
-      <section className="py-28 border-t border-[hsl(var(--ial-border))] bg-[hsl(var(--ial-surface))]">
-        <div className="container max-w-6xl mx-auto px-6">
-          <SectionLabel>What 90 Days Changes</SectionLabel>
-          <h2 className="font-[family-name:var(--font-playfair)] text-4xl md:text-6xl font-bold mb-6 max-w-4xl leading-[1.05]">
-            The version of your organization waiting on the other side of 90
-            days.
-          </h2>
-          <p className="text-lg text-[hsl(var(--ial-text-muted))] max-w-3xl leading-relaxed mb-16 italic">
-            Every "after" line below is built from a real pattern we heard
-            repeatedly across the podcast.
-          </p>
-          <Transformation />
-        </div>
-      </section>
-
-      {/* UNIFICATION */}
-      <section className="py-28 border-t border-[hsl(var(--ial-border))] bg-[hsl(var(--ial-green-deep))] text-white">
-        <div className="container max-w-5xl mx-auto px-6 text-center">
-          <div className="text-xs font-semibold tracking-[0.3em] uppercase text-white/70 mb-6">
-            The Momentum Company · Unification leads
-          </div>
-          <h2 className="font-[family-name:var(--font-playfair)] text-4xl md:text-6xl font-bold mb-10 leading-[1.05]">
-            Less tension. More trust.
-            <br />
-            <span className="italic opacity-90">Unification leads.</span>
-          </h2>
-          <p className="text-xl md:text-2xl text-white/85 max-w-3xl mx-auto leading-relaxed mb-12">
-            The biggest shift leaders report isn't a new framework or a tighter
-            scorecard — it's how their team feels on a Tuesday afternoon.
-          </p>
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 text-left">
-            {[
-              { from: "Tension", to: "Trust" },
-              { from: "Friction", to: "Flow" },
-              { from: "Miscommunication", to: "Clarity" },
-              { from: "Resentment", to: "Respect" },
-              { from: "Division", to: "Unity" },
-              { from: "Hesitation", to: "Momentum" },
-            ].map(({ from, to }) => (
-              <div
-                key={from}
-                className="p-6 bg-white/10 border border-white/15 rounded-lg backdrop-blur-sm"
-              >
-                <div className="text-sm uppercase tracking-wider text-white/60 line-through mb-2">
-                  {from}
-                </div>
-                <div className="text-2xl md:text-3xl font-bold font-[family-name:var(--font-playfair)]">
-                  {to}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* INLINE CTA */}
-      <section className="py-16 border-t border-[hsl(var(--ial-border))] bg-[hsl(var(--ial-bg))]">
-        <div className="container max-w-4xl mx-auto px-6 text-center">
-          <h3 className="font-[family-name:var(--font-playfair)] text-2xl md:text-3xl font-bold mb-6 text-[hsl(var(--ial-text))]">
-            Ready to bring this into your team?
-          </h3>
-          <div className="flex flex-wrap justify-center gap-3">
-            <Button
-              asChild
-              size="lg"
-              className="bg-[hsl(var(--ial-green))] hover:bg-[hsl(var(--ial-green-deep))] text-white font-semibold h-14 px-8"
-            >
-              <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer">
-                Book a Call
-              </a>
-            </Button>
-            <Button
-              asChild
-              size="lg"
-              variant="outline"
-              className="border-2 border-[hsl(var(--ial-green-deep))] bg-transparent text-[hsl(var(--ial-green-deep))] hover:bg-[hsl(var(--ial-green-deep))] hover:text-white font-semibold h-14 px-8"
-            >
-              <a href={STRIPE_INDIVIDUAL_URL} target="_blank" rel="noopener noreferrer">
-                Buy Now
-              </a>
-            </Button>
-          </div>
         </div>
       </section>
 
