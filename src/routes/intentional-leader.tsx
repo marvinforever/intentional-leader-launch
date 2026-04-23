@@ -604,6 +604,9 @@ function IntentionalLeader() {
               </div>
             ))}
           </div>
+          <p className="mt-6 text-sm uppercase tracking-[0.2em] text-[hsl(var(--ial-text-muted))]">
+            …and literally dozens of others
+          </p>
         </div>
       </section>
 
