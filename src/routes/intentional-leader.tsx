@@ -963,7 +963,10 @@ function IntentionalLeader() {
               </p>
             </div>
 
-            <div className="rounded-lg border border-[hsl(var(--ial-border))] bg-[hsl(var(--ial-bg))] p-6">
+            <div
+              id="guidebook-card"
+              className="rounded-lg border border-[hsl(var(--ial-border))] bg-[hsl(var(--ial-bg))] p-6 scroll-mt-24"
+            >
               <div className="w-12 h-12 rounded-lg bg-[hsl(var(--ial-green-deep))] text-white flex items-center justify-center mb-4">
                 <BookOpen className="w-6 h-6" />
               </div>
@@ -979,7 +982,29 @@ function IntentionalLeader() {
                 into your team meetings to curate intentional conversation
                 around the topics that matter.
               </p>
-              <Accordion type="single" collapsible className="mt-4">
+              <Button
+                type="button"
+                size="sm"
+                onClick={openSampleVignette}
+                className="mt-4 bg-[hsl(var(--ial-green))] hover:bg-[hsl(var(--ial-green-deep))] text-white font-semibold"
+              >
+                Start your first vignette
+              </Button>
+              <Accordion
+                type="single"
+                collapsible
+                className="mt-3"
+                value={vignetteOpen}
+                onValueChange={(v) => {
+                  setVignetteOpen(v);
+                  if (v === "sample-vignette") {
+                    trackEvent("interaction", "sample_vignette_opened", {
+                      section: "how_it_works",
+                      metadata: { source: "accordion_toggle" },
+                    });
+                  }
+                }}
+              >
                 <AccordionItem
                   value="sample-vignette"
                   className="border border-[hsl(var(--ial-border))] rounded-md bg-[hsl(var(--ial-surface))]"
