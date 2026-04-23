@@ -908,6 +908,23 @@ function IntentionalLeader() {
             another binder on the shelf.
           </p>
 
+          <div
+            data-track-section="how_it_works_intro"
+            className="relative max-w-4xl mx-auto text-center mb-16 animate-in fade-in slide-in-from-bottom-4 duration-700"
+          >
+            <div className="mx-auto mb-6 h-px w-16 bg-[hsl(var(--ial-green-deep))]" />
+            <p className="font-[family-name:var(--font-playfair)] text-2xl md:text-3xl lg:text-4xl font-bold leading-[1.25] text-[hsl(var(--ial-text))]">
+              We've taken everything from hundreds of hours of podcast
+              interviews and production and distilled it into one easy-to-follow
+              course that{" "}
+              <span className="text-[hsl(var(--ial-green-deep))]">
+                builds itself around you
+              </span>{" "}
+              — that you can implement on{" "}
+              <span className="text-[hsl(var(--ial-green-deep))]">day one</span>.
+            </p>
+          </div>
+
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
             <div className="rounded-lg border border-[hsl(var(--ial-border))] bg-[hsl(var(--ial-bg))] p-6">
               <div className="w-12 h-12 rounded-lg bg-[hsl(var(--ial-green-deep))] text-white flex items-center justify-center mb-4">
