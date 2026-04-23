@@ -29,6 +29,7 @@ import { submitInvoiceRequest } from "@/utils/invoice.functions";
 import momentumLogoWhite from "@/assets/momentum-logo-white.png";
 import ialPodcastLogo from "@/assets/intentional-ag-leader-podcast.png";
 import markJewellPhoto from "@/assets/mark-jewell-watermarked.jpg";
+import ogShareImage from "@/assets/og-share-intentional-leader.jpg";
 import { usePageAnalytics, trackEvent } from "@/hooks/use-analytics";
 
 export const Route = createFileRoute("/intentional-leader")({
@@ -50,6 +51,20 @@ export const Route = createFileRoute("/intentional-leader")({
           "Built from 216+ podcast episodes with the leaders of ag. 90 days. Powered by Jericho AI coach. Early bird ends June 1.",
       },
       { property: "og:type", content: "website" },
+      { property: "og:image", content: ogShareImage },
+      { property: "og:image:width", content: "1376" },
+      { property: "og:image:height", content: "768" },
+      { name: "twitter:card", content: "summary_large_image" },
+      {
+        name: "twitter:title",
+        content: "The Intentional Leader with Mark Jewell",
+      },
+      {
+        name: "twitter:description",
+        content:
+          "A 90-day leadership program for agribusiness leaders. Powered by Jericho AI coach.",
+      },
+      { name: "twitter:image", content: ogShareImage },
     ],
   }),
   component: IntentionalLeader,
