@@ -475,10 +475,6 @@ function IntentionalLeader() {
       a: "Stripe: full payment at enrollment. Invoice path: Net 15 via QuickBooks.",
     },
     {
-      q: "Money-back guarantee?",
-      a: "30-day satisfaction guarantee. If it's not a fit in the first 30 days, we refund in full.",
-    },
-    {
       q: "When does the program begin?",
       a: "August 1. From there it's 90 days of move-at-your-own-pace work — Jericho, the AI coach, adapts to your schedule. The only fixed dates on the calendar are three monthly half-day (3-hour) live sessions hosted by Mark.",
     },
