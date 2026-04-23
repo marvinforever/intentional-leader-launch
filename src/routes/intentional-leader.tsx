@@ -8,6 +8,8 @@ import {
   Headphones,
   Play,
   ArrowUpRight,
+  Mic,
+  Sparkles,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
