@@ -1,12 +1,14 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
+import { supabaseAdmin } from "@/integrations/supabase/client.server";
 
 /**
- * Port of supabase/functions/invoice-request from momentum-thrive-os.
- * Receives an invoice request from the Intentional Leader landing page and
- * forwards it to QUICKBOOKS_INVOICE_WEBHOOK_URL (e.g. Zapier/Make) which
- * creates the QuickBooks Online invoice. Falls back to logging if the
- * webhook secret isn't configured yet, so the page works immediately.
+ * Receives an invoice request from the Intentional Leader landing page.
+ * 1. Persists the submission to public.invoice_requests (admin client, RLS bypassed).
+ * 2. Optionally forwards to QUICKBOOKS_INVOICE_WEBHOOK_URL (Zapier/Make) for QBO.
+ * 3. Optionally fires a notification webhook (MARK_NOTIFICATION_WEBHOOK_URL) so
+ *    Mark gets an email immediately. Both webhooks are no-ops if their secrets
+ *    aren't configured — the DB row is the source of truth.
  */
 
 const InvoiceSchema = z.object({
@@ -22,6 +24,8 @@ const InvoiceSchema = z.object({
 
 export type InvoiceInput = z.infer<typeof InvoiceSchema>;
 
+const NOTIFY_EMAIL = "mark@themomentumcompany.com";
+
 export const submitInvoiceRequest = createServerFn({ method: "POST" })
   .inputValidator((input: unknown) => InvoiceSchema.parse(input))
   .handler(async ({ data }) => {
@@ -30,19 +34,62 @@ export const submitInvoiceRequest = createServerFn({ method: "POST" })
       data.license_type === "individual"
         ? Math.max(1, parseInt(data.seat_count || "1", 10) || 1)
         : 1;
+    const totalAmount = amount * seatCount;
+
+    // 1. Persist to database (source of truth).
+    const { data: inserted, error: insertError } = await supabaseAdmin
+      .from("invoice_requests")
+      .insert({
+        license_type: data.license_type,
+        company_name: data.company_name,
+        contact_name: data.contact_name,
+        billing_email: data.billing_email,
+        phone: data.phone,
+        billing_address: data.billing_address,
+        seat_count: seatCount,
+        notes: data.notes ?? null,
+        amount_usd: totalAmount,
+      })
+      .select("id")
+      .single();
+
+    if (insertError) {
+      console.error("Failed to save invoice request:", insertError);
+      throw new Error("Failed to save your request. Please try again or email mark@themomentumcompany.com directly.");
+    }
 
     const enriched = {
       source: "intentional-leader-landing",
       received_at: new Date().toISOString(),
       program: "The Intentional Agribusiness Leader",
-      notify_email: "mark@themomentumcompany.com",
-      amount_usd: amount * seatCount,
+      record_id: inserted.id,
+      notify_email: NOTIFY_EMAIL,
+      amount_usd: totalAmount,
       seat_count: seatCount,
       ...data,
     };
 
     console.log("Invoice request received:", JSON.stringify(enriched));
 
+    // 2. Notification webhook (e.g. Zapier "Email me") — fire and forget.
+    const notifyUrl = process.env.MARK_NOTIFICATION_WEBHOOK_URL;
+    if (notifyUrl) {
+      try {
+        await fetch(notifyUrl, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            to: NOTIFY_EMAIL,
+            subject: `New Invoice Request — ${data.company_name} ($${totalAmount.toLocaleString()})`,
+            ...enriched,
+          }),
+        });
+      } catch (err) {
+        console.error("Notification webhook failed:", err);
+      }
+    }
+
+    // 3. QuickBooks/billing webhook (set up later).
     const webhookUrl = process.env.QUICKBOOKS_INVOICE_WEBHOOK_URL;
     if (webhookUrl) {
       try {
@@ -54,15 +101,10 @@ export const submitInvoiceRequest = createServerFn({ method: "POST" })
         if (!r.ok) {
           const text = await r.text();
           console.error(`Webhook responded with ${r.status}: ${text}`);
-          // Still return success to user — we have the data logged.
         }
       } catch (err) {
         console.error("Webhook forward failed:", err);
       }
-    } else {
-      console.warn(
-        "QUICKBOOKS_INVOICE_WEBHOOK_URL not configured — request logged only.",
-      );
     }
 
     return { ok: true };
