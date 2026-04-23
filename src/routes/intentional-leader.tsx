@@ -1272,7 +1272,7 @@ function IntentionalLeader() {
           </p>
 
           <div className="text-xs uppercase tracking-[0.2em] text-[hsl(var(--ial-text-muted))] mb-6">
-            Drawn from 216+ episodes with leaders at
+            Wisdom drawn from 216+ episodes with leaders at
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
             {[
