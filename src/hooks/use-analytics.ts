@@ -178,28 +178,104 @@ export function usePageAnalytics(pageName: string) {
     window.addEventListener("pagehide", onUnload);
     window.addEventListener("beforeunload", onUnload);
 
+    const findSection = (el: HTMLElement | null): string | undefined => {
+      let cur: HTMLElement | null = el;
+      while (cur && cur !== document.body) {
+        if (cur.dataset && cur.dataset.trackSection) return cur.dataset.trackSection;
+        cur = cur.parentElement;
+      }
+      return undefined;
+    };
+
     const onClick = (e: MouseEvent) => {
       const target = e.target as HTMLElement | null;
       if (!target) return;
-      const el = target.closest<HTMLElement>("[data-track-cta]");
-      if (!el) return;
-      const name = el.dataset.trackCta || "unknown_cta";
-      const section = el.dataset.trackCtaSection || undefined;
-      trackEvent("cta_click", name, {
-        section,
+
+      // Heatmap-style click position (every click on the page)
+      const docHeight = Math.max(
+        document.documentElement.scrollHeight,
+        document.body.scrollHeight,
+      );
+      const xPct = Math.round((e.pageX / window.innerWidth) * 1000) / 10;
+      const yPct = Math.round((e.pageY / Math.max(docHeight, 1)) * 1000) / 10;
+      const sectionName = findSection(target);
+      const tag = (target.tagName || "").toLowerCase();
+      const text = (target.innerText || "").trim().slice(0, 60);
+      trackEvent("interaction", "click_position", {
+        section: sectionName,
         metadata: {
-          href: (el as HTMLAnchorElement).href || undefined,
-          text: el.innerText?.slice(0, 80),
+          x_pct: xPct,
+          y_pct: yPct,
+          vw: window.innerWidth,
+          vh: window.innerHeight,
+          tag,
+          text: text || undefined,
+          id: target.id || undefined,
         },
       });
+
+      // CTA click (existing behavior)
+      const cta = target.closest<HTMLElement>("[data-track-cta]");
+      if (cta) {
+        const name = cta.dataset.trackCta || "unknown_cta";
+        trackEvent("cta_click", name, {
+          section: cta.dataset.trackCtaSection || sectionName,
+          metadata: {
+            href: (cta as HTMLAnchorElement).href || undefined,
+            text: cta.innerText?.slice(0, 80),
+          },
+        });
+      }
     };
     document.addEventListener("click", onClick, { capture: true });
+
+    // Throttled pointer-move sampling for hover heatmaps.
+    // Aggregate samples per ~600ms window into a single batched event so we
+    // never blast the endpoint, then send at most ~once/sec.
+    let lastSampleAt = 0;
+    let lastSentAt = 0;
+    const samples: Array<{ x: number; y: number; s?: string }> = [];
+    const sendSamples = () => {
+      if (samples.length === 0) return;
+      const batch = samples.splice(0, samples.length);
+      trackEvent("interaction", "pointer_sample", {
+        metadata: {
+          vw: window.innerWidth,
+          vh: window.innerHeight,
+          samples: batch,
+        },
+      });
+      lastSentAt = Date.now();
+    };
+    const onPointerMove = (e: PointerEvent) => {
+      const now = Date.now();
+      // Sample at most ~6/sec
+      if (now - lastSampleAt < 160) return;
+      lastSampleAt = now;
+      const docHeight = Math.max(
+        document.documentElement.scrollHeight,
+        document.body.scrollHeight,
+      );
+      const xPct = Math.round((e.pageX / window.innerWidth) * 1000) / 10;
+      const yPct = Math.round((e.pageY / Math.max(docHeight, 1)) * 1000) / 10;
+      const target = e.target as HTMLElement | null;
+      const sectionName = target ? findSection(target) : undefined;
+      samples.push({ x: xPct, y: yPct, s: sectionName });
+      if (samples.length >= 25 || now - lastSentAt > 1500) {
+        sendSamples();
+      }
+    };
+    window.addEventListener("pointermove", onPointerMove, { passive: true });
+    const sampleFlushTimer = window.setInterval(sendSamples, 2000);
 
     return () => {
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("pagehide", onUnload);
       window.removeEventListener("beforeunload", onUnload);
       document.removeEventListener("click", onClick, { capture: true } as EventListenerOptions);
+      window.removeEventListener("pointermove", onPointerMove);
+      window.clearInterval(sampleFlushTimer);
+      sendSamples();
       observer.disconnect();
       flush();
     };
