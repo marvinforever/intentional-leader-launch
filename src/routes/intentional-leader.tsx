@@ -1108,13 +1108,11 @@ function IntentionalLeader() {
             </p>
             <div className="flex items-center gap-4">
               <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center text-white font-bold text-lg">
-                RN
+                AP
               </div>
               <div>
-                <div className="font-bold text-white text-lg">Ryan Ness</div>
-                <div className="text-white/80 text-sm">
-                  VP Agronomy · Ag Partners
-                </div>
+                <div className="font-bold text-white text-lg">VP Agronomy</div>
+                <div className="text-white/80 text-sm">Ag Partners</div>
               </div>
             </div>
           </Card>
