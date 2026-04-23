@@ -303,6 +303,7 @@ const InvoiceForm = () => {
     contact_name: "",
     billing_email: "",
     billing_address: "",
+    phone: "",
     seat_count: "1",
     notes: "",
   });
@@ -321,6 +322,7 @@ const InvoiceForm = () => {
         contact_name: "",
         billing_email: "",
         billing_address: "",
+        phone: "",
         seat_count: "1",
         notes: "",
       });
@@ -382,6 +384,20 @@ const InvoiceForm = () => {
           required
           value={form.billing_email}
           onChange={(e) => setForm({ ...form, billing_email: e.target.value })}
+          className="bg-[hsl(var(--ial-surface-2))] border-[hsl(var(--ial-border))]"
+        />
+      </div>
+
+      <div>
+        <Label htmlFor="phone">Phone number</Label>
+        <Input
+          id="phone"
+          type="tel"
+          required
+          maxLength={30}
+          placeholder="(555) 123-4567"
+          value={form.phone}
+          onChange={(e) => setForm({ ...form, phone: e.target.value })}
           className="bg-[hsl(var(--ial-surface-2))] border-[hsl(var(--ial-border))]"
         />
       </div>
