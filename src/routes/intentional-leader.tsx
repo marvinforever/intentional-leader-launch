@@ -28,7 +28,7 @@ import { useServerFn } from "@tanstack/react-start";
 import { submitInvoiceRequest } from "@/utils/invoice.functions";
 import momentumLogoWhite from "@/assets/momentum-logo-white.png";
 import ialPodcastLogo from "@/assets/intentional-ag-leader-podcast.png";
-import markJewellPhoto from "@/assets/mark-jewell.jpg";
+import markJewellPhoto from "@/assets/mark-jewell-watermarked.jpg";
 import { usePageAnalytics, trackEvent } from "@/hooks/use-analytics";
 
 export const Route = createFileRoute("/intentional-leader")({
