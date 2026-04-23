@@ -711,6 +711,46 @@ function IntentionalLeader() {
         </div>
       </section>
 
+      {/* UNIFICATION */}
+      <section className="py-28 border-t border-[hsl(var(--ial-border))] bg-[hsl(var(--ial-green-deep))] text-white">
+        <div className="container max-w-5xl mx-auto px-6 text-center">
+          <div className="text-xs font-semibold tracking-[0.3em] uppercase text-white/70 mb-6">
+            The Momentum Company · Unification leads
+          </div>
+          <h2 className="font-[family-name:var(--font-playfair)] text-4xl md:text-6xl font-bold mb-10 leading-[1.05]">
+            Less tension. More trust.
+            <br />
+            <span className="italic opacity-90">Unification leads.</span>
+          </h2>
+          <p className="text-xl md:text-2xl text-white/85 max-w-3xl mx-auto leading-relaxed mb-12">
+            The biggest shift leaders report isn't a new framework or a tighter
+            scorecard — it's how their team feels on a Tuesday afternoon.
+          </p>
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 text-left">
+            {[
+              { from: "Tension", to: "Trust" },
+              { from: "Friction", to: "Flow" },
+              { from: "Miscommunication", to: "Clarity" },
+              { from: "Resentment", to: "Respect" },
+              { from: "Division", to: "Unity" },
+              { from: "Hesitation", to: "Momentum" },
+            ].map(({ from, to }) => (
+              <div
+                key={from}
+                className="p-6 bg-white/10 border border-white/15 rounded-lg backdrop-blur-sm"
+              >
+                <div className="text-sm uppercase tracking-wider text-white/60 line-through mb-2">
+                  {from}
+                </div>
+                <div className="text-2xl md:text-3xl font-bold font-[family-name:var(--font-playfair)]">
+                  {to}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* PROOF */}
       <section className="py-24 border-t border-[hsl(var(--ial-border))]">
         <div className="container max-w-5xl mx-auto px-6 text-center">
