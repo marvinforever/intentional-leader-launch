@@ -91,7 +91,7 @@ export async function sendInternalTransactionalEmail(params: SendInternalParams)
     status: 'pending',
   })
 
-  const { error: enqueueError } = await supabaseAdmin.rpc('enqueue_email' as any, {
+  const { error: enqueueError } = await (supabaseAdmin as any).rpc('enqueue_email', {
     queue_name: 'transactional_emails',
     payload: {
       message_id: messageId,
