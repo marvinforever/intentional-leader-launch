@@ -389,6 +389,20 @@ const InvoiceForm = () => {
       </div>
 
       <div>
+        <Label htmlFor="phone">Phone number</Label>
+        <Input
+          id="phone"
+          type="tel"
+          required
+          maxLength={30}
+          placeholder="(555) 123-4567"
+          value={form.phone}
+          onChange={(e) => setForm({ ...form, phone: e.target.value })}
+          className="bg-[hsl(var(--ial-surface-2))] border-[hsl(var(--ial-border))]"
+        />
+      </div>
+
+      <div>
         <Label htmlFor="billing_address">Billing address</Label>
         <Textarea
           id="billing_address"
