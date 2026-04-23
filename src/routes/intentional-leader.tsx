@@ -482,9 +482,7 @@ function IntentionalLeader() {
             size="sm"
             className="bg-[hsl(var(--ial-green))] hover:bg-[hsl(var(--ial-green-deep))] text-white font-semibold"
           >
-            <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer">
-              Book a Call
-            </a>
+            <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" data-track-cta="book_call">Book a Call</a>
           </Button>
         </div>
       </header>
@@ -525,9 +523,7 @@ function IntentionalLeader() {
               size="lg"
               className="bg-[hsl(var(--ial-green))] hover:bg-[hsl(var(--ial-green-deep))] text-white font-semibold h-14 px-8 text-base"
             >
-              <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer">
-                Book a Call
-              </a>
+              <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" data-track-cta="book_call">Book a Call</a>
             </Button>
             <Button
               size="lg"
@@ -768,9 +764,7 @@ function IntentionalLeader() {
               size="lg"
               className="bg-[hsl(var(--ial-green))] hover:bg-[hsl(var(--ial-green-deep))] text-white font-semibold h-14 px-8"
             >
-              <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer">
-                Book a Call
-              </a>
+              <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" data-track-cta="book_call">Book a Call</a>
             </Button>
             <Button
               asChild
@@ -778,9 +772,7 @@ function IntentionalLeader() {
               variant="outline"
               className="border-2 border-[hsl(var(--ial-green-deep))] bg-transparent text-[hsl(var(--ial-green-deep))] hover:bg-[hsl(var(--ial-green-deep))] hover:text-white font-semibold h-14 px-8"
             >
-              <a href={STRIPE_INDIVIDUAL_URL} target="_blank" rel="noopener noreferrer">
-                Buy Now
-              </a>
+              <a href={STRIPE_INDIVIDUAL_URL} target="_blank" rel="noopener noreferrer" data-track-cta="buy_now">Buy Now</a>
             </Button>
           </div>
         </div>
@@ -869,9 +861,7 @@ function IntentionalLeader() {
                   size="lg"
                   className="bg-[hsl(var(--ial-green))] hover:bg-[hsl(var(--ial-green-deep))] text-white font-semibold"
                 >
-                  <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer">
-                    Book a Call with Mark
-                  </a>
+                  <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" data-track-cta="book_call_mark">Book a Call with Mark</a>
                 </Button>
                 <Button
                   asChild
@@ -879,9 +869,7 @@ function IntentionalLeader() {
                   variant="outline"
                   className="border-2 border-[hsl(var(--ial-green-deep))] bg-transparent text-[hsl(var(--ial-green-deep))] hover:bg-[hsl(var(--ial-green-deep))] hover:text-white font-semibold"
                 >
-                  <a href={STRIPE_INDIVIDUAL_URL} target="_blank" rel="noopener noreferrer">
-                    Buy Now
-                  </a>
+                  <a href={STRIPE_INDIVIDUAL_URL} target="_blank" rel="noopener noreferrer" data-track-cta="buy_now">Buy Now</a>
                 </Button>
               </div>
             </div>
@@ -1185,9 +1173,7 @@ function IntentionalLeader() {
               size="lg"
               className="bg-[hsl(var(--ial-green))] hover:bg-[hsl(var(--ial-green-deep))] text-white font-semibold h-14 px-8"
             >
-              <a href={STRIPE_INDIVIDUAL_URL} target="_blank" rel="noopener noreferrer">
-                Buy Now
-              </a>
+              <a href={STRIPE_INDIVIDUAL_URL} target="_blank" rel="noopener noreferrer" data-track-cta="buy_now">Buy Now</a>
             </Button>
             <Button
               asChild
@@ -1195,9 +1181,7 @@ function IntentionalLeader() {
               variant="outline"
               className="border-2 border-[hsl(var(--ial-green-deep))] bg-transparent text-[hsl(var(--ial-green-deep))] hover:bg-[hsl(var(--ial-green-deep))] hover:text-white font-semibold h-14 px-8"
             >
-              <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer">
-                Book a Call
-              </a>
+              <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" data-track-cta="book_call">Book a Call</a>
             </Button>
           </div>
         </div>
@@ -1337,13 +1321,7 @@ function IntentionalLeader() {
                 asChild
                 className="w-full bg-[hsl(var(--ial-green))] hover:bg-[hsl(var(--ial-green-deep))] text-white h-12 font-semibold"
               >
-                <a
-                  href={CALENDLY_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Book a Call →
-                </a>
+                <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" data-track-cta="book_call_arrow">Book a Call →</a>
               </Button>
             </Card>
 
@@ -1413,9 +1391,7 @@ function IntentionalLeader() {
               size="lg"
               className="bg-white hover:bg-[hsl(var(--ial-text))] text-[hsl(var(--ial-green-deep))] h-14 px-8 font-semibold text-base"
             >
-              <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer">
-                Book a Call
-              </a>
+              <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" data-track-cta="book_call">Book a Call</a>
             </Button>
             <Button
               size="lg"
