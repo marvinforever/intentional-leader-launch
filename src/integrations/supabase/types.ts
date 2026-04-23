@@ -59,6 +59,51 @@ export type Database = {
         }
         Relationships: []
       }
+      invoice_requests: {
+        Row: {
+          amount_usd: number
+          billing_address: string
+          billing_email: string
+          company_name: string
+          contact_name: string
+          created_at: string
+          id: string
+          license_type: string
+          notes: string | null
+          phone: string
+          seat_count: number
+          status: string
+        }
+        Insert: {
+          amount_usd: number
+          billing_address: string
+          billing_email: string
+          company_name: string
+          contact_name: string
+          created_at?: string
+          id?: string
+          license_type: string
+          notes?: string | null
+          phone: string
+          seat_count?: number
+          status?: string
+        }
+        Update: {
+          amount_usd?: number
+          billing_address?: string
+          billing_email?: string
+          company_name?: string
+          contact_name?: string
+          created_at?: string
+          id?: string
+          license_type?: string
+          notes?: string | null
+          phone?: string
+          seat_count?: number
+          status?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
