@@ -613,11 +613,6 @@ function IntentionalLeader() {
           <SectionLabel>
             The three things every ag leader is wrestling with
           </SectionLabel>
-        </div>
-      </section>
-    </div>
-  );
-}
           <h2 className="font-[family-name:var(--font-playfair)] text-4xl md:text-5xl font-bold mb-6 max-w-3xl">
             You already know the pain. Here's what 90 days does about it.
           </h2>
