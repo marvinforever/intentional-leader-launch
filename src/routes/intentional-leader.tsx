@@ -1256,18 +1256,19 @@ function IntentionalLeader() {
                   <div className="font-semibold text-[hsl(var(--ial-text))]">
                     {t.name}
                   </div>
-                  <div className="text-[hsl(var(--ial-text-muted))]">
-                    {t.company}
-                  </div>
+                  {t.company ? (
+                    <div className="text-[hsl(var(--ial-text-muted))]">
+                      {t.company}
+                    </div>
+                  ) : null}
                 </div>
               </Card>
             ))}
           </div>
 
           <p className="text-[hsl(var(--ial-text-muted))] max-w-3xl mx-auto leading-relaxed italic mb-12">
-            Names withheld at request — these are working leaders inside
-            organizations you'd recognize. Full attribution available on the
-            calendar call. Bring your skepticism.
+            First names used at the request of several leaders. Full attribution
+            available on the calendar call. Bring your skepticism.
           </p>
 
           <div className="text-xs uppercase tracking-[0.2em] text-[hsl(var(--ial-text-muted))] mb-6">
