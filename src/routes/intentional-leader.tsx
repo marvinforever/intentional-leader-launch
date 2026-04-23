@@ -409,6 +409,7 @@ const InvoiceForm = () => {
 };
 
 function IntentionalLeader() {
+  usePageAnalytics("intentional_leader");
   const faqs = [
     {
       q: "What size company is this for?",
