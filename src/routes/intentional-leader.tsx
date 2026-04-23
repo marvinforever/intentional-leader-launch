@@ -614,7 +614,7 @@ function IntentionalLeader() {
           <h2 className="font-[family-name:var(--font-playfair)] text-4xl md:text-5xl font-bold mb-8 leading-[1.1]">
             A decade of ag leadership conversations,{" "}
             <span className="text-[hsl(var(--ial-green-deep))]">
-              distilled into one course you can run on day one.
+              distilled into tactics you can deploy from day one.
             </span>
           </h2>
           <div className="space-y-6 text-lg md:text-xl text-[hsl(var(--ial-text-muted))] leading-relaxed">
