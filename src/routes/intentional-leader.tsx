@@ -517,7 +517,7 @@ function IntentionalLeader() {
               className="bg-[hsl(var(--ial-green))] hover:bg-[hsl(var(--ial-green-deep))] text-white font-semibold h-14 px-8 text-base"
             >
               <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer">
-                Book a 20-Minute Call
+                Book a Call
               </a>
             </Button>
             <Button
