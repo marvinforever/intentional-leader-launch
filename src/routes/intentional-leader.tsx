@@ -957,6 +957,24 @@ function IntentionalLeader() {
                 the challenges you're actually facing this week.
               </p>
             </div>
+
+            <div className="rounded-lg border border-[hsl(var(--ial-border))] bg-[hsl(var(--ial-bg))] p-6">
+              <div className="w-12 h-12 rounded-lg bg-[hsl(var(--ial-green-deep))] text-white flex items-center justify-center mb-4">
+                <BookOpen className="w-6 h-6" />
+              </div>
+              <div className="text-xs uppercase tracking-wider text-[hsl(var(--ial-green-deep))] font-bold mb-2">
+                Conversational Guidebook
+              </div>
+              <h3 className="font-[family-name:var(--font-playfair)] text-2xl font-bold mb-3 text-[hsl(var(--ial-text))]">
+                Plug-and-play for your team meetings.
+              </h3>
+              <p className="text-[hsl(var(--ial-text-muted))] leading-relaxed">
+                Every organization gets a fully-guided conversational guidebook
+                — coach the principles yourself or drop the discussion vignettes
+                into your team meetings to curate intentional conversation
+                around the topics that matter.
+              </p>
+            </div>
           </div>
 
           <p className="mt-10 text-center text-base md:text-lg text-[hsl(var(--ial-text-muted))] italic max-w-2xl mx-auto">
