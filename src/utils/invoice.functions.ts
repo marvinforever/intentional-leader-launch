@@ -1,6 +1,7 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
 import { supabaseAdmin } from "@/integrations/supabase/client.server";
+import { sendInternalTransactionalEmail } from "@/lib/email/send-internal";
 
 /**
  * Receives an invoice request from the Intentional Leader landing page.
@@ -70,6 +71,29 @@ export const submitInvoiceRequest = createServerFn({ method: "POST" })
     };
 
     console.log("Invoice request received:", JSON.stringify(enriched));
+
+    // Send notification email to Mark via Lovable Emails (queued).
+    try {
+      await sendInternalTransactionalEmail({
+        templateName: "invoice-request-notification",
+        idempotencyKey: `invoice-${inserted.id}`,
+        templateData: {
+          company_name: data.company_name,
+          contact_name: data.contact_name,
+          billing_email: data.billing_email,
+          phone: data.phone,
+          billing_address: data.billing_address,
+          license_type: data.license_type,
+          seat_count: seatCount,
+          amount_usd: totalAmount,
+          notes: data.notes ?? null,
+          record_id: inserted.id,
+          received_at: enriched.received_at,
+        },
+      });
+    } catch (err) {
+      console.error("Failed to enqueue invoice notification email:", err);
+    }
 
     // 2. Notification webhook (e.g. Zapier "Email me") — fire and forget.
     const notifyUrl = process.env.MARK_NOTIFICATION_WEBHOOK_URL;
