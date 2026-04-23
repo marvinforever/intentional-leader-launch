@@ -1183,45 +1183,63 @@ function IntentionalLeader() {
             {[
               {
                 quote:
-                  "Ran a full anhydrous busy season with zero accidents and zero support calls — because expectations were set proactively before the season started.",
+                  "Before our busy season, I actually sat down with the anhydrous team ahead of time — set expectations, walked through the processes, made sure everyone knew the plan. We got through the whole push with no accidents, good morale, and strong output. That doesn't happen by accident. It happens when you lead before the chaos hits instead of reacting to it.",
                 name: "Joe",
-                company: "Operations leadership · ag retail",
+                company: "Ag Retailer",
               },
               {
                 quote:
-                  "Ran team meetings at two new locations for the first time in three months, surfaced delegation gaps I didn't know existed, and got them running independently.",
-                name: "Matt",
-                company: "Multi-location manager",
-              },
-              {
-                quote:
-                  "A calmer spring with noticeably fewer support calls — directly attributable to leading proactively instead of reacting to whatever blew up that day.",
+                  "Last spring was genuinely different. My phone wasn't blowing up the same way — fewer calls, fewer fires, fewer people needing me to make every call for them. I'd put in the work upfront to lead proactively, and it showed when it counted.",
                 name: "Mitch",
-                company: "Branch leader",
+                company: "Ag Retailer",
               },
               {
                 quote:
-                  "Equipped my operations team with everything they needed for spring up front. They ran it self-sufficiently without me in the middle of every decision.",
+                  "I hadn't had operations and sales in the same room at two of my locations in three months. When I finally ran those meetings, I found out about gaps I didn't even know existed — and saw places I could hand things off. Turns out I'd been carrying a lot that wasn't mine to carry. I finally had a real standard for what I should and shouldn't be taking on.",
+                name: "Matt",
+                company: "Multi-location Ag Company",
+              },
+              {
+                quote:
+                  "I got to a point where I asked myself: if I had to step back tomorrow, could this team run without me? So I made sure the answer was yes. I gave the operations team everything they needed to be self-sufficient through spring — detailed info, clear processes, real ownership. That's not stepping back. That's actually leading.",
                 name: "Leah",
-                company: "Operations leader",
+                company: "Ag Operations",
               },
               {
                 quote:
-                  "Built a full structured calendar all the way through next March. I've shifted from reactive to proactive leadership for the first time in my career.",
-                name: "Doug",
-                company: "General manager",
+                  "Six months ago I started a Wednesday morning meeting — 15, maybe 20 minutes, nothing fancy. What's surprised me is what it's turned into. People share what's happening with customers, they tell stories, they bring up things they'd never have said before. We've built something I didn't expect: a team that actually talks to each other. That's culture. Not a poster on the wall — a habit.",
+                name: "Chad",
+                company: "Ag Retailer",
               },
               {
                 quote:
-                  "Our team exceeded our March 31 delivery goal by 45%. The intentionality showed up in the numbers.",
-                name: "Logan Ag team",
-                company: "Sales & operations",
+                  "I started involving my managers in pricing decisions for their own areas instead of handing them numbers from above. The difference wasn't just in the numbers — it was in how they showed up. When people have a say, they have ownership. And when they have ownership, they actually care about the outcome.",
+                name: "Kevin",
+                company: "Regional Manager",
               },
               {
                 quote:
-                  "Customer conversations got dramatically better. Smaller customers are calling unprompted to say they feel treated the same as the big ones.",
+                  "I hit 120% of my previous year's sales numbers. My boss actually called me out for outselling my own capacity — which is a problem I'll take. I didn't expect to push past what I thought my ceiling was, but that's exactly what happened.",
+                name: "Jeannie",
+                company: "Agronomist · Pro Coop Ag, Montana",
+              },
+              {
+                quote:
+                  "I passed on a February sale that didn't fit what we were trying to build. A few months ago I probably would have taken it just to take it. Instead I held the line on our approach, and it opened the door to a better long-term customer. My conversations in the field are different now — better energy, better outcomes. I'm also thinking bigger: not just my own sales, but how we build a system that works for everyone on the team.",
                 name: "Bo",
-                company: "Customer-facing leader",
+                company: "Logan Ag",
+              },
+              {
+                quote:
+                  "I built out a full calendar — meeting schedules, agenda frameworks, all the way through next March. That probably sounds simple. But it changed how I show up. I stopped reacting to whatever came at me that day and started actually leading with a plan. The calendar isn't the point — having a plan before the fire starts is the point.",
+                name: "Doug",
+                company: "Multi-location Ag",
+              },
+              {
+                quote:
+                  "We exceeded our March 31 delivery goal by 45%. But what I'm more proud of is how we did it — locations working together, teams aligned, customers telling us they felt the difference regardless of which location they called. That's not a one-time number. That's what it looks like when a leadership team is actually building something together.",
+                name: "Jake",
+                company: "GM · Logan Ag",
               },
             ].map((t, i) => (
               <Card
@@ -1238,18 +1256,19 @@ function IntentionalLeader() {
                   <div className="font-semibold text-[hsl(var(--ial-text))]">
                     {t.name}
                   </div>
-                  <div className="text-[hsl(var(--ial-text-muted))]">
-                    {t.company}
-                  </div>
+                  {t.company ? (
+                    <div className="text-[hsl(var(--ial-text-muted))]">
+                      {t.company}
+                    </div>
+                  ) : null}
                 </div>
               </Card>
             ))}
           </div>
 
           <p className="text-[hsl(var(--ial-text-muted))] max-w-3xl mx-auto leading-relaxed italic mb-12">
-            Names withheld at request — these are working leaders inside
-            organizations you'd recognize. Full attribution available on the
-            calendar call. Bring your skepticism.
+            First names used at the request of several leaders. Full attribution
+            available on the calendar call. Bring your skepticism.
           </p>
 
           <div className="text-xs uppercase tracking-[0.2em] text-[hsl(var(--ial-text-muted))] mb-6">
