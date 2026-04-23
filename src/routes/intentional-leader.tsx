@@ -779,6 +779,84 @@ function IntentionalLeader() {
         </div>
       </section>
 
+      {/* HOW IT WORKS */}
+      <section className="py-24 border-t border-[hsl(var(--ial-border))] bg-[hsl(var(--ial-surface))]">
+        <div className="container max-w-5xl mx-auto px-6">
+          <SectionLabel>How the course actually works</SectionLabel>
+          <h2 className="font-[family-name:var(--font-playfair)] text-4xl md:text-5xl font-bold mb-6 leading-[1.1] max-w-3xl">
+            This isn't your typical course.{" "}
+            <span className="text-[hsl(var(--ial-green-deep))]">
+              It's built to fit the life you actually live.
+            </span>
+          </h2>
+          <p className="text-lg md:text-xl text-[hsl(var(--ial-text-muted))] leading-relaxed max-w-3xl mb-12">
+            Busy ag leaders operating in today's hectic world need learning
+            that meets them in the cab, in the car, and between calls — not
+            another binder on the shelf.
+          </p>
+
+          <div className="grid md:grid-cols-3 gap-5">
+            <div className="rounded-lg border border-[hsl(var(--ial-border))] bg-[hsl(var(--ial-bg))] p-6">
+              <div className="w-12 h-12 rounded-lg bg-[hsl(var(--ial-green-deep))] text-white flex items-center justify-center mb-4">
+                <Headphones className="w-6 h-6" />
+              </div>
+              <div className="text-xs uppercase tracking-wider text-[hsl(var(--ial-green-deep))] font-bold mb-2">
+                90% Podcast-Driven
+              </div>
+              <h3 className="font-[family-name:var(--font-playfair)] text-2xl font-bold mb-3 text-[hsl(var(--ial-text))]">
+                Listen on the move.
+              </h3>
+              <p className="text-[hsl(var(--ial-text-muted))] leading-relaxed">
+                Tap the link and listen to short episodes on your way to work,
+                between meetings, or on the drive home. No screens, no
+                downloads, no homework.
+              </p>
+            </div>
+
+            <div className="rounded-lg border border-[hsl(var(--ial-border))] bg-[hsl(var(--ial-bg))] p-6">
+              <div className="w-12 h-12 rounded-lg bg-[hsl(var(--ial-green-deep))] text-white flex items-center justify-center mb-4">
+                <Mic className="w-6 h-6" />
+              </div>
+              <div className="text-xs uppercase tracking-wider text-[hsl(var(--ial-green-deep))] font-bold mb-2">
+                5-Minute Friday Check-In
+              </div>
+              <h3 className="font-[family-name:var(--font-playfair)] text-2xl font-bold mb-3 text-[hsl(var(--ial-text))]">
+                Talk it out. We listen.
+              </h3>
+              <p className="text-[hsl(var(--ial-text-muted))] leading-relaxed">
+                Once a week, voice-record your experience against a few simple
+                prompts. Five minutes. That's it. The most consistent leadership
+                habit you'll ever keep.
+              </p>
+            </div>
+
+            <div className="rounded-lg border-2 border-[hsl(var(--ial-green))] bg-[hsl(var(--ial-bg))] p-6 relative">
+              <div className="absolute -top-3 left-6 text-[10px] uppercase tracking-[0.2em] font-bold bg-[hsl(var(--ial-green-deep))] text-white px-3 py-1 rounded-full">
+                Powered by Jericho
+              </div>
+              <div className="w-12 h-12 rounded-lg bg-[hsl(var(--ial-green-deep))] text-white flex items-center justify-center mb-4">
+                <Sparkles className="w-6 h-6" />
+              </div>
+              <div className="text-xs uppercase tracking-wider text-[hsl(var(--ial-green-deep))] font-bold mb-2">
+                Adaptive AI Coaching
+              </div>
+              <h3 className="font-[family-name:var(--font-playfair)] text-2xl font-bold mb-3 text-[hsl(var(--ial-text))]">
+                The course builds itself around you.
+              </h3>
+              <p className="text-[hsl(var(--ial-text-muted))] leading-relaxed">
+                Jericho — our proprietary AI coaching engine — learns as you
+                learn and delivers resources, prompts, and coaching specific to
+                the challenges you're actually facing this week.
+              </p>
+            </div>
+          </div>
+
+          <p className="mt-10 text-center text-base md:text-lg text-[hsl(var(--ial-text-muted))] italic max-w-2xl mx-auto">
+            Completely adaptive. The more you bring, the sharper it gets.
+          </p>
+        </div>
+      </section>
+
       {/* PROBLEMS */}
       <section className="py-24 border-t border-[hsl(var(--ial-border))]">
         <div className="container max-w-6xl mx-auto px-6">
