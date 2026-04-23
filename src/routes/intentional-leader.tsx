@@ -1149,9 +1149,6 @@ function IntentionalLeader() {
             className="border-2 border-[hsl(var(--ial-green))] p-10 md:p-14 mb-16 text-left relative overflow-hidden"
             style={{ background: "var(--ial-gradient-cta)" }}
           >
-            <div className="absolute top-6 right-6 text-xs font-bold uppercase tracking-[0.2em] text-white/70">
-              Said today
-            </div>
             <div className="text-white/80 font-[family-name:var(--font-playfair)] text-7xl leading-none mb-2">
               &ldquo;
             </div>
