@@ -1534,6 +1534,9 @@ function IntentionalLeader() {
             Early bird pricing closes June 1. After that, company licenses go
             to $15,000 and individuals to $1,500.
           </p>
+          <p className="font-[family-name:var(--font-playfair)] italic text-xl md:text-2xl text-white mb-10 max-w-2xl mx-auto leading-snug">
+            Record it. Give it to Jericho. Get customized results.
+          </p>
           <div className="mb-10">
             <Countdown />
           </div>
