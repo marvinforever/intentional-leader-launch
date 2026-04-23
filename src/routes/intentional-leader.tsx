@@ -57,7 +57,7 @@ export const Route = createFileRoute("/intentional-leader")({
 // Placeholder URLs — swap once Stripe Payment Links + Calendly are ready
 const STRIPE_INDIVIDUAL_URL = "https://buy.stripe.com/REPLACE_INDIVIDUAL";
 const STRIPE_COMPANY_URL = "https://buy.stripe.com/REPLACE_COMPANY";
-const CALENDLY_URL = "https://calendly.com/markjewell/20min";
+const CALENDLY_URL = "https://calendar.app.google/Vs3an1FRGgmiMBL1A";
 const MARK_PHONE = "402-881-986";
 
 // Early bird ends June 1, 2026 11:59 PM Central Time
