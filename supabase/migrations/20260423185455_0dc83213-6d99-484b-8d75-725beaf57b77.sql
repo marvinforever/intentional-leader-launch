@@ -1,0 +1,1 @@
+drop policy if exists "anyone can insert analytics events" on public.analytics_events;
