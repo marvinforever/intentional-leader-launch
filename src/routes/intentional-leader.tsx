@@ -54,23 +54,26 @@ export const Route = createFileRoute("/intentional-leader")({
 const STRIPE_INDIVIDUAL_URL = "https://buy.stripe.com/REPLACE_INDIVIDUAL";
 const STRIPE_COMPANY_URL = "https://buy.stripe.com/REPLACE_COMPANY";
 const CALENDLY_URL = "https://calendly.com/markjewell/20min";
-const MARK_PHONE = "(555) 555-5555";
+const MARK_PHONE = "402-881-986";
 
 // Early bird ends June 1, 2026 11:59 PM Central Time
 const DEADLINE = new Date("2026-06-02T05:59:00Z").getTime();
 
 const useCountdown = () => {
-  const [now, setNow] = useState(Date.now());
+  // Start at null so SSR + first client render match (no time-based diff).
+  // After mount, tick every second.
+  const [now, setNow] = useState<number | null>(null);
   useEffect(() => {
+    setNow(Date.now());
     const t = setInterval(() => setNow(Date.now()), 1000);
     return () => clearInterval(t);
   }, []);
-  const diff = Math.max(0, DEADLINE - now);
+  const diff = now === null ? 0 : Math.max(0, DEADLINE - now);
   const days = Math.floor(diff / 86400000);
   const hours = Math.floor((diff % 86400000) / 3600000);
   const minutes = Math.floor((diff % 3600000) / 60000);
   const seconds = Math.floor((diff % 60000) / 1000);
-  return { days, hours, minutes, seconds };
+  return { days, hours, minutes, seconds, mounted: now !== null };
 };
 
 const SectionLabel = ({ children }: { children: React.ReactNode }) => (
@@ -450,7 +453,7 @@ function IntentionalLeader() {
             <img
               src={momentumLogoWhite}
               alt="The Momentum Company"
-              className="h-7 md:h-8 w-auto"
+              className="h-7 md:h-8 w-auto invert"
             />
             <div className="hidden sm:block w-px h-6 bg-[hsl(var(--ial-border))]" />
             <div className="hidden sm:flex items-center gap-2">
@@ -517,7 +520,7 @@ function IntentionalLeader() {
               className="bg-[hsl(var(--ial-green))] hover:bg-[hsl(var(--ial-green-deep))] text-white font-semibold h-14 px-8 text-base"
             >
               <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer">
-                Book a 20-Minute Call
+                Book a Call
               </a>
             </Button>
             <Button
@@ -549,7 +552,7 @@ function IntentionalLeader() {
               <img
                 src={momentumLogoWhite}
                 alt="The Momentum Company"
-                className="h-9 w-auto opacity-90"
+                className="h-9 w-auto opacity-90 invert"
               />
               <div className="leading-tight">
                 <div className="text-sm font-semibold text-[hsl(var(--ial-text))]">
@@ -765,7 +768,7 @@ function IntentionalLeader() {
                 Book a Call
               </h3>
               <p className="text-[hsl(var(--ial-text-muted))] leading-relaxed mb-6">
-                Want to talk it through first? Book a 20-minute call with Mark.
+                Want to talk it through first? Book a call with Mark.
                 We'll confirm fit and answer any questions before you commit.
                 No pressure, no pitch.
               </p>
@@ -778,7 +781,7 @@ function IntentionalLeader() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Book 20 Minutes →
+                  Book a Call →
                 </a>
               </Button>
             </Card>
@@ -919,7 +922,7 @@ function IntentionalLeader() {
                     rel="noopener noreferrer"
                     className="text-[hsl(var(--ial-text))] hover:text-[hsl(var(--ial-green-soft))]"
                   >
-                    Book a 20-minute call
+                    Book a call
                   </a>
                 </li>
                 <li className="text-[hsl(var(--ial-text-muted))]">
