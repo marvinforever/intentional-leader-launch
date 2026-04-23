@@ -831,6 +831,11 @@ function IntentionalLeader() {
               "Logan Ag Service",
               "WinField United",
               "BASF",
+              "Kearney",
+              "AGCO",
+              "The Fertilizer Institute",
+              "The Meat Institute",
+              "Agtonomy",
             ].map((name) => (
               <div
                 key={name}
