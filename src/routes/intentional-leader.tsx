@@ -619,7 +619,8 @@ function IntentionalLeader() {
           <p className="text-lg text-[hsl(var(--ial-text-muted))] max-w-3xl leading-relaxed mb-12">
             We didn't invent these. They surfaced — over and over — in 216+
             recorded conversations with co-op GMs, ag retailers, family
-            operators, and ag-tech founders. If they sound familiar, that's
+            operators, ag-tech founders, and biological, seed, and biotech
+            companies. If they sound familiar, that's
             because the people running organizations like yours have been
             saying the same thing for years.
           </p>
