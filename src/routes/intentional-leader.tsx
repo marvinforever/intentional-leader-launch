@@ -565,11 +565,18 @@ function IntentionalLeader() {
               See Pricing & Buy Now
             </Button>
           </div>
-          <div className="flex items-center gap-2 text-sm text-[hsl(var(--ial-text-muted))]">
-            <Phone className="w-4 h-4" />
-            or call Mark directly at{" "}
-            <span className="text-[hsl(var(--ial-text))]">{MARK_PHONE}</span> —
-            no gatekeepers
+          <div className="flex items-start gap-2 text-sm text-[hsl(var(--ial-text-muted))] leading-relaxed">
+            <Phone className="w-4 h-4 mt-0.5 shrink-0" />
+            <p className="m-0">
+              or call Mark directly at{" "}
+              <a
+                href={`tel:${MARK_PHONE.replace(/[^0-9+]/g, "")}`}
+                className="text-[hsl(var(--ial-text))] font-medium whitespace-nowrap underline-offset-2 hover:underline"
+              >
+                {MARK_PHONE}
+              </a>{" "}
+              — no gatekeepers
+            </p>
           </div>
         </div>
       </section>
