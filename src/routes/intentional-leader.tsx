@@ -549,7 +549,7 @@ function IntentionalLeader() {
               <img
                 src={momentumLogoWhite}
                 alt="The Momentum Company"
-                className="h-9 w-auto opacity-90"
+                className="h-9 w-auto opacity-90 invert"
               />
               <div className="leading-tight">
                 <div className="text-sm font-semibold text-[hsl(var(--ial-text))]">
