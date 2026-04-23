@@ -31,6 +31,18 @@ import ialPodcastLogo from "@/assets/intentional-ag-leader-podcast.png";
 import markJewellPhoto from "@/assets/mark-jewell-watermarked.jpg";
 import ogShareImage from "@/assets/og-share-intentional-leader.jpg";
 import { usePageAnalytics, trackEvent } from "@/hooks/use-analytics";
+import logoBecks from "@/assets/logos/becks-hybrids.jpg";
+import logoCultura from "@/assets/logos/cultura-technologies.png";
+import logoPendleton from "@/assets/logos/pendleton-group.png";
+import logoStateline from "@/assets/logos/stateline-cooperative.jpg";
+import logoLogan from "@/assets/logos/logan-ag-service.png";
+import logoWinfield from "@/assets/logos/winfield-united.jpg";
+import logoBasf from "@/assets/logos/basf.png";
+import logoKearney from "@/assets/logos/kearney.jpg";
+import logoAgco from "@/assets/logos/agco.png";
+import logoFertilizer from "@/assets/logos/fertilizer-institute.png";
+import logoMeat from "@/assets/logos/meat-institute.png";
+import logoAgtonomy from "@/assets/logos/agtonomy.svg";
 
 export const Route = createFileRoute("/intentional-leader")({
   head: () => ({
@@ -1216,26 +1228,35 @@ function IntentionalLeader() {
           <div className="text-xs uppercase tracking-[0.2em] text-[hsl(var(--ial-text-muted))] mb-6">
             Drawn from 216+ episodes with leaders at
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
             {[
-              "Beck's Hybrids",
-              "Cultura Technologies",
-              "The Pendleton Group",
-              "Stateline Cooperative",
-              "Logan Ag Service",
-              "WinField United",
-              "BASF",
-              "Kearney",
-              "AGCO",
-              "The Fertilizer Institute",
-              "The Meat Institute",
-              "Agtonomy",
-            ].map((name) => (
+              { name: "Beck's Hybrids", src: logoBecks },
+              { name: "Cultura Technologies", src: logoCultura },
+              { name: "The Pendleton Group", src: logoPendleton },
+              { name: "Stateline Cooperative", src: logoStateline },
+              { name: "Logan Ag Service", src: logoLogan, dark: true },
+              { name: "WinField United", src: logoWinfield },
+              { name: "BASF", src: logoBasf },
+              { name: "Kearney", src: logoKearney, dark: true },
+              { name: "AGCO", src: logoAgco },
+              { name: "The Fertilizer Institute", src: logoFertilizer },
+              { name: "The Meat Institute", src: logoMeat },
+              { name: "Agtonomy", src: logoAgtonomy },
+            ].map(({ name, src, dark }) => (
               <div
                 key={name}
-                className="p-6 bg-[hsl(var(--ial-surface))] border border-[hsl(var(--ial-border))] rounded text-sm font-semibold text-[hsl(var(--ial-text-muted))] flex items-center justify-center min-h-[80px]"
+                className={`p-6 border border-[hsl(var(--ial-border))] rounded flex items-center justify-center min-h-[100px] ${
+                  dark
+                    ? "bg-[hsl(var(--ial-text))]"
+                    : "bg-white"
+                }`}
               >
-                {name}
+                <img
+                  src={src}
+                  alt={name}
+                  loading="lazy"
+                  className="max-h-14 w-auto max-w-full object-contain"
+                />
               </div>
             ))}
           </div>
