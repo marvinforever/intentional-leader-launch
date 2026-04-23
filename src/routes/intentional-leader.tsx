@@ -903,7 +903,7 @@ function IntentionalLeader() {
             another binder on the shelf.
           </p>
 
-          <div className="grid md:grid-cols-3 gap-5">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
             <div className="rounded-lg border border-[hsl(var(--ial-border))] bg-[hsl(var(--ial-bg))] p-6">
               <div className="w-12 h-12 rounded-lg bg-[hsl(var(--ial-green-deep))] text-white flex items-center justify-center mb-4">
                 <Headphones className="w-6 h-6" />
