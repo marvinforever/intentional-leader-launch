@@ -410,6 +410,21 @@ const InvoiceForm = () => {
 
 function IntentionalLeader() {
   usePageAnalytics("intentional_leader");
+  const [vignetteOpen, setVignetteOpen] = useState<string>("");
+
+  const openSampleVignette = () => {
+    setVignetteOpen("sample-vignette");
+    trackEvent("interaction", "sample_vignette_opened", {
+      section: "how_it_works",
+      metadata: { source: "start_first_vignette_button" },
+    });
+    // Smooth-scroll the guidebook card into view so the expanded panel is visible.
+    requestAnimationFrame(() => {
+      const el = document.getElementById("guidebook-card");
+      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  };
+
   const faqs = [
     {
       q: "What size company is this for?",
