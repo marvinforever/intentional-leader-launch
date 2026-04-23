@@ -493,7 +493,7 @@ function IntentionalLeader() {
       <section
         className="relative overflow-hidden"
         style={{ background: "var(--ial-gradient-hero)" }}
-      >
+       data-track-section="hero">
         <div className="container max-w-6xl mx-auto px-6 py-24 md:py-32 relative z-10">
           <div className="inline-flex items-center px-4 py-2 rounded-full border border-[hsl(var(--ial-green))]/40 bg-[hsl(var(--ial-green))]/10 text-[hsl(var(--ial-green-soft))] text-xs font-semibold tracking-wider uppercase mb-8">
             Only 10 Company Spots for Early Bird · Closes June 1
@@ -616,7 +616,7 @@ function IntentionalLeader() {
       </section>
 
       {/* WHAT THIS IS */}
-      <section className="py-24 border-t border-[hsl(var(--ial-border))] bg-[hsl(var(--ial-surface))]">
+      <section className="py-24 border-t border-[hsl(var(--ial-border))] bg-[hsl(var(--ial-surface))]" data-track-section="what_this_is">
         <div className="container max-w-4xl mx-auto px-6">
           <SectionLabel>What this course actually is</SectionLabel>
           <h2 className="font-[family-name:var(--font-playfair)] text-4xl md:text-5xl font-bold mb-8 leading-[1.1]">
@@ -680,7 +680,7 @@ function IntentionalLeader() {
       </section>
 
       {/* PROBLEMS */}
-      <section className="py-24 border-t border-[hsl(var(--ial-border))]">
+      <section className="py-24 border-t border-[hsl(var(--ial-border))]" data-track-section="problems">
         <div className="container max-w-6xl mx-auto px-6">
           <SectionLabel>
             The three things every ag leader is wrestling with
@@ -701,7 +701,7 @@ function IntentionalLeader() {
       </section>
 
       {/* TRANSFORMATION */}
-      <section className="py-28 border-t border-[hsl(var(--ial-border))] bg-[hsl(var(--ial-surface))]">
+      <section className="py-28 border-t border-[hsl(var(--ial-border))] bg-[hsl(var(--ial-surface))]" data-track-section="transformation">
         <div className="container max-w-6xl mx-auto px-6">
           <SectionLabel>What 90 Days Changes</SectionLabel>
           <h2 className="font-[family-name:var(--font-playfair)] text-4xl md:text-6xl font-bold mb-6 max-w-4xl leading-[1.05]">
@@ -717,7 +717,7 @@ function IntentionalLeader() {
       </section>
 
       {/* UNIFICATION */}
-      <section className="py-28 border-t border-[hsl(var(--ial-border))] bg-[hsl(var(--ial-green-deep))] text-white">
+      <section className="py-28 border-t border-[hsl(var(--ial-border))] bg-[hsl(var(--ial-green-deep))] text-white" data-track-section="unification">
         <div className="container max-w-5xl mx-auto px-6 text-center">
           <div className="text-xs font-semibold tracking-[0.3em] uppercase text-white/70 mb-6">
             The Momentum Company · Unification leads
@@ -757,7 +757,7 @@ function IntentionalLeader() {
       </section>
 
       {/* INLINE CTA */}
-      <section className="py-16 border-t border-[hsl(var(--ial-border))] bg-[hsl(var(--ial-bg))]">
+      <section className="py-16 border-t border-[hsl(var(--ial-border))] bg-[hsl(var(--ial-bg))]" data-track-section="inline_cta_1">
         <div className="container max-w-4xl mx-auto px-6 text-center">
           <h3 className="font-[family-name:var(--font-playfair)] text-2xl md:text-3xl font-bold mb-6 text-[hsl(var(--ial-text))]">
             Ready to bring this into your team?
@@ -787,7 +787,7 @@ function IntentionalLeader() {
       </section>
 
       {/* HOST - MARK JEWELL */}
-      <section className="py-24 border-t border-[hsl(var(--ial-border))]">
+      <section className="py-24 border-t border-[hsl(var(--ial-border))]" data-track-section="host_mark">
         <div className="container max-w-5xl mx-auto px-6">
           <SectionLabel>Your host & guide</SectionLabel>
           <div className="grid md:grid-cols-[1fr_2fr] gap-10 items-start">
@@ -890,7 +890,7 @@ function IntentionalLeader() {
       </section>
 
       {/* HOW IT WORKS */}
-      <section className="py-24 border-t border-[hsl(var(--ial-border))] bg-[hsl(var(--ial-surface))]">
+      <section className="py-24 border-t border-[hsl(var(--ial-border))] bg-[hsl(var(--ial-surface))]" data-track-section="how_it_works">
         <div className="container max-w-5xl mx-auto px-6">
           <SectionLabel>How the course actually works</SectionLabel>
           <h2 className="font-[family-name:var(--font-playfair)] text-4xl md:text-5xl font-bold mb-6 leading-[1.1] max-w-3xl">
@@ -1031,7 +1031,7 @@ function IntentionalLeader() {
       </section>
 
       {/* PROOF */}
-      <section className="py-24 border-t border-[hsl(var(--ial-border))]">
+      <section className="py-24 border-t border-[hsl(var(--ial-border))]" data-track-section="proof">
         <div className="container max-w-5xl mx-auto px-6 text-center">
           <SectionLabel>
             Proof — from the leaders who built this with us
@@ -1171,7 +1171,7 @@ function IntentionalLeader() {
       </section>
 
       {/* INLINE CTA 2 */}
-      <section className="py-16 border-t border-[hsl(var(--ial-border))] bg-[hsl(var(--ial-surface))]">
+      <section className="py-16 border-t border-[hsl(var(--ial-border))] bg-[hsl(var(--ial-surface))]" data-track-section="inline_cta_2">
         <div className="container max-w-4xl mx-auto px-6 text-center">
           <h3 className="font-[family-name:var(--font-playfair)] text-2xl md:text-3xl font-bold mb-3 text-[hsl(var(--ial-text))]">
             Convinced? Lock your seat before the price moves.
@@ -1207,7 +1207,7 @@ function IntentionalLeader() {
       <section
         id="pricing"
         className="py-24 border-t border-[hsl(var(--ial-border))] bg-[hsl(var(--ial-surface))]"
-      >
+       data-track-section="pricing">
         <div className="container max-w-6xl mx-auto px-6">
           <SectionLabel>Pricing · Hard deadline</SectionLabel>
           <h2 className="font-[family-name:var(--font-playfair)] text-4xl md:text-5xl font-bold mb-4">
@@ -1365,7 +1365,7 @@ function IntentionalLeader() {
       </section>
 
       {/* FAQ */}
-      <section className="py-24 border-t border-[hsl(var(--ial-border))]">
+      <section className="py-24 border-t border-[hsl(var(--ial-border))]" data-track-section="faq">
         <div className="container max-w-3xl mx-auto px-6">
           <SectionLabel>FAQ</SectionLabel>
           <h2 className="font-[family-name:var(--font-playfair)] text-4xl md:text-5xl font-bold mb-10">
