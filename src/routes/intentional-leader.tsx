@@ -862,7 +862,7 @@ function IntentionalLeader() {
               size="lg"
               variant="outline"
               onClick={scrollToPricing}
-              className="border-white text-white hover:bg-white/10 hover:text-white h-14 px-8 font-semibold text-base"
+              className="border-2 border-white bg-transparent text-white hover:bg-white hover:text-[hsl(var(--ial-green-deep))] h-14 px-8 font-semibold text-base"
             >
               Buy Now
             </Button>
