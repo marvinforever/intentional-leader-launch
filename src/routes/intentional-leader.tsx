@@ -1273,6 +1273,7 @@ function IntentionalLeader() {
               <ul className="space-y-3 mb-8 flex-1">
                 {[
                   "Full 90-day Jericho experience",
+                  "Unlimited 1:1 Coaching inside Jericho",
                   "Friday voice check-ins",
                   "All 3 live group calls with Mark",
                   "Your Day 90 Intentional Leader Report",
