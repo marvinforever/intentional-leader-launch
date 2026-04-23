@@ -951,6 +951,10 @@ function IntentionalLeader() {
                 between meetings, or on the drive home. No screens, no
                 downloads, no homework.
               </p>
+              <p className="mt-3 text-sm text-[hsl(var(--ial-text-muted))] italic leading-relaxed">
+                No repeating calendar invites. No chaos. Plug and play.
+                Consistent quality audio only.
+              </p>
             </div>
 
             <div className="rounded-lg border border-[hsl(var(--ial-border))] bg-[hsl(var(--ial-bg))] p-6">
