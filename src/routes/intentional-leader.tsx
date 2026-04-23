@@ -974,6 +974,51 @@ function IntentionalLeader() {
                 into your team meetings to curate intentional conversation
                 around the topics that matter.
               </p>
+              <Accordion type="single" collapsible className="mt-4">
+                <AccordionItem
+                  value="sample-vignette"
+                  className="border border-[hsl(var(--ial-border))] rounded-md bg-[hsl(var(--ial-surface))]"
+                >
+                  <AccordionTrigger className="px-4 py-3 text-sm font-semibold text-[hsl(var(--ial-green-deep))] hover:no-underline">
+                    See a sample discussion vignette
+                  </AccordionTrigger>
+                  <AccordionContent className="px-4 pb-4 text-sm text-[hsl(var(--ial-text-muted))]">
+                    <div className="text-[10px] uppercase tracking-[0.2em] font-bold text-[hsl(var(--ial-green-deep))] mb-2">
+                      Vignette · Trust on the Team
+                    </div>
+                    <p className="italic mb-3 text-[hsl(var(--ial-text))]">
+                      "A trusted teammate misses a deadline that lands on your
+                      plate. They apologize, but it's the third time this
+                      quarter. The next standup is tomorrow morning."
+                    </p>
+                    <div className="font-semibold text-[hsl(var(--ial-text))] mb-2">
+                      Discuss as a team:
+                    </div>
+                    <ol className="list-decimal pl-5 space-y-2 leading-relaxed">
+                      <li>
+                        What's the story you're telling yourself about
+                        <em> why</em> the deadline got missed?
+                      </li>
+                      <li>
+                        Where is the line between extending grace and avoiding
+                        a hard conversation?
+                      </li>
+                      <li>
+                        What does this teammate need from you in the next 24
+                        hours that they can't ask for?
+                      </li>
+                      <li>
+                        If nothing changes, what does this look like 90 days
+                        from now?
+                      </li>
+                      <li>
+                        What's one specific commitment each of us will make
+                        coming out of this conversation?
+                      </li>
+                    </ol>
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
             </div>
           </div>
 
