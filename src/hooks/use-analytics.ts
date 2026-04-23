@@ -273,6 +273,9 @@ export function usePageAnalytics(pageName: string) {
       window.removeEventListener("pagehide", onUnload);
       window.removeEventListener("beforeunload", onUnload);
       document.removeEventListener("click", onClick, { capture: true } as EventListenerOptions);
+      window.removeEventListener("pointermove", onPointerMove);
+      window.clearInterval(sampleFlushTimer);
+      sendSamples();
       observer.disconnect();
       flush();
     };
