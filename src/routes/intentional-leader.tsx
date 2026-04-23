@@ -814,9 +814,12 @@ function IntentionalLeader() {
       {/* INLINE CTA */}
       <section className="py-16 border-t border-[hsl(var(--ial-border))] bg-[hsl(var(--ial-bg))]" data-track-section="inline_cta_1">
         <div className="container max-w-4xl mx-auto px-6 text-center">
-          <h3 className="font-[family-name:var(--font-playfair)] text-2xl md:text-3xl font-bold mb-6 text-[hsl(var(--ial-text))]">
+          <h3 className="font-[family-name:var(--font-playfair)] text-2xl md:text-3xl font-bold mb-3 text-[hsl(var(--ial-text))]">
             Ready to bring this into your team?
           </h3>
+          <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-[hsl(var(--ial-green))]/40 bg-[hsl(var(--ial-green))]/10 text-[hsl(var(--ial-green-soft))] text-xs font-semibold tracking-wider uppercase mb-6">
+            Starts August 1, 2026
+          </div>
           <div className="flex flex-wrap justify-center gap-3">
             <Button
               asChild
