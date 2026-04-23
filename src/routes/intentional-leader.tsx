@@ -607,6 +607,70 @@ function IntentionalLeader() {
         </div>
       </section>
 
+      {/* WHAT THIS IS */}
+      <section className="py-24 border-t border-[hsl(var(--ial-border))] bg-[hsl(var(--ial-surface))]">
+        <div className="container max-w-4xl mx-auto px-6">
+          <SectionLabel>What this course actually is</SectionLabel>
+          <h2 className="font-[family-name:var(--font-playfair)] text-4xl md:text-5xl font-bold mb-8 leading-[1.1]">
+            A decade of ag leadership conversations,{" "}
+            <span className="text-[hsl(var(--ial-green-deep))]">
+              distilled into one course you can run on day one.
+            </span>
+          </h2>
+          <div className="space-y-6 text-lg md:text-xl text-[hsl(var(--ial-text-muted))] leading-relaxed">
+            <p>
+              The Intentional Leadership course is the direct result of{" "}
+              <span className="text-[hsl(var(--ial-text))] font-semibold">
+                over 216 interviews
+              </span>{" "}
+              conducted with leaders across the ag industry.
+            </p>
+            <p>
+              The problems have surfaced across more than{" "}
+              <span className="text-[hsl(var(--ial-text))] font-semibold">
+                20,000 hours of coaching
+              </span>{" "}
+              by our team over the last decade. The solutions come from some of
+              the best and brightest leaders in ag.
+            </p>
+            <p>
+              We've taken everything from hundreds of hours of podcast
+              interviews and production and{" "}
+              <span className="text-[hsl(var(--ial-text))] font-semibold">
+                distilled it into one easy-to-follow course
+              </span>{" "}
+              that you can implement on day one.
+            </p>
+          </div>
+          <div className="mt-10 grid sm:grid-cols-3 gap-4">
+            <div className="rounded-lg border border-[hsl(var(--ial-border))] bg-[hsl(var(--ial-bg))] p-5">
+              <div className="text-xs uppercase tracking-wider text-[hsl(var(--ial-text-muted))] mb-1">
+                Sourced from
+              </div>
+              <div className="text-base font-semibold text-[hsl(var(--ial-text))]">
+                216+ recorded ag leader interviews
+              </div>
+            </div>
+            <div className="rounded-lg border border-[hsl(var(--ial-border))] bg-[hsl(var(--ial-bg))] p-5">
+              <div className="text-xs uppercase tracking-wider text-[hsl(var(--ial-text-muted))] mb-1">
+                Pressure-tested by
+              </div>
+              <div className="text-base font-semibold text-[hsl(var(--ial-text))]">
+                20,000+ hours of 1:1 coaching
+              </div>
+            </div>
+            <div className="rounded-lg border border-[hsl(var(--ial-border))] bg-[hsl(var(--ial-bg))] p-5">
+              <div className="text-xs uppercase tracking-wider text-[hsl(var(--ial-text-muted))] mb-1">
+                Built for
+              </div>
+              <div className="text-base font-semibold text-[hsl(var(--ial-text))]">
+                Day-one implementation
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* PROBLEMS */}
       <section className="py-24 border-t border-[hsl(var(--ial-border))]">
         <div className="container max-w-6xl mx-auto px-6">
