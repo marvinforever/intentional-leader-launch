@@ -33,7 +33,7 @@ import ogShareImage from "@/assets/og-share-intentional-leader.jpg";
 import { usePageAnalytics, trackEvent } from "@/hooks/use-analytics";
 import logoBecks from "@/assets/logos/becks-hybrids.jpg";
 import logoCultura from "@/assets/logos/cultura-technologies.png";
-import logoPendleton from "@/assets/logos/pendleton-group.png";
+import logoLegacy from "@/assets/logos/legacy-agripartners.jpg";
 import logoStateline from "@/assets/logos/stateline-cooperative.jpg";
 import logoLogan from "@/assets/logos/logan-ag-service.png";
 import logoWinfield from "@/assets/logos/winfield-united.jpg";
@@ -1237,7 +1237,7 @@ function IntentionalLeader() {
             {[
               { name: "Beck's Hybrids", src: logoBecks },
               { name: "Cultura Technologies", src: logoCultura },
-              { name: "The Pendleton Group", src: logoPendleton },
+              { name: "Legacy Agripartners", src: logoLegacy },
               { name: "Stateline Cooperative", src: logoStateline },
               { name: "Logan Ag Service", src: logoLogan, dark: true },
               { name: "WinField United", src: logoWinfield },
