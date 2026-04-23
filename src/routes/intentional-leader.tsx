@@ -1024,6 +1024,39 @@ function IntentionalLeader() {
         </div>
       </section>
 
+      {/* INLINE CTA 2 */}
+      <section className="py-16 border-t border-[hsl(var(--ial-border))] bg-[hsl(var(--ial-surface))]">
+        <div className="container max-w-4xl mx-auto px-6 text-center">
+          <h3 className="font-[family-name:var(--font-playfair)] text-2xl md:text-3xl font-bold mb-3 text-[hsl(var(--ial-text))]">
+            Convinced? Lock your seat before the price moves.
+          </h3>
+          <p className="text-[hsl(var(--ial-text-muted))] mb-6">
+            Early bird ends June 1 — then prices go up 50%.
+          </p>
+          <div className="flex flex-wrap justify-center gap-3">
+            <Button
+              asChild
+              size="lg"
+              className="bg-[hsl(var(--ial-green))] hover:bg-[hsl(var(--ial-green-deep))] text-white font-semibold h-14 px-8"
+            >
+              <a href={STRIPE_INDIVIDUAL_URL} target="_blank" rel="noopener noreferrer">
+                Buy Now
+              </a>
+            </Button>
+            <Button
+              asChild
+              size="lg"
+              variant="outline"
+              className="border-2 border-[hsl(var(--ial-green-deep))] bg-transparent text-[hsl(var(--ial-green-deep))] hover:bg-[hsl(var(--ial-green-deep))] hover:text-white font-semibold h-14 px-8"
+            >
+              <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer">
+                Book a Call
+              </a>
+            </Button>
+          </div>
+        </div>
+      </section>
+
       {/* PRICING */}
       <section
         id="pricing"
