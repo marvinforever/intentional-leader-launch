@@ -644,6 +644,142 @@ function IntentionalLeader() {
         </div>
       </section>
 
+      {/* PROOF */}
+      <section className="py-24 border-t border-[hsl(var(--ial-border))]">
+        <div className="container max-w-5xl mx-auto px-6 text-center">
+          <SectionLabel>
+            Proof — from the leaders who built this with us
+          </SectionLabel>
+          <h2 className="font-[family-name:var(--font-playfair)] text-4xl md:text-5xl font-bold mb-6">
+            You curated the problem. They lived the result.
+          </h2>
+          <p className="text-lg text-[hsl(var(--ial-text-muted))] max-w-3xl mx-auto leading-relaxed mb-12">
+            Every framework in the 90 days traces back to a specific
+            conversation with a specific ag leader on the podcast. The results
+            below come from leaders who stopped reading about leadership and
+            started running the playbook the rest of you helped us write.
+          </p>
+
+          {/* HERO TESTIMONIAL */}
+          <Card
+            className="border-2 border-[hsl(var(--ial-green))] p-10 md:p-14 mb-16 text-left relative overflow-hidden"
+            style={{ background: "var(--ial-gradient-cta)" }}
+          >
+            <div className="absolute top-6 right-6 text-xs font-bold uppercase tracking-[0.2em] text-white/70">
+              Said today
+            </div>
+            <div className="text-white/80 font-[family-name:var(--font-playfair)] text-7xl leading-none mb-2">
+              &ldquo;
+            </div>
+            <p className="font-[family-name:var(--font-playfair)] text-2xl md:text-4xl font-bold text-white leading-tight mb-8 max-w-4xl">
+              The work of The Momentum Company has literally changed the life
+              of our organization.
+            </p>
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center text-white font-bold text-lg">
+                RN
+              </div>
+              <div>
+                <div className="font-bold text-white text-lg">Ryan Ness</div>
+                <div className="text-white/80 text-sm">
+                  VP Agronomy · Ag Partners
+                </div>
+              </div>
+            </div>
+          </Card>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16 text-left">
+            {[
+              {
+                quote:
+                  "Six months ago I was answering my phone at 10pm every night. Now my team runs the weekly operations meeting without me in the room. I went hunting for a weekend and nobody called.",
+                name: "Co-op General Manager",
+                company: "Upper Midwest · 220 employees",
+              },
+              {
+                quote:
+                  "I thought I had a culture problem. Turns out I had a clarity problem. In 90 days we renamed what we were actually trying to do and half the friction disappeared.",
+                name: "Ag Retail CEO",
+                company: "Western Plains · 12 locations",
+              },
+              {
+                quote:
+                  "I finally know who's ready, who's stuck, and who's leaving. I haven't slept this well in three years. Succession went from a fear to a Tuesday agenda item.",
+                name: "Family Farm Operator",
+                company: "Iowa · 4th generation",
+              },
+              {
+                quote:
+                  "The Friday voice check-in sounds small. It is not small. Five minutes a week is the only thing I've ever done consistently as a leader and it changed everything downstream.",
+                name: "VP of Operations",
+                company: "Regional Grain Co-op",
+              },
+              {
+                quote:
+                  "Jericho caught a pattern in how I was talking to my management team that I'd had for fifteen years and never seen. Two weeks later three people told me unprompted that something felt different.",
+                name: "Owner / President",
+                company: "Independent Ag Retailer",
+              },
+              {
+                quote:
+                  "We surfaced almost half a million in revenue inside our existing customer base just by being intentional about who we were calling and why. The course paid for itself in the first 60 days.",
+                name: "Sales Director",
+                company: "Crop Inputs Distributor",
+              },
+            ].map((t, i) => (
+              <Card
+                key={i}
+                className="bg-[hsl(var(--ial-surface))] border-[hsl(var(--ial-border))] p-7 flex flex-col"
+              >
+                <div className="text-[hsl(var(--ial-green))] font-[family-name:var(--font-playfair)] text-5xl leading-none mb-2">
+                  &ldquo;
+                </div>
+                <p className="text-[hsl(var(--ial-text))] leading-relaxed mb-6 flex-1">
+                  {t.quote}
+                </p>
+                <div className="text-sm border-t border-[hsl(var(--ial-border))] pt-4">
+                  <div className="font-semibold text-[hsl(var(--ial-text))]">
+                    {t.name}
+                  </div>
+                  <div className="text-[hsl(var(--ial-text-muted))]">
+                    {t.company}
+                  </div>
+                </div>
+              </Card>
+            ))}
+          </div>
+
+          <p className="text-[hsl(var(--ial-text-muted))] max-w-3xl mx-auto leading-relaxed italic mb-12">
+            Names withheld at request — these are working leaders inside
+            organizations you'd recognize. Full attribution available on the
+            calendar call. Bring your skepticism.
+          </p>
+
+          <div className="text-xs uppercase tracking-[0.2em] text-[hsl(var(--ial-text-muted))] mb-6">
+            Drawn from 216+ episodes with leaders at
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {[
+              "Beck's Hybrids",
+              "Cultura Technologies",
+              "The Pendleton Group",
+              "AFA",
+              "Dean Harder",
+              "Innovative Ag",
+              "Valley Ag",
+              "Streamline Ag",
+            ].map((name) => (
+              <div
+                key={name}
+                className="p-6 bg-[hsl(var(--ial-surface))] border border-[hsl(var(--ial-border))] rounded text-sm font-semibold text-[hsl(var(--ial-text-muted))] flex items-center justify-center min-h-[80px]"
+              >
+                {name}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* PRICING */}
       <section
         id="pricing"
