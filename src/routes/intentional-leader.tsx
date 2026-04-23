@@ -765,7 +765,7 @@ function IntentionalLeader() {
                 Book a Call
               </h3>
               <p className="text-[hsl(var(--ial-text-muted))] leading-relaxed mb-6">
-                Want to talk it through first? Book a 20-minute call with Mark.
+                Want to talk it through first? Book a call with Mark.
                 We'll confirm fit and answer any questions before you commit.
                 No pressure, no pitch.
               </p>
@@ -919,7 +919,7 @@ function IntentionalLeader() {
                     rel="noopener noreferrer"
                     className="text-[hsl(var(--ial-text))] hover:text-[hsl(var(--ial-green-soft))]"
                   >
-                    Book a 20-minute call
+                    Book a call
                   </a>
                 </li>
                 <li className="text-[hsl(var(--ial-text-muted))]">
