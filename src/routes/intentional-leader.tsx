@@ -778,7 +778,7 @@ function IntentionalLeader() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Book 20 Minutes →
+                  Book a Call →
                 </a>
               </Button>
             </Card>
