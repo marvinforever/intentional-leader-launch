@@ -303,6 +303,7 @@ const InvoiceForm = () => {
     contact_name: "",
     billing_email: "",
     billing_address: "",
+    phone: "",
     seat_count: "1",
     notes: "",
   });
@@ -321,6 +322,7 @@ const InvoiceForm = () => {
         contact_name: "",
         billing_email: "",
         billing_address: "",
+        phone: "",
         seat_count: "1",
         notes: "",
       });

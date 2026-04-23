@@ -14,6 +14,7 @@ const InvoiceSchema = z.object({
   contact_name: z.string().min(1).max(255),
   billing_email: z.string().email().max(320),
   billing_address: z.string().min(1).max(1000),
+  phone: z.string().min(7).max(30),
   license_type: z.enum(["individual", "company"]),
   seat_count: z.string().max(10).optional(),
   notes: z.string().max(2000).optional(),
