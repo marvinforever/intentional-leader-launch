@@ -14,7 +14,51 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      analytics_events: {
+        Row: {
+          created_at: string
+          event_name: string
+          event_type: string
+          id: string
+          metadata: Json
+          page_path: string
+          referrer: string | null
+          section: string | null
+          session_id: string
+          user_agent: string | null
+          value: number | null
+          visitor_id: string
+        }
+        Insert: {
+          created_at?: string
+          event_name: string
+          event_type: string
+          id?: string
+          metadata?: Json
+          page_path: string
+          referrer?: string | null
+          section?: string | null
+          session_id: string
+          user_agent?: string | null
+          value?: number | null
+          visitor_id: string
+        }
+        Update: {
+          created_at?: string
+          event_name?: string
+          event_type?: string
+          id?: string
+          metadata?: Json
+          page_path?: string
+          referrer?: string | null
+          section?: string | null
+          session_id?: string
+          user_agent?: string | null
+          value?: number | null
+          visitor_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

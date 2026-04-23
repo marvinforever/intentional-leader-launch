@@ -28,6 +28,7 @@ import { useServerFn } from "@tanstack/react-start";
 import { submitInvoiceRequest } from "@/utils/invoice.functions";
 import momentumLogoWhite from "@/assets/momentum-logo-white.png";
 import ialPodcastLogo from "@/assets/intentional-ag-leader-podcast.png";
+import { usePageAnalytics, trackEvent } from "@/hooks/use-analytics";
 
 export const Route = createFileRoute("/intentional-leader")({
   head: () => ({
@@ -408,6 +409,22 @@ const InvoiceForm = () => {
 };
 
 function IntentionalLeader() {
+  usePageAnalytics("intentional_leader");
+  const [vignetteOpen, setVignetteOpen] = useState<string>("");
+
+  const openSampleVignette = () => {
+    setVignetteOpen("sample-vignette");
+    trackEvent("interaction", "sample_vignette_opened", {
+      section: "how_it_works",
+      metadata: { source: "start_first_vignette_button" },
+    });
+    // Smooth-scroll the guidebook card into view so the expanded panel is visible.
+    requestAnimationFrame(() => {
+      const el = document.getElementById("guidebook-card");
+      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  };
+
   const faqs = [
     {
       q: "What size company is this for?",
@@ -480,9 +497,7 @@ function IntentionalLeader() {
             size="sm"
             className="bg-[hsl(var(--ial-green))] hover:bg-[hsl(var(--ial-green-deep))] text-white font-semibold"
           >
-            <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer">
-              Book a Call
-            </a>
+            <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" data-track-cta="book_call">Book a Call</a>
           </Button>
         </div>
       </header>
@@ -491,7 +506,7 @@ function IntentionalLeader() {
       <section
         className="relative overflow-hidden"
         style={{ background: "var(--ial-gradient-hero)" }}
-      >
+       data-track-section="hero">
         <div className="container max-w-6xl mx-auto px-6 py-24 md:py-32 relative z-10">
           <div className="inline-flex items-center px-4 py-2 rounded-full border border-[hsl(var(--ial-green))]/40 bg-[hsl(var(--ial-green))]/10 text-[hsl(var(--ial-green-soft))] text-xs font-semibold tracking-wider uppercase mb-8">
             Only 10 Company Spots for Early Bird · Closes June 1
@@ -523,9 +538,7 @@ function IntentionalLeader() {
               size="lg"
               className="bg-[hsl(var(--ial-green))] hover:bg-[hsl(var(--ial-green-deep))] text-white font-semibold h-14 px-8 text-base"
             >
-              <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer">
-                Book a Call
-              </a>
+              <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" data-track-cta="book_call">Book a Call</a>
             </Button>
             <Button
               size="lg"
@@ -614,7 +627,7 @@ function IntentionalLeader() {
       </section>
 
       {/* WHAT THIS IS */}
-      <section className="py-24 border-t border-[hsl(var(--ial-border))] bg-[hsl(var(--ial-surface))]">
+      <section className="py-24 border-t border-[hsl(var(--ial-border))] bg-[hsl(var(--ial-surface))]" data-track-section="what_this_is">
         <div className="container max-w-4xl mx-auto px-6">
           <SectionLabel>What this course actually is</SectionLabel>
           <h2 className="font-[family-name:var(--font-playfair)] text-4xl md:text-5xl font-bold mb-8 leading-[1.1]">
@@ -678,7 +691,7 @@ function IntentionalLeader() {
       </section>
 
       {/* PROBLEMS */}
-      <section className="py-24 border-t border-[hsl(var(--ial-border))]">
+      <section className="py-24 border-t border-[hsl(var(--ial-border))]" data-track-section="problems">
         <div className="container max-w-6xl mx-auto px-6">
           <SectionLabel>
             The three things every ag leader is wrestling with
@@ -699,7 +712,7 @@ function IntentionalLeader() {
       </section>
 
       {/* TRANSFORMATION */}
-      <section className="py-28 border-t border-[hsl(var(--ial-border))] bg-[hsl(var(--ial-surface))]">
+      <section className="py-28 border-t border-[hsl(var(--ial-border))] bg-[hsl(var(--ial-surface))]" data-track-section="transformation">
         <div className="container max-w-6xl mx-auto px-6">
           <SectionLabel>What 90 Days Changes</SectionLabel>
           <h2 className="font-[family-name:var(--font-playfair)] text-4xl md:text-6xl font-bold mb-6 max-w-4xl leading-[1.05]">
@@ -715,7 +728,7 @@ function IntentionalLeader() {
       </section>
 
       {/* UNIFICATION */}
-      <section className="py-28 border-t border-[hsl(var(--ial-border))] bg-[hsl(var(--ial-green-deep))] text-white">
+      <section className="py-28 border-t border-[hsl(var(--ial-border))] bg-[hsl(var(--ial-green-deep))] text-white" data-track-section="unification">
         <div className="container max-w-5xl mx-auto px-6 text-center">
           <div className="text-xs font-semibold tracking-[0.3em] uppercase text-white/70 mb-6">
             The Momentum Company · Unification leads
@@ -755,7 +768,7 @@ function IntentionalLeader() {
       </section>
 
       {/* INLINE CTA */}
-      <section className="py-16 border-t border-[hsl(var(--ial-border))] bg-[hsl(var(--ial-bg))]">
+      <section className="py-16 border-t border-[hsl(var(--ial-border))] bg-[hsl(var(--ial-bg))]" data-track-section="inline_cta_1">
         <div className="container max-w-4xl mx-auto px-6 text-center">
           <h3 className="font-[family-name:var(--font-playfair)] text-2xl md:text-3xl font-bold mb-6 text-[hsl(var(--ial-text))]">
             Ready to bring this into your team?
@@ -766,9 +779,7 @@ function IntentionalLeader() {
               size="lg"
               className="bg-[hsl(var(--ial-green))] hover:bg-[hsl(var(--ial-green-deep))] text-white font-semibold h-14 px-8"
             >
-              <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer">
-                Book a Call
-              </a>
+              <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" data-track-cta="book_call">Book a Call</a>
             </Button>
             <Button
               asChild
@@ -776,16 +787,14 @@ function IntentionalLeader() {
               variant="outline"
               className="border-2 border-[hsl(var(--ial-green-deep))] bg-transparent text-[hsl(var(--ial-green-deep))] hover:bg-[hsl(var(--ial-green-deep))] hover:text-white font-semibold h-14 px-8"
             >
-              <a href={STRIPE_INDIVIDUAL_URL} target="_blank" rel="noopener noreferrer">
-                Buy Now
-              </a>
+              <a href={STRIPE_INDIVIDUAL_URL} target="_blank" rel="noopener noreferrer" data-track-cta="buy_now">Buy Now</a>
             </Button>
           </div>
         </div>
       </section>
 
       {/* HOST - MARK JEWELL */}
-      <section className="py-24 border-t border-[hsl(var(--ial-border))]">
+      <section className="py-24 border-t border-[hsl(var(--ial-border))]" data-track-section="host_mark">
         <div className="container max-w-5xl mx-auto px-6">
           <SectionLabel>Your host & guide</SectionLabel>
           <div className="grid md:grid-cols-[1fr_2fr] gap-10 items-start">
@@ -867,9 +876,7 @@ function IntentionalLeader() {
                   size="lg"
                   className="bg-[hsl(var(--ial-green))] hover:bg-[hsl(var(--ial-green-deep))] text-white font-semibold"
                 >
-                  <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer">
-                    Book a Call with Mark
-                  </a>
+                  <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" data-track-cta="book_call_mark">Book a Call with Mark</a>
                 </Button>
                 <Button
                   asChild
@@ -877,9 +884,7 @@ function IntentionalLeader() {
                   variant="outline"
                   className="border-2 border-[hsl(var(--ial-green-deep))] bg-transparent text-[hsl(var(--ial-green-deep))] hover:bg-[hsl(var(--ial-green-deep))] hover:text-white font-semibold"
                 >
-                  <a href={STRIPE_INDIVIDUAL_URL} target="_blank" rel="noopener noreferrer">
-                    Buy Now
-                  </a>
+                  <a href={STRIPE_INDIVIDUAL_URL} target="_blank" rel="noopener noreferrer" data-track-cta="buy_now">Buy Now</a>
                 </Button>
               </div>
             </div>
@@ -888,7 +893,7 @@ function IntentionalLeader() {
       </section>
 
       {/* HOW IT WORKS */}
-      <section className="py-24 border-t border-[hsl(var(--ial-border))] bg-[hsl(var(--ial-surface))]">
+      <section className="py-24 border-t border-[hsl(var(--ial-border))] bg-[hsl(var(--ial-surface))]" data-track-section="how_it_works">
         <div className="container max-w-5xl mx-auto px-6">
           <SectionLabel>How the course actually works</SectionLabel>
           <h2 className="font-[family-name:var(--font-playfair)] text-4xl md:text-5xl font-bold mb-6 leading-[1.1] max-w-3xl">
@@ -958,7 +963,10 @@ function IntentionalLeader() {
               </p>
             </div>
 
-            <div className="rounded-lg border border-[hsl(var(--ial-border))] bg-[hsl(var(--ial-bg))] p-6">
+            <div
+              id="guidebook-card"
+              className="rounded-lg border border-[hsl(var(--ial-border))] bg-[hsl(var(--ial-bg))] p-6 scroll-mt-24"
+            >
               <div className="w-12 h-12 rounded-lg bg-[hsl(var(--ial-green-deep))] text-white flex items-center justify-center mb-4">
                 <BookOpen className="w-6 h-6" />
               </div>
@@ -974,7 +982,29 @@ function IntentionalLeader() {
                 into your team meetings to curate intentional conversation
                 around the topics that matter.
               </p>
-              <Accordion type="single" collapsible className="mt-4">
+              <Button
+                type="button"
+                size="sm"
+                onClick={openSampleVignette}
+                className="mt-4 bg-[hsl(var(--ial-green))] hover:bg-[hsl(var(--ial-green-deep))] text-white font-semibold"
+              >
+                Start your first vignette
+              </Button>
+              <Accordion
+                type="single"
+                collapsible
+                className="mt-3"
+                value={vignetteOpen}
+                onValueChange={(v) => {
+                  setVignetteOpen(v);
+                  if (v === "sample-vignette") {
+                    trackEvent("interaction", "sample_vignette_opened", {
+                      section: "how_it_works",
+                      metadata: { source: "accordion_toggle" },
+                    });
+                  }
+                }}
+              >
                 <AccordionItem
                   value="sample-vignette"
                   className="border border-[hsl(var(--ial-border))] rounded-md bg-[hsl(var(--ial-surface))]"
@@ -1029,7 +1059,7 @@ function IntentionalLeader() {
       </section>
 
       {/* PROOF */}
-      <section className="py-24 border-t border-[hsl(var(--ial-border))]">
+      <section className="py-24 border-t border-[hsl(var(--ial-border))]" data-track-section="proof">
         <div className="container max-w-5xl mx-auto px-6 text-center">
           <SectionLabel>
             Proof — from the leaders who built this with us
@@ -1169,7 +1199,7 @@ function IntentionalLeader() {
       </section>
 
       {/* INLINE CTA 2 */}
-      <section className="py-16 border-t border-[hsl(var(--ial-border))] bg-[hsl(var(--ial-surface))]">
+      <section className="py-16 border-t border-[hsl(var(--ial-border))] bg-[hsl(var(--ial-surface))]" data-track-section="inline_cta_2">
         <div className="container max-w-4xl mx-auto px-6 text-center">
           <h3 className="font-[family-name:var(--font-playfair)] text-2xl md:text-3xl font-bold mb-3 text-[hsl(var(--ial-text))]">
             Convinced? Lock your seat before the price moves.
@@ -1183,9 +1213,7 @@ function IntentionalLeader() {
               size="lg"
               className="bg-[hsl(var(--ial-green))] hover:bg-[hsl(var(--ial-green-deep))] text-white font-semibold h-14 px-8"
             >
-              <a href={STRIPE_INDIVIDUAL_URL} target="_blank" rel="noopener noreferrer">
-                Buy Now
-              </a>
+              <a href={STRIPE_INDIVIDUAL_URL} target="_blank" rel="noopener noreferrer" data-track-cta="buy_now">Buy Now</a>
             </Button>
             <Button
               asChild
@@ -1193,9 +1221,7 @@ function IntentionalLeader() {
               variant="outline"
               className="border-2 border-[hsl(var(--ial-green-deep))] bg-transparent text-[hsl(var(--ial-green-deep))] hover:bg-[hsl(var(--ial-green-deep))] hover:text-white font-semibold h-14 px-8"
             >
-              <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer">
-                Book a Call
-              </a>
+              <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" data-track-cta="book_call">Book a Call</a>
             </Button>
           </div>
         </div>
@@ -1205,7 +1231,7 @@ function IntentionalLeader() {
       <section
         id="pricing"
         className="py-24 border-t border-[hsl(var(--ial-border))] bg-[hsl(var(--ial-surface))]"
-      >
+       data-track-section="pricing">
         <div className="container max-w-6xl mx-auto px-6">
           <SectionLabel>Pricing · Hard deadline</SectionLabel>
           <h2 className="font-[family-name:var(--font-playfair)] text-4xl md:text-5xl font-bold mb-4">
@@ -1335,13 +1361,7 @@ function IntentionalLeader() {
                 asChild
                 className="w-full bg-[hsl(var(--ial-green))] hover:bg-[hsl(var(--ial-green-deep))] text-white h-12 font-semibold"
               >
-                <a
-                  href={CALENDLY_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Book a Call →
-                </a>
+                <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" data-track-cta="book_call_arrow">Book a Call →</a>
               </Button>
             </Card>
 
@@ -1363,7 +1383,7 @@ function IntentionalLeader() {
       </section>
 
       {/* FAQ */}
-      <section className="py-24 border-t border-[hsl(var(--ial-border))]">
+      <section className="py-24 border-t border-[hsl(var(--ial-border))]" data-track-section="faq">
         <div className="container max-w-3xl mx-auto px-6">
           <SectionLabel>FAQ</SectionLabel>
           <h2 className="font-[family-name:var(--font-playfair)] text-4xl md:text-5xl font-bold mb-10">
@@ -1411,9 +1431,7 @@ function IntentionalLeader() {
               size="lg"
               className="bg-white hover:bg-[hsl(var(--ial-text))] text-[hsl(var(--ial-green-deep))] h-14 px-8 font-semibold text-base"
             >
-              <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer">
-                Book a Call
-              </a>
+              <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" data-track-cta="book_call">Book a Call</a>
             </Button>
             <Button
               size="lg"
