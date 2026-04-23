@@ -589,7 +589,7 @@ function IntentionalLeader() {
           <div className="grid md:grid-cols-4 gap-8 text-center">
             {[
               { stat: "216+", label: "Podcast episodes with ag leaders" },
-              { stat: "8 yrs", label: "Of recorded leader conversations" },
+              { stat: "12 yrs", label: "Of recorded leader conversations" },
               { stat: "3", label: "Patterns every leader keeps naming" },
               { stat: "90", label: "Days to the other side of them" },
             ].map((s) => (
