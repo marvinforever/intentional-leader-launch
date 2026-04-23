@@ -491,7 +491,7 @@ function IntentionalLeader() {
             Only 10 Company Spots for Early Bird · Closes June 1
           </div>
           <h1 className="font-[family-name:var(--font-playfair)] text-5xl md:text-7xl font-black leading-[1.05] mb-6 max-w-5xl">
-            In 90 days, your team stops needing you for every decision —{" "}
+            In 90 days, your team stops needing YOU for every decision —{" "}
             <span className="text-[hsl(var(--ial-green-soft))]">
               and starts building the organization you actually wanted.
             </span>
