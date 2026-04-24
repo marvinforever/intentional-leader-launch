@@ -750,7 +750,7 @@ function IntentionalLeader() {
             The three things every ag leader is wrestling with
           </SectionLabel>
           <h2 className="font-[family-name:var(--font-playfair)] text-4xl md:text-5xl font-bold mb-6 max-w-3xl">
-            You already know the pain. Here's what 90 days does about it.
+            These are the problems surfaced by leaders like you — this course helps you solve for them.
           </h2>
           <p className="text-lg text-[hsl(var(--ial-text-muted))] max-w-3xl leading-relaxed mb-12">
             We didn't invent these. They surfaced — over and over — in 216+
