@@ -306,6 +306,8 @@ const InvoiceForm = () => {
     phone: "",
     seat_count: "1",
     notes: "",
+    ap_contact_name: "",
+    ap_email: "",
   });
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -325,6 +327,8 @@ const InvoiceForm = () => {
         phone: "",
         seat_count: "1",
         notes: "",
+        ap_contact_name: "",
+        ap_email: "",
       });
     } catch {
       toast.error("Something went wrong", {
