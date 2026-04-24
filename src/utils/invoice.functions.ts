@@ -21,6 +21,13 @@ const InvoiceSchema = z.object({
   license_type: z.enum(["individual", "company"]),
   seat_count: z.string().max(10).optional(),
   notes: z.string().max(2000).optional(),
+  ap_contact_name: z.string().max(255).optional().or(z.literal("")),
+  ap_email: z
+    .string()
+    .email()
+    .max(320)
+    .optional()
+    .or(z.literal("")),
 });
 
 export type InvoiceInput = z.infer<typeof InvoiceSchema>;
@@ -50,6 +57,8 @@ export const submitInvoiceRequest = createServerFn({ method: "POST" })
         seat_count: seatCount,
         notes: data.notes ?? null,
         amount_usd: totalAmount,
+        ap_contact_name: data.ap_contact_name?.trim() || null,
+        ap_email: data.ap_email?.trim() || null,
       })
       .select("id")
       .single();
@@ -89,6 +98,8 @@ export const submitInvoiceRequest = createServerFn({ method: "POST" })
           notes: data.notes ?? null,
           record_id: inserted.id,
           received_at: enriched.received_at,
+          ap_contact_name: data.ap_contact_name?.trim() || null,
+          ap_email: data.ap_email?.trim() || null,
         },
       });
     } catch (err) {
