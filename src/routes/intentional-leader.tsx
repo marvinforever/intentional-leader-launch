@@ -740,6 +740,13 @@ function IntentionalLeader() {
               </div>
             </div>
           </div>
+          <p className="mt-10 text-xl md:text-2xl font-[family-name:var(--font-playfair)] leading-snug text-[hsl(var(--ial-text))] text-center md:text-left">
+            And we've designed a{" "}
+            <span className="text-[hsl(var(--ial-green-deep))] font-bold uppercase tracking-wide">
+              first-of-its-kind delivery model
+            </span>{" "}
+            designed to actually generate results… in real time.
+          </p>
         </div>
       </section>
 
