@@ -773,8 +773,7 @@ function IntentionalLeader() {
             waiting on the other side of 90 days...
           </h2>
           <p className="text-lg text-[hsl(var(--ial-text-muted))] max-w-3xl leading-relaxed mb-16 italic">
-            Every "after" line below is built from a real pattern we heard
-            repeatedly across the podcast.
+            Here is the before and after coming your way.
           </p>
           <Transformation />
         </div>
