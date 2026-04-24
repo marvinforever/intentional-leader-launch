@@ -149,6 +149,8 @@ export type Database = {
       invoice_requests: {
         Row: {
           amount_usd: number
+          ap_contact_name: string | null
+          ap_email: string | null
           billing_address: string
           billing_email: string
           company_name: string
@@ -163,6 +165,8 @@ export type Database = {
         }
         Insert: {
           amount_usd: number
+          ap_contact_name?: string | null
+          ap_email?: string | null
           billing_address: string
           billing_email: string
           company_name: string
@@ -177,6 +181,8 @@ export type Database = {
         }
         Update: {
           amount_usd?: number
+          ap_contact_name?: string | null
+          ap_email?: string | null
           billing_address?: string
           billing_email?: string
           company_name?: string
