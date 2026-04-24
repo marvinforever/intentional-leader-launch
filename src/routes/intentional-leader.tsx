@@ -445,6 +445,33 @@ const InvoiceForm = () => {
         />
       </div>
 
+      <div className="grid sm:grid-cols-2 gap-4 pt-4 border-t border-[hsl(var(--ial-border))]">
+        <div className="sm:col-span-2 -mb-2">
+          <p className="text-xs uppercase tracking-wider text-[hsl(var(--ial-text-muted))]">
+            Accounts payable (optional — if different from above)
+          </p>
+        </div>
+        <div>
+          <Label htmlFor="ap_contact_name">AP contact name</Label>
+          <Input
+            id="ap_contact_name"
+            value={form.ap_contact_name}
+            onChange={(e) => setForm({ ...form, ap_contact_name: e.target.value })}
+            className="bg-[hsl(var(--ial-surface-2))] border-[hsl(var(--ial-border))]"
+          />
+        </div>
+        <div>
+          <Label htmlFor="ap_email">Accounts payable email</Label>
+          <Input
+            id="ap_email"
+            type="email"
+            value={form.ap_email}
+            onChange={(e) => setForm({ ...form, ap_email: e.target.value })}
+            className="bg-[hsl(var(--ial-surface-2))] border-[hsl(var(--ial-border))]"
+          />
+        </div>
+      </div>
+
       <Button
         type="submit"
         disabled={submitting}
