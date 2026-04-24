@@ -769,8 +769,8 @@ function IntentionalLeader() {
         <div className="container max-w-6xl mx-auto px-6">
           <SectionLabel>What 90 Days Changes</SectionLabel>
           <h2 className="font-[family-name:var(--font-playfair)] text-4xl md:text-6xl font-bold mb-6 max-w-4xl leading-[1.05]">
-            The version of your organization waiting on the other side of 90
-            days.
+            There is an even more effective version of your organization
+            waiting on the other side of 90 days...
           </h2>
           <p className="text-lg text-[hsl(var(--ial-text-muted))] max-w-3xl leading-relaxed mb-16 italic">
             Every "after" line below is built from a real pattern we heard
