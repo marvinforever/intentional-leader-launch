@@ -15,6 +15,8 @@ interface InvoiceRequestNotificationProps {
   notes?: string | null
   record_id?: string
   received_at?: string
+  ap_contact_name?: string | null
+  ap_email?: string | null
 }
 
 const InvoiceRequestNotification = ({
@@ -29,6 +31,8 @@ const InvoiceRequestNotification = ({
   notes,
   record_id,
   received_at,
+  ap_contact_name,
+  ap_email,
 }: InvoiceRequestNotificationProps) => {
   const formattedAmount = `$${amount_usd.toLocaleString('en-US')}`
   const licenseLabel =
@@ -56,6 +60,18 @@ const InvoiceRequestNotification = ({
           <Text style={fieldRow}><strong>Name:</strong> {contact_name}</Text>
           <Text style={fieldRow}><strong>Email:</strong> {billing_email}</Text>
           <Text style={fieldRow}><strong>Phone:</strong> {phone}</Text>
+
+          {(ap_contact_name || ap_email) ? (
+            <>
+              <Heading as="h2" style={h2}>Accounts Payable</Heading>
+              {ap_contact_name ? (
+                <Text style={fieldRow}><strong>AP Contact:</strong> {ap_contact_name}</Text>
+              ) : null}
+              {ap_email ? (
+                <Text style={fieldRow}><strong>AP Email:</strong> {ap_email}</Text>
+              ) : null}
+            </>
+          ) : null}
 
           <Heading as="h2" style={h2}>Billing Address</Heading>
           <Text style={addressBlock}>{billing_address}</Text>
