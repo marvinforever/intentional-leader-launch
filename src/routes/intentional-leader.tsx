@@ -967,26 +967,6 @@ function IntentionalLeader() {
           </p>
 
           <div
-            data-track-section="curated_by_leaders"
-            className="relative max-w-4xl mx-auto text-center mb-12 animate-in fade-in slide-in-from-bottom-4 duration-700"
-          >
-            <div className="mx-auto mb-6 h-px w-16 bg-[hsl(var(--ial-green-deep))]" />
-            <p className="font-[family-name:var(--font-playfair)] text-2xl md:text-3xl lg:text-[2.5rem] font-bold leading-[1.25] text-[hsl(var(--ial-text))]">
-              This is the leadership course{" "}
-              <span className="text-[hsl(var(--ial-green-deep))]">
-                curated by the leaders of ag
-              </span>
-              {" "}— drawn from{" "}
-              <span className="text-[hsl(var(--ial-green-deep))]">
-                216+ episodes
-              </span>{" "}
-              of the Intentional Agribusiness Leader podcast and powered by{" "}
-              <span className="text-[hsl(var(--ial-green-deep))]">Jericho</span>,
-              the AI coach built specifically from those conversations.
-            </p>
-          </div>
-
-          <div
             data-track-section="how_it_works_intro"
             className="relative max-w-4xl mx-auto text-center mb-16 animate-in fade-in slide-in-from-bottom-4 duration-700"
           >
