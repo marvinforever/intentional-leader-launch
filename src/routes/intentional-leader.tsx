@@ -745,7 +745,10 @@ function IntentionalLeader() {
             <span className="text-[hsl(var(--ial-green-deep))] font-bold uppercase tracking-wide">
               first-of-its-kind delivery model
             </span>{" "}
-            designed to actually generate results… in real time.
+            designed to actually generate results… in real time.{" "}
+            <span className="text-[hsl(var(--ial-text-muted))] italic font-normal">
+              (read on to learn how)
+            </span>
           </p>
         </div>
       </section>
