@@ -51,7 +51,7 @@ export const Route = createFileRoute("/intentional-leader")({
       {
         name: "description",
         content:
-          "A 90-day leadership program for agribusiness leaders. Powered by Jericho AI coach. Built from 216+ podcast episodes. Early bird ends June 1.",
+          "A 90-day leadership program for agribusiness leaders. Powered by Jericho AI coach. Built from 216+ podcast episodes. Early bird ends July 1.",
       },
       {
         property: "og:title",
@@ -60,7 +60,7 @@ export const Route = createFileRoute("/intentional-leader")({
       {
         property: "og:description",
         content:
-          "Built from 216+ podcast episodes with the leaders of ag. 90 days. Powered by Jericho AI coach. Early bird ends June 1.",
+          "Built from 216+ podcast episodes with the leaders of ag. 90 days. Powered by Jericho AI coach. Early bird ends July 1.",
       },
       { property: "og:type", content: "website" },
       { property: "og:image", content: ogShareImage },
@@ -88,8 +88,8 @@ const STRIPE_COMPANY_URL = "https://buy.stripe.com/bJe6oHayP7jQa6c1TRds40S";
 const CALENDLY_URL = "https://calendar.app.google/Vs3an1FRGgmiMBL1A";
 const MARK_PHONE = "402-881-986";
 
-// Early bird ends June 1, 2026 11:59 PM Central Time
-const DEADLINE = new Date("2026-06-02T05:59:00Z").getTime();
+// Early bird ends July 1, 2026 11:59 PM Central Time
+const DEADLINE = new Date("2026-07-02T05:59:00Z").getTime();
 
 const useCountdown = () => {
   // Start at null so SSR + first client render match (no time-based diff).
@@ -585,7 +585,7 @@ function IntentionalLeader() {
         <div className="container max-w-6xl mx-auto px-6 py-24 md:py-32 relative z-10">
           <div className="flex flex-wrap items-center gap-2 mb-8">
             <div className="inline-flex items-center px-4 py-2 rounded-full border border-[hsl(var(--ial-green))]/40 bg-[hsl(var(--ial-green))]/10 text-[hsl(var(--ial-green-soft))] text-xs font-semibold tracking-wider uppercase">
-              Only 10 Company Spots for Early Bird · Closes June 1
+              Only 10 Company Spots for Early Bird · Closes July 1
             </div>
           </div>
           <h1 className="font-[family-name:var(--font-playfair)] text-5xl md:text-7xl font-black leading-[1.05] mb-6 max-w-5xl">
@@ -1373,7 +1373,7 @@ function IntentionalLeader() {
             Convinced? Lock your seat before the price moves.
           </h3>
           <p className="text-[hsl(var(--ial-text-muted))] mb-6">
-            Early bird ends June 1 — then prices go up 50%.
+            Early bird ends July 1 — then prices go up 50%.
           </p>
           <div className="flex flex-wrap justify-center gap-3">
             <Button
@@ -1403,7 +1403,7 @@ function IntentionalLeader() {
         <div className="container max-w-6xl mx-auto px-6">
           <SectionLabel>Pricing · Hard deadline</SectionLabel>
           <h2 className="font-[family-name:var(--font-playfair)] text-4xl md:text-5xl font-bold mb-4">
-            Early bird ends June 1 — then prices go up 50%.
+            Early bird ends July 1 — then prices go up 50%.
           </h2>
           <div className="mb-12">
             <Countdown />
@@ -1418,7 +1418,7 @@ function IntentionalLeader() {
                 <span className="text-5xl font-black">$1,000</span>
               </div>
               <div className="text-sm text-[hsl(var(--ial-text-muted))] mb-1">
-                <span className="line-through">$1,500 after June 1</span>
+                <span className="line-through">$1,500 after July 1</span>
               </div>
               <div className="text-sm text-[hsl(var(--ial-text-muted))] mb-8">
                 one 90-day enrollment
@@ -1468,7 +1468,7 @@ function IntentionalLeader() {
                 <span className="text-5xl font-black text-white">$10,000</span>
               </div>
               <div className="text-sm text-white/70 mb-1">
-                <span className="line-through">$15,000 after June 1</span>
+                <span className="line-through">$15,000 after July 1</span>
               </div>
               <div className="text-sm text-white/70 mb-8">
                 unlimited seats for your team
@@ -1588,7 +1588,7 @@ function IntentionalLeader() {
             organization — or exactly where you are today, one quarter older.
           </h2>
           <p className="text-lg md:text-xl text-white/80 mb-10 max-w-2xl mx-auto">
-            Early bird pricing closes June 1. After that, company licenses go
+            Early bird pricing closes July 1. After that, company licenses go
             to $15,000 and individuals to $1,500.
           </p>
           <p className="font-[family-name:var(--font-playfair)] italic text-xl md:text-2xl text-white mb-10 max-w-2xl mx-auto leading-snug">
