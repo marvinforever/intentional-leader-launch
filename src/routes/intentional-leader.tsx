@@ -51,7 +51,7 @@ export const Route = createFileRoute("/intentional-leader")({
       {
         name: "description",
         content:
-          "A 90-day leadership program for agribusiness leaders. Powered by Jericho AI coach. Built from 216+ podcast episodes. Early bird ends July 1.",
+          "A 90-day leadership program for agribusiness leaders. Powered by Jericho AI coach. Built from 225+ podcast episodes. Early bird ends July 1.",
       },
       {
         property: "og:title",
@@ -60,7 +60,7 @@ export const Route = createFileRoute("/intentional-leader")({
       {
         property: "og:description",
         content:
-          "Built from 216+ podcast episodes with the leaders of ag. 90 days. Powered by Jericho AI coach. Early bird ends July 1.",
+          "Built from 225+ podcast episodes with the leaders of ag. 90 days. Powered by Jericho AI coach. Early bird ends July 1.",
       },
       { property: "og:type", content: "website" },
       { property: "og:image", content: ogShareImage },
@@ -599,7 +599,7 @@ function IntentionalLeader() {
             <span className="text-[hsl(var(--ial-text))]">
               you, the leaders of ag, curated
             </span>{" "}
-            — drawn from 216+ episodes of the Intentional Agribusiness Leader
+            — drawn from 225+ episodes of the Intentional Agribusiness Leader
             podcast and powered by Jericho, the AI coach built specifically
             from those conversations.
           </p>
@@ -676,7 +676,7 @@ function IntentionalLeader() {
                   Intentional Agribusiness Leader Podcast
                 </div>
                 <div className="text-xs text-[hsl(var(--ial-text-muted))]">
-                  216+ episodes · Hosted by Mark Jewell
+                  225+ episodes · Hosted by Mark Jewell
                 </div>
               </div>
             </div>
@@ -689,7 +689,7 @@ function IntentionalLeader() {
         <div className="container max-w-6xl mx-auto px-6">
           <div className="grid md:grid-cols-4 gap-8 text-center">
             {[
-              { stat: "216+", label: "Podcast episodes with ag leaders" },
+              { stat: "225+", label: "Podcast episodes with ag leaders" },
               { stat: "12 yrs", label: "Of recorded leader conversations" },
               { stat: "3", label: "Patterns every leader keeps naming" },
               { stat: "90", label: "Days to the other side of them" },
@@ -724,7 +724,7 @@ function IntentionalLeader() {
             <p>
               The Intentional Leadership course is the direct result of{" "}
               <span className="text-[hsl(var(--ial-text))] font-semibold">
-                over 216 interviews
+                over 225 interviews
               </span>{" "}
               conducted with leaders across the ag industry.
             </p>
@@ -751,7 +751,7 @@ function IntentionalLeader() {
                 Sourced from
               </div>
               <div className="text-base font-semibold text-[hsl(var(--ial-text))]">
-                216+ recorded ag leader interviews
+                225+ recorded ag leader interviews
               </div>
             </div>
             <div className="rounded-lg border border-[hsl(var(--ial-border))] bg-[hsl(var(--ial-bg))] p-5">
@@ -794,7 +794,7 @@ function IntentionalLeader() {
             These are the problems surfaced by leaders like you — this course helps you solve for them.
           </h2>
           <p className="text-lg text-[hsl(var(--ial-text-muted))] max-w-3xl leading-relaxed mb-12">
-            We didn't invent these. They surfaced — over and over — in 216+
+            We didn't invent these. They surfaced — over and over — in 225+
             recorded conversations with co-op GMs, ag retailers, family
             operators, ag-tech founders, and biological, seed, and biotech
             companies. If they sound familiar, that's
@@ -930,7 +930,7 @@ function IntentionalLeader() {
                   <span className="text-[hsl(var(--ial-text))] font-semibold">
                     50,000+ hours of intentional leadership talk
                   </span>{" "}
-                  consumed by an incredible audience across the first 216+
+                  consumed by an incredible audience across the first 225+
                   episodes.
                 </p>
                 <p>
@@ -945,7 +945,7 @@ function IntentionalLeader() {
               <div className="mt-8 grid sm:grid-cols-3 gap-3">
                 <div className="rounded-lg border border-[hsl(var(--ial-border))] bg-[hsl(var(--ial-bg))] p-4 text-center">
                   <div className="text-2xl font-bold text-[hsl(var(--ial-green-deep))]">
-                    216+
+                    225+
                   </div>
                   <div className="text-xs uppercase tracking-wider text-[hsl(var(--ial-text-muted))]">
                     Episodes
@@ -1187,7 +1187,7 @@ function IntentionalLeader() {
               </span>
               {" "}— drawn from{" "}
               <span className="text-[hsl(var(--ial-green-deep))]">
-                216+ episodes
+                225+ episodes
               </span>{" "}
               of the Intentional Agribusiness Leader podcast and powered by{" "}
               <span className="text-[hsl(var(--ial-green-deep))]">Jericho</span>,
@@ -1329,7 +1329,7 @@ function IntentionalLeader() {
           </p>
 
           <div className="text-xs uppercase tracking-[0.2em] text-[hsl(var(--ial-text-muted))] mb-6">
-            Wisdom drawn from 216+ episodes with leaders at
+            Wisdom drawn from 225+ episodes with leaders at
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
             {[
@@ -1647,7 +1647,7 @@ function IntentionalLeader() {
                 </div>
               </div>
               <p className="text-sm text-[hsl(var(--ial-text-muted))] leading-relaxed">
-                216+ episodes of real conversations with the leaders building
+                225+ episodes of real conversations with the leaders building
                 the future of agriculture. New episodes weekly.
               </p>
             </div>
