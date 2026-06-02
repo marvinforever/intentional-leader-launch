@@ -171,12 +171,14 @@ function SponsorsPage() {
             <Sprout className="size-3.5" /> Sponsorship Opportunity
           </div>
           <h1 className="mt-6 font-playfair text-4xl sm:text-6xl font-bold leading-tight">
-            Become a Lead Intentional Sponsor
+            The People Who Feed the World Deserve Better Leaders
           </h1>
           <p className="mt-6 text-lg sm:text-xl text-[oklch(0.92_0.02_85)]/85 max-w-2xl mx-auto leading-relaxed">
-            Invest in the leaders who feed the world. Your sponsorship puts
-            intentional leadership development inside agricultural companies
-            across the country.
+            The retail channel runs on relationships, trust, and execution. When
+            leadership breaks down — at the co-op, the input dealer, the retail
+            branch — everybody in the supply chain feels it. Lead Intentional is
+            built to fix that. Your sponsorship puts real leadership development
+            inside the companies your business depends on.
           </p>
 
           {/* Progress */}
