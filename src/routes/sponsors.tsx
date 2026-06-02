@@ -202,6 +202,102 @@ function SponsorsPage() {
         </div>
       </section>
 
+      {/* WHY */}
+      <section className="mx-auto max-w-4xl px-6 py-20 sm:py-24">
+        <div className="text-center mb-12">
+          <div className="inline-block text-xs font-semibold uppercase tracking-[0.2em] text-[oklch(0.55_0.10_75)]">
+            Why Sponsor
+          </div>
+          <h2 className="mt-4 font-playfair text-3xl sm:text-5xl font-bold text-[oklch(0.25_0.05_145)] leading-tight">
+            Why This. Why Now.
+          </h2>
+        </div>
+
+        <div className="space-y-6 text-[oklch(0.28_0.03_145)] text-lg leading-relaxed">
+          <p>
+            Every company in the agricultural supply chain has the same open
+            secret: the retail channel is undertrained, overworked, and running
+            on instinct instead of intentional leadership. Not because the
+            people are bad — because no one has built a program that actually
+            fits their life.
+          </p>
+          <p className="font-playfair text-2xl sm:text-3xl font-bold text-[oklch(0.30_0.06_145)]">
+            Lead Intentional does.
+          </p>
+          <p>
+            This isn't a two-day workshop that fades by Friday. It's a
+            continuous, Jericho-powered leadership experience built for people
+            who are moving fast and don't have time to slow down. Minimally
+            invasive. Highly effective.
+          </p>
+        </div>
+
+        <div className="mt-12">
+          <h3 className="font-playfair text-xl sm:text-2xl font-bold text-[oklch(0.25_0.05_145)] mb-6">
+            Here's what your sponsored employees get:
+          </h3>
+          <div className="grid gap-4 sm:grid-cols-2">
+            {[
+              {
+                icon: Sunrise,
+                title: "Daily leadership briefs",
+                body: "Delivered every morning — personalized, practical, 3 minutes.",
+              },
+              {
+                icon: Headphones,
+                title: "Personalized podcast feed",
+                body: "Curated to their role, their gaps, and their goals.",
+              },
+              {
+                icon: LineChart,
+                title: "Performance management tools",
+                body: "Track progress without adding bureaucracy.",
+              },
+              {
+                icon: Bot,
+                title: "Jericho AI coaching",
+                body: "A $38K/year enterprise platform, in their pocket.",
+              },
+              {
+                icon: Users,
+                title: "A cohort of industry peers",
+                body: "Doing the same work at the same time, across the channel.",
+              },
+            ].map(({ icon: Icon, title, body }) => (
+              <div
+                key={title}
+                className="flex gap-4 p-5 rounded-xl border border-[oklch(0.88_0.02_140)] bg-white"
+              >
+                <div className="shrink-0 size-10 rounded-lg bg-[oklch(0.95_0.04_85)] flex items-center justify-center">
+                  <Icon className="size-5 text-[oklch(0.50_0.15_75)]" />
+                </div>
+                <div>
+                  <div className="font-semibold text-[oklch(0.25_0.05_145)]">
+                    {title}
+                  </div>
+                  <div className="mt-1 text-sm text-[oklch(0.40_0.03_145)] leading-relaxed">
+                    {body}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-12 space-y-6 text-[oklch(0.28_0.03_145)] text-lg leading-relaxed">
+          <p>
+            You're not buying them a course. You're putting Jericho in their
+            pocket and a community around their shoulders. The results show up
+            in how they lead their team on Monday morning.
+          </p>
+          <p className="border-l-4 border-[oklch(0.65_0.15_75)] pl-5 italic text-[oklch(0.30_0.05_145)]">
+            As a sponsor, you're not just developing your own people — you're
+            building the leadership culture of the channel you sell into.
+            That's a competitive moat most companies have never thought about.
+          </p>
+        </div>
+      </section>
+
       {/* TIERS */}
       <section className="mx-auto max-w-6xl px-6 py-20">
         <div className="text-center mb-14">
@@ -271,6 +367,33 @@ function SponsorsPage() {
               </Button>
             </Card>
           ))}
+        </div>
+      </section>
+
+      {/* JERICHO CALLOUT */}
+      <section className="bg-gradient-to-br from-[oklch(0.25_0.05_145)] via-[oklch(0.22_0.05_145)] to-[oklch(0.20_0.06_145)] text-[oklch(0.97_0.02_85)]">
+        <div className="mx-auto max-w-4xl px-6 py-20 sm:py-24 text-center">
+          <div className="inline-flex items-center gap-2 rounded-full border border-[oklch(0.85_0.15_85)]/30 bg-[oklch(0.85_0.15_85)]/10 px-4 py-1.5 text-xs font-medium uppercase tracking-wider text-[oklch(0.85_0.15_85)]">
+            <Bot className="size-3.5" /> The Engine
+          </div>
+          <h2 className="mt-6 font-playfair text-3xl sm:text-5xl font-bold leading-tight">
+            Powered by Jericho
+          </h2>
+          <p className="mt-6 text-lg sm:text-xl text-[oklch(0.92_0.02_85)]/85 leading-relaxed">
+            Every Lead Intentional participant gets access to Jericho — The
+            Momentum Company's AI coaching platform. Daily briefs. Personalized
+            podcasts. Performance tracking. Coaching on demand. This is what
+            makes Lead Intentional different from every other program in the
+            channel: the learning doesn't stop when the module ends.
+          </p>
+          <a
+            href="https://www.themomentumcompany.com"
+            target="_blank"
+            rel="noreferrer"
+            className="mt-8 inline-flex items-center gap-2 font-semibold text-[oklch(0.85_0.15_85)] hover:text-[oklch(0.90_0.15_85)] underline underline-offset-4"
+          >
+            Learn more about Jericho <ArrowRight className="size-4" />
+          </a>
         </div>
       </section>
 
