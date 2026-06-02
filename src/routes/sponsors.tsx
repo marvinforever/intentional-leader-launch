@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { toast } from "sonner";
-import { Check, Sprout, Mail } from "lucide-react";
+import { Check, Sprout, Mail, Sunrise, Headphones, LineChart, Bot, Users, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -66,12 +66,13 @@ const TIERS: Tier[] = [
     highlight: true,
     blurb: "The only one. Your name on the course.",
     includes: [
-      "Exclusive course naming rights",
+      'Exclusive course naming ("Presented by [Your Company]")',
       "Unlimited employee seats for 12 months",
-      "2 dedicated podcast episodes",
+      "2 dedicated IAL podcast episodes",
       "Speaking slot at live events",
       "12 monthly newsletter features",
-      "4 quarterly strategy calls with Mark Jewell",
+      "4 strategy calls with Mark Jewell",
+      "First right of refusal in Year 2",
     ],
   },
   {
@@ -100,7 +101,7 @@ const TIERS: Tier[] = [
     includes: [
       "10 employee seats",
       "Logo on sponsor recognition page",
-      "4 quarterly newsletter mentions",
+      "4 newsletter mentions",
       "Social recognition at launch and completion",
       "Sponsor spotlight email to course community",
     ],
