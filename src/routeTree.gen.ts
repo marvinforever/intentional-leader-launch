@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SponsorsRouteImport } from './routes/sponsors'
 import { Route as IntentionalLeaderRouteImport } from './routes/intentional-leader'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as EmailUnsubscribeRouteImport } from './routes/email/unsubscribe'
@@ -18,6 +19,11 @@ import { Route as LovableEmailTransactionalSendRouteImport } from './routes/lova
 import { Route as LovableEmailTransactionalPreviewRouteImport } from './routes/lovable/email/transactional/preview'
 import { Route as LovableEmailQueueProcessRouteImport } from './routes/lovable/email/queue/process'
 
+const SponsorsRoute = SponsorsRouteImport.update({
+  id: '/sponsors',
+  path: '/sponsors',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IntentionalLeaderRoute = IntentionalLeaderRouteImport.update({
   id: '/intentional-leader',
   path: '/intentional-leader',
@@ -65,6 +71,7 @@ const LovableEmailQueueProcessRoute =
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/intentional-leader': typeof IntentionalLeaderRoute
+  '/sponsors': typeof SponsorsRoute
   '/email/unsubscribe': typeof EmailUnsubscribeRoute
   '/api/public/track': typeof ApiPublicTrackRoute
   '/lovable/email/suppression': typeof LovableEmailSuppressionRoute
@@ -75,6 +82,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/intentional-leader': typeof IntentionalLeaderRoute
+  '/sponsors': typeof SponsorsRoute
   '/email/unsubscribe': typeof EmailUnsubscribeRoute
   '/api/public/track': typeof ApiPublicTrackRoute
   '/lovable/email/suppression': typeof LovableEmailSuppressionRoute
@@ -86,6 +94,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/intentional-leader': typeof IntentionalLeaderRoute
+  '/sponsors': typeof SponsorsRoute
   '/email/unsubscribe': typeof EmailUnsubscribeRoute
   '/api/public/track': typeof ApiPublicTrackRoute
   '/lovable/email/suppression': typeof LovableEmailSuppressionRoute
@@ -98,6 +107,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/intentional-leader'
+    | '/sponsors'
     | '/email/unsubscribe'
     | '/api/public/track'
     | '/lovable/email/suppression'
@@ -108,6 +118,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/intentional-leader'
+    | '/sponsors'
     | '/email/unsubscribe'
     | '/api/public/track'
     | '/lovable/email/suppression'
@@ -118,6 +129,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/intentional-leader'
+    | '/sponsors'
     | '/email/unsubscribe'
     | '/api/public/track'
     | '/lovable/email/suppression'
@@ -129,6 +141,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   IntentionalLeaderRoute: typeof IntentionalLeaderRoute
+  SponsorsRoute: typeof SponsorsRoute
   EmailUnsubscribeRoute: typeof EmailUnsubscribeRoute
   ApiPublicTrackRoute: typeof ApiPublicTrackRoute
   LovableEmailSuppressionRoute: typeof LovableEmailSuppressionRoute
@@ -139,6 +152,13 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/sponsors': {
+      id: '/sponsors'
+      path: '/sponsors'
+      fullPath: '/sponsors'
+      preLoaderRoute: typeof SponsorsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/intentional-leader': {
       id: '/intentional-leader'
       path: '/intentional-leader'
@@ -201,6 +221,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   IntentionalLeaderRoute: IntentionalLeaderRoute,
+  SponsorsRoute: SponsorsRoute,
   EmailUnsubscribeRoute: EmailUnsubscribeRoute,
   ApiPublicTrackRoute: ApiPublicTrackRoute,
   LovableEmailSuppressionRoute: LovableEmailSuppressionRoute,
@@ -211,12 +232,3 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { createStart } from '@tanstack/react-start'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-  }
-}
