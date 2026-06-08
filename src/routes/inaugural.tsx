@@ -52,8 +52,8 @@ const foundingClass: string[] = [];
 // ============================================================
 
 // PLACEHOLDERS — paste final Stripe Payment Link URLs here.
-const STRIPE_1K_URL = "#STRIPE_1K"; // Founding Seat — $1,000
-const STRIPE_5K_URL = "#STRIPE_5K"; // Pay It Forward — $5,000
+const STRIPE_1K_URL = "https://buy.stripe.com/28EdR936ncEabaggOLds40Z"; // Founding Seat — $1,000
+const STRIPE_5K_URL = "https://buy.stripe.com/5kQ14nayP7jQbagaqnds410"; // Pay It Forward — $5,000
 
 const MARK_PHONE_DISPLAY = "(402) 881-9986";
 const MARK_PHONE_TEL = "tel:4028819986";
