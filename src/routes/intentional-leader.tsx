@@ -1,6 +1,5 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
-import { toast } from "sonner";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { useState } from "react";
 import {
   Check,
   Phone,
@@ -20,12 +19,6 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { useServerFn } from "@tanstack/react-start";
-import { submitInvoiceRequest } from "@/utils/invoice.functions";
 import momentumLogoWhite from "@/assets/momentum-logo-white.png";
 import ialPodcastLogo from "@/assets/intentional-ag-leader-podcast.png";
 import markJewellPhoto from "@/assets/mark-jewell-watermarked.jpg";
@@ -82,40 +75,8 @@ export const Route = createFileRoute("/intentional-leader")({
   component: IntentionalLeader,
 });
 
-// Stripe Payment Links
-const STRIPE_INDIVIDUAL_URL = "https://buy.stripe.com/00wdR9fT933A6U0fKHds40R";
-const STRIPE_COMPANY_URL = "https://buy.stripe.com/bJe6oHayP7jQa6c1TRds40S";
 const CALENDLY_URL = "https://calendar.app.google/Vs3an1FRGgmiMBL1A";
 const MARK_PHONE = "(402) 881-9986";
-
-// Inaugural Offering — instant-checkout Stripe links. Shep pastes final URLs here.
-const STRIPE_1K_URL = STRIPE_INDIVIDUAL_URL; // Founding Seat $1,000 (existing $1K link — swap if Shep issues a new one)
-const STRIPE_5K_URL = "#STRIPE_5K"; // Pay It Forward $5,000 — PLACEHOLDER, paste Stripe URL here
-
-// Founding Class section is built but stays hidden until the June 22 unveil.
-// Flip to true (and add names to FOUNDING_CLASS) the morning of June 22.
-const SHOW_FOUNDING_CLASS = false;
-const FOUNDING_CLASS: string[] = [];
-
-// Inaugural Offering closes June 30, 2026 11:59 PM Central Time
-const DEADLINE = new Date("2026-07-01T04:59:00Z").getTime();
-
-const useCountdown = () => {
-  // Start at null so SSR + first client render match (no time-based diff).
-  // After mount, tick every second.
-  const [now, setNow] = useState<number | null>(null);
-  useEffect(() => {
-    setNow(Date.now());
-    const t = setInterval(() => setNow(Date.now()), 1000);
-    return () => clearInterval(t);
-  }, []);
-  const diff = now === null ? 0 : Math.max(0, DEADLINE - now);
-  const days = Math.floor(diff / 86400000);
-  const hours = Math.floor((diff % 86400000) / 3600000);
-  const minutes = Math.floor((diff % 3600000) / 60000);
-  const seconds = Math.floor((diff % 60000) / 1000);
-  return { days, hours, minutes, seconds, mounted: now !== null };
-};
 
 const SectionLabel = ({ children }: { children: React.ReactNode }) => (
   <div className="text-xs font-semibold tracking-[0.2em] uppercase text-[hsl(var(--ial-green-soft))] mb-4">
@@ -279,218 +240,6 @@ const Transformation = () => {
   );
 };
 
-const Countdown = () => {
-  const { days, hours, minutes, seconds } = useCountdown();
-  const Box = ({ v, label }: { v: number; label: string }) => (
-    <div className="flex flex-col items-center px-4 py-3 bg-[hsl(var(--ial-surface-2))] border border-[hsl(var(--ial-border))] rounded min-w-[72px]">
-      <div className="text-3xl font-black text-[hsl(var(--ial-text))] tabular-nums">
-        {String(v).padStart(2, "0")}
-      </div>
-      <div className="text-[10px] uppercase tracking-wider text-[hsl(var(--ial-text-muted))] mt-1">
-        {label}
-      </div>
-    </div>
-  );
-  return (
-    <div className="flex items-center justify-center gap-2 sm:gap-3">
-      <Box v={days} label="Days" />
-      <Box v={hours} label="Hours" />
-      <Box v={minutes} label="Min" />
-      <Box v={seconds} label="Sec" />
-    </div>
-  );
-};
-
-const InvoiceForm = () => {
-  const submit = useServerFn(submitInvoiceRequest);
-  const [submitting, setSubmitting] = useState(false);
-  const [licenseType, setLicenseType] = useState<"individual" | "company">(
-    "company",
-  );
-  const [form, setForm] = useState({
-    company_name: "",
-    contact_name: "",
-    billing_email: "",
-    billing_address: "",
-    phone: "",
-    seat_count: "1",
-    notes: "",
-    ap_contact_name: "",
-    ap_email: "",
-  });
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setSubmitting(true);
-    try {
-      await submit({ data: { ...form, license_type: licenseType } });
-      toast.success("Invoice request received", {
-        description:
-          "We'll send your QuickBooks invoice within one business day.",
-      });
-      setForm({
-        company_name: "",
-        contact_name: "",
-        billing_email: "",
-        billing_address: "",
-        phone: "",
-        seat_count: "1",
-        notes: "",
-        ap_contact_name: "",
-        ap_email: "",
-      });
-    } catch {
-      toast.error("Something went wrong", {
-        description:
-          "Please email mark@themomentumcompany.com and we'll handle it directly.",
-      });
-    } finally {
-      setSubmitting(false);
-    }
-  };
-
-  return (
-    <form onSubmit={handleSubmit} className="space-y-4 mt-6">
-      <RadioGroup
-        value={licenseType}
-        onValueChange={(v) => setLicenseType(v as "individual" | "company")}
-        className="grid grid-cols-2 gap-3"
-      >
-        <label className="flex items-center gap-3 p-3 rounded border border-[hsl(var(--ial-border))] bg-[hsl(var(--ial-surface-2))] cursor-pointer">
-          <RadioGroupItem value="individual" id="lt-ind" />
-          <span className="text-sm">Individual · $1,000</span>
-        </label>
-        <label className="flex items-center gap-3 p-3 rounded border border-[hsl(var(--ial-border))] bg-[hsl(var(--ial-surface-2))] cursor-pointer">
-          <RadioGroupItem value="company" id="lt-co" />
-          <span className="text-sm">Company · $5,000</span>
-        </label>
-      </RadioGroup>
-
-      <div className="grid sm:grid-cols-2 gap-4">
-        <div>
-          <Label htmlFor="company_name">Company name</Label>
-          <Input
-            id="company_name"
-            required
-            value={form.company_name}
-            onChange={(e) => setForm({ ...form, company_name: e.target.value })}
-            className="bg-[hsl(var(--ial-surface-2))] border-[hsl(var(--ial-border))]"
-          />
-        </div>
-        <div>
-          <Label htmlFor="contact_name">Billing contact</Label>
-          <Input
-            id="contact_name"
-            required
-            value={form.contact_name}
-            onChange={(e) => setForm({ ...form, contact_name: e.target.value })}
-            className="bg-[hsl(var(--ial-surface-2))] border-[hsl(var(--ial-border))]"
-          />
-        </div>
-      </div>
-
-      <div>
-        <Label htmlFor="billing_email">Billing email</Label>
-        <Input
-          id="billing_email"
-          type="email"
-          required
-          value={form.billing_email}
-          onChange={(e) => setForm({ ...form, billing_email: e.target.value })}
-          className="bg-[hsl(var(--ial-surface-2))] border-[hsl(var(--ial-border))]"
-        />
-      </div>
-
-      <div>
-        <Label htmlFor="phone">Phone number</Label>
-        <Input
-          id="phone"
-          type="tel"
-          required
-          maxLength={30}
-          placeholder="(555) 123-4567"
-          value={form.phone}
-          onChange={(e) => setForm({ ...form, phone: e.target.value })}
-          className="bg-[hsl(var(--ial-surface-2))] border-[hsl(var(--ial-border))]"
-        />
-      </div>
-
-      <div>
-        <Label htmlFor="billing_address">Billing address</Label>
-        <Textarea
-          id="billing_address"
-          required
-          rows={2}
-          value={form.billing_address}
-          onChange={(e) =>
-            setForm({ ...form, billing_address: e.target.value })
-          }
-          className="bg-[hsl(var(--ial-surface-2))] border-[hsl(var(--ial-border))]"
-        />
-      </div>
-
-      {licenseType === "individual" && (
-        <div>
-          <Label htmlFor="seat_count">Seat count</Label>
-          <Input
-            id="seat_count"
-            type="number"
-            min={1}
-            value={form.seat_count}
-            onChange={(e) => setForm({ ...form, seat_count: e.target.value })}
-            className="bg-[hsl(var(--ial-surface-2))] border-[hsl(var(--ial-border))]"
-          />
-        </div>
-      )}
-
-      <div>
-        <Label htmlFor="notes">PO number or notes (optional)</Label>
-        <Textarea
-          id="notes"
-          rows={2}
-          value={form.notes}
-          onChange={(e) => setForm({ ...form, notes: e.target.value })}
-          className="bg-[hsl(var(--ial-surface-2))] border-[hsl(var(--ial-border))]"
-        />
-      </div>
-
-      <div className="grid sm:grid-cols-2 gap-4 pt-4 border-t border-[hsl(var(--ial-border))]">
-        <div className="sm:col-span-2 -mb-2">
-          <p className="text-xs uppercase tracking-wider text-[hsl(var(--ial-text-muted))]">
-            Accounts payable (optional — if different from above)
-          </p>
-        </div>
-        <div>
-          <Label htmlFor="ap_contact_name">AP contact name</Label>
-          <Input
-            id="ap_contact_name"
-            value={form.ap_contact_name}
-            onChange={(e) => setForm({ ...form, ap_contact_name: e.target.value })}
-            className="bg-[hsl(var(--ial-surface-2))] border-[hsl(var(--ial-border))]"
-          />
-        </div>
-        <div>
-          <Label htmlFor="ap_email">Accounts payable email</Label>
-          <Input
-            id="ap_email"
-            type="email"
-            value={form.ap_email}
-            onChange={(e) => setForm({ ...form, ap_email: e.target.value })}
-            className="bg-[hsl(var(--ial-surface-2))] border-[hsl(var(--ial-border))]"
-          />
-        </div>
-      </div>
-
-      <Button
-        type="submit"
-        disabled={submitting}
-        className="w-full bg-[hsl(var(--ial-green))] hover:bg-[hsl(var(--ial-green-deep))] text-white font-semibold h-12"
-      >
-        {submitting ? "Sending..." : "Request Invoice"}
-      </Button>
-    </form>
-  );
-};
 
 function IntentionalLeader() {
   usePageAnalytics("intentional_leader");
@@ -520,7 +269,7 @@ function IntentionalLeader() {
     },
     {
       q: "What if I'm just one leader, not a whole company?",
-      a: "Individual enrollment is $1,000 (early bird). You get the full 90-day Jericho experience and all live group calls.",
+      a: "Individual enrollment starts at $1,000 through the Inaugural Offering (closes June 30). You get the full 90-day Jericho experience and all live group calls.",
     },
     {
       q: "What happens after Day 90?",
@@ -543,10 +292,6 @@ function IntentionalLeader() {
       a: "Heavy. Unlimited 1:1 coaching with Jericho for the full 90 days — voice or text, whenever you need it. Plus direct access to Mark on the three monthly half-day sessions and inside the program for the questions Jericho can't answer.",
     },
   ];
-
-  const scrollToPricing = () => {
-    document.getElementById("pricing")?.scrollIntoView({ behavior: "smooth" });
-  };
 
   return (
     <div className="ial-page min-h-screen bg-[hsl(var(--ial-bg))] text-[hsl(var(--ial-text))] font-[family-name:var(--font-inter)]">
@@ -576,13 +321,21 @@ function IntentionalLeader() {
               </div>
             </div>
           </div>
-          <Button
-            asChild
-            size="sm"
-            className="bg-[hsl(var(--ial-green))] hover:bg-[hsl(var(--ial-green-deep))] text-white font-semibold"
-          >
-            <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" data-track-cta="book_call">Book a Call</a>
-          </Button>
+          <div className="flex items-center gap-3">
+            <Link
+              to="/inaugural"
+              className="hidden sm:inline text-xs font-semibold uppercase tracking-[0.15em] text-[hsl(var(--ial-green-soft))] hover:text-[hsl(var(--ial-text))]"
+            >
+              The Inaugural Offering
+            </Link>
+            <Button
+              asChild
+              size="sm"
+              className="bg-[hsl(var(--ial-green))] hover:bg-[hsl(var(--ial-green-deep))] text-white font-semibold"
+            >
+              <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" data-track-cta="book_call">Book a Call</a>
+            </Button>
+          </div>
         </div>
       </header>
 
@@ -594,7 +347,7 @@ function IntentionalLeader() {
         <div className="container max-w-6xl mx-auto px-6 py-24 md:py-32 relative z-10">
           <div className="flex flex-wrap items-center gap-2 mb-8">
             <div className="inline-flex items-center px-4 py-2 rounded-full border border-[hsl(var(--ial-green))]/40 bg-[hsl(var(--ial-green))]/10 text-[hsl(var(--ial-green-soft))] text-xs font-semibold tracking-wider uppercase">
-              Only 10 Company Spots · Inaugural Offering Closes June 30
+              The Founding Class is forming · Closes June 30
             </div>
           </div>
           <h1 className="font-[family-name:var(--font-playfair)] text-5xl md:text-7xl font-black leading-[1.05] mb-6 max-w-5xl">
@@ -627,12 +380,12 @@ function IntentionalLeader() {
               <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" data-track-cta="book_call">Book a Call</a>
             </Button>
             <Button
+              asChild
               size="lg"
               variant="outline"
-              onClick={scrollToPricing}
               className="border-2 border-[hsl(var(--ial-green-deep))] bg-transparent text-[hsl(var(--ial-green-deep))] hover:bg-[hsl(var(--ial-green-deep))] hover:text-white h-14 px-8 text-base font-semibold"
             >
-              See Pricing & Buy Now
+              <Link to="/inaugural" data-track-cta="join_founding_class">Join the Founding Class →</Link>
             </Button>
           </div>
           <div className="flex items-start gap-2 text-sm text-[hsl(var(--ial-text-muted))] leading-relaxed">
@@ -892,7 +645,7 @@ function IntentionalLeader() {
               variant="outline"
               className="border-2 border-[hsl(var(--ial-green-deep))] bg-transparent text-[hsl(var(--ial-green-deep))] hover:bg-[hsl(var(--ial-green-deep))] hover:text-white font-semibold h-14 px-8"
             >
-              <a href={STRIPE_INDIVIDUAL_URL} target="_blank" rel="noopener noreferrer" data-track-cta="buy_now">Buy Now</a>
+              <Link to="/inaugural" data-track-cta="join_founding_class">Join the Founding Class →</Link>
             </Button>
           </div>
         </div>
@@ -991,7 +744,7 @@ function IntentionalLeader() {
                   variant="outline"
                   className="border-2 border-[hsl(var(--ial-green-deep))] bg-transparent text-[hsl(var(--ial-green-deep))] hover:bg-[hsl(var(--ial-green-deep))] hover:text-white font-semibold"
                 >
-                  <a href={STRIPE_INDIVIDUAL_URL} target="_blank" rel="noopener noreferrer" data-track-cta="buy_now">Buy Now</a>
+                  <Link to="/inaugural" data-track-cta="join_founding_class">Join the Founding Class →</Link>
                 </Button>
               </div>
             </div>
@@ -1379,10 +1132,10 @@ function IntentionalLeader() {
       <section className="py-16 border-t border-[hsl(var(--ial-border))] bg-[hsl(var(--ial-surface))]" data-track-section="inline_cta_2">
         <div className="container max-w-4xl mx-auto px-6 text-center">
           <h3 className="font-[family-name:var(--font-playfair)] text-2xl md:text-3xl font-bold mb-3 text-[hsl(var(--ial-text))]">
-            Convinced? Lock your seat before the price moves.
+            Convinced? Join the Founding Class.
           </h3>
           <p className="text-[hsl(var(--ial-text-muted))] mb-6">
-            Inaugural Offering closes June 30 — then the program begins August 1.
+            The Inaugural Offering closes June 30. The program begins August 1.
           </p>
           <div className="flex flex-wrap justify-center gap-3">
             <Button
@@ -1390,7 +1143,7 @@ function IntentionalLeader() {
               size="lg"
               className="bg-[hsl(var(--ial-green))] hover:bg-[hsl(var(--ial-green-deep))] text-white font-semibold h-14 px-8"
             >
-              <a href={STRIPE_INDIVIDUAL_URL} target="_blank" rel="noopener noreferrer" data-track-cta="buy_now">Buy Now</a>
+              <Link to="/inaugural" data-track-cta="join_founding_class">Join the Founding Class →</Link>
             </Button>
             <Button
               asChild
@@ -1404,276 +1157,6 @@ function IntentionalLeader() {
         </div>
       </section>
 
-      {/* THE INAUGURAL OFFERING */}
-      <section
-        id="pricing"
-        className="py-24 border-t border-[hsl(var(--ial-border))] bg-[hsl(var(--ial-surface))]"
-       data-track-section="pricing">
-        <div className="container max-w-6xl mx-auto px-6">
-          <SectionLabel>The Inaugural Offering</SectionLabel>
-          <h2 className="font-[family-name:var(--font-playfair)] text-4xl md:text-5xl font-bold mb-4">
-            An invitation to the leaders of agriculture.
-          </h2>
-
-          {/* Opening frame — countercyclical service */}
-          <div className="max-w-3xl space-y-4 text-lg text-[hsl(var(--ial-text-muted))] leading-relaxed mb-12">
-            <p>
-              The ag industry is in a hard season. Tariffs, commodity swings,
-              input costs up, output prices down — everyone's feeling it, and
-              most are pulling back.
-            </p>
-            <p className="text-[hsl(var(--ial-text))] font-semibold">
-              We're doing the opposite.
-            </p>
-            <p>
-              We believe the most intentional thing a leader can do right now —
-              when it's hardest — is invest in their people. So we're opening
-              the inaugural cohort of the Intentional Leader program wide, and
-              inviting the leaders of this industry to step in.
-            </p>
-          </div>
-
-          {/* The spine — deliberate / decisive / divine */}
-          <div className="grid md:grid-cols-3 gap-6 mb-16">
-            {[
-              {
-                t: "Deliberate.",
-                b: "You meant to do it. So much of what we resent in life traces back to drift — to the things we let happen instead of chose. Intentional leaders choose. And the most deliberate choice available in this market is to develop your people on purpose.",
-              },
-              {
-                t: "Decisive.",
-                b: "Seeing what's needed isn't enough. Intentional leaders move. They see who needs coaching and they act — they don't wait on the sidelines for the market to turn. This is your move.",
-              },
-              {
-                t: "Divine.",
-                b: "The way you lead is uniquely yours — handcrafted, carried by no one else. This program doesn't hand you someone else's playbook. It builds around the leader you already are, and helps your people find theirs.",
-              },
-            ].map((leg) => (
-              <Card
-                key={leg.t}
-                className="bg-[hsl(var(--ial-bg))] border-[hsl(var(--ial-border))] p-8"
-              >
-                <h3 className="font-[family-name:var(--font-playfair)] text-2xl text-[hsl(var(--ial-green-soft))] mb-3">
-                  {leg.t}
-                </h3>
-                <p className="text-[hsl(var(--ial-text-muted))] leading-relaxed">
-                  {leg.b}
-                </p>
-              </Card>
-            ))}
-          </div>
-
-          {/* Instant-checkout tiers */}
-          <div className="text-sm font-semibold uppercase tracking-[0.15em] text-[hsl(var(--ial-text-muted))] mb-4">
-            Step in instantly
-          </div>
-          <div className="grid md:grid-cols-2 gap-6 mb-16">
-            <Card className="bg-[hsl(var(--ial-bg))] border-[hsl(var(--ial-border))] p-8 flex flex-col">
-              <div className="text-sm uppercase tracking-wider text-[hsl(var(--ial-text-muted))] mb-3">
-                Founding Seat
-              </div>
-              <div className="text-5xl font-black mb-2">$1,000</div>
-              <p className="text-[hsl(var(--ial-text-muted))] mb-8 flex-1">
-                One leader, full 90-day program, Founding Class recognition.
-                Unlimited spots available.
-              </p>
-              <Button
-                asChild
-                className="w-full bg-[hsl(var(--ial-surface-2))] hover:bg-[hsl(var(--ial-green))] text-[hsl(var(--ial-text))] hover:text-white border border-[hsl(var(--ial-border))] hover:border-[hsl(var(--ial-green))] h-12 font-semibold"
-              >
-                <a href={STRIPE_1K_URL} target="_blank" rel="noopener noreferrer" data-track-cta="buy_founding_seat">
-                  Claim a Founding Seat · $1,000
-                </a>
-              </Button>
-            </Card>
-
-            <Card
-              className="border-2 border-[hsl(var(--ial-green))] p-8 flex flex-col relative"
-              style={{ background: "var(--ial-gradient-cta)" }}
-            >
-              <div className="text-sm uppercase tracking-wider text-white/80 mb-3">
-                Pay It Forward
-              </div>
-              <div className="text-5xl font-black text-white mb-2">$5,000</div>
-              <p className="text-white/80 mb-8 flex-1">
-                Sponsor 10 leaders from your client organizations into the
-                program. Featured as a Pay It Forward sponsor on the podcast and
-                newsletter.
-              </p>
-              <Button
-                asChild
-                className="w-full bg-white hover:bg-[hsl(var(--ial-text))] text-[hsl(var(--ial-green-deep))] h-12 font-semibold"
-              >
-                <a href={STRIPE_5K_URL} target="_blank" rel="noopener noreferrer" data-track-cta="buy_pay_it_forward">
-                  Pay It Forward · $5,000
-                </a>
-              </Button>
-            </Card>
-          </div>
-
-          {/* Sponsor positions */}
-          <div className="text-sm font-semibold uppercase tracking-[0.15em] text-[hsl(var(--ial-text-muted))] mb-2">
-            Sponsor positions — 10 total
-          </div>
-          <p className="text-[hsl(var(--ial-text-muted))] mb-6 max-w-3xl">
-            Claim a position outright, or name what it's worth to you and pledge
-            toward one. Top pledges win the 10 positions at June 30.
-          </p>
-          <div className="grid md:grid-cols-3 gap-6 mb-8">
-            {[
-              {
-                t: "Founding Lead Sponsor",
-                price: "$50,000",
-                spots: "1 spot",
-                b: '"Presented in partnership with [Company]" — elevated logo across page, emails, podcast & all Founding Class comms. 4 dedicated podcast spots. Unlimited seats from your org. Org/CLO insight layer. First right of refusal on the next cohort. You own the industry narrative.',
-                feature: true,
-              },
-              {
-                t: "Founding Partner",
-                price: "$25,000",
-                spots: "3 spots",
-                b: "Logo on page + email footer. 1 podcast segment. Unlimited seats from your org. Org insight layer. Priority onboarding.",
-                feature: false,
-              },
-              {
-                t: "Founding Member",
-                price: "$10,000",
-                spots: "6 spots",
-                b: "Named on the Founding Class wall. Unlimited seats from your org. Org/team insight layer.",
-                feature: false,
-              },
-            ].map((tier) => (
-              <Card
-                key={tier.t}
-                className={`p-8 flex flex-col bg-[hsl(var(--ial-bg))] ${
-                  tier.feature
-                    ? "border-2 border-[hsl(var(--ial-green))]"
-                    : "border-[hsl(var(--ial-border))]"
-                }`}
-              >
-                <div className="text-sm uppercase tracking-wider text-[hsl(var(--ial-green-soft))] mb-3">
-                  {tier.t}
-                </div>
-                <div className="flex items-baseline gap-3 mb-1">
-                  <span className="text-4xl font-black">{tier.price}</span>
-                </div>
-                <div className="text-sm text-[hsl(var(--ial-text-muted))] mb-6">
-                  Buy-It-Now · {tier.spots}
-                </div>
-                <p className="text-sm text-[hsl(var(--ial-text-muted))] leading-relaxed flex-1">
-                  {tier.b}
-                </p>
-              </Card>
-            ))}
-          </div>
-
-          {/* How sponsor positions work */}
-          <Card className="bg-[hsl(var(--ial-bg))] border-[hsl(var(--ial-border))] p-8 mb-12">
-            <h3 className="font-semibold text-[hsl(var(--ial-text))] mb-4">
-              How sponsor positions work
-            </h3>
-            <ul className="space-y-3">
-              {[
-                "You can claim a position outright at its Buy-It-Now price, or name your number (pledge) toward a position.",
-                "Pledges are sealed. At June 30 the top pledges are awarded the 10 positions, ranked.",
-                "No losers: anyone who pledges but doesn't land in the top 10 keeps full Founding Class org access at their committed amount — they simply don't receive a sponsor slot.",
-                "Sponsors are invoiced, due on receipt (no card checkout for sponsor tiers).",
-              ].map((x) => (
-                <li
-                  key={x}
-                  className="flex items-start gap-3 text-sm text-[hsl(var(--ial-text-muted))]"
-                >
-                  <Check className="w-4 h-4 text-[hsl(var(--ial-green))] mt-0.5 flex-shrink-0" />
-                  <span className="leading-relaxed">{x}</span>
-                </li>
-              ))}
-            </ul>
-          </Card>
-
-          {/* The invitation */}
-          <div className="max-w-3xl space-y-4 text-lg text-[hsl(var(--ial-text-muted))] leading-relaxed">
-            <p>
-              Bring as many of your people as you want. Claim a sponsor position
-              and plant your flag for the whole industry — or name what this is
-              worth to you and your team. Whatever you bring, you're in the
-              Founding Class: the leaders who moved when others froze.
-            </p>
-            <p className="text-[hsl(var(--ial-text))] font-semibold">
-              This window closes June 30. The program begins August 1.
-            </p>
-          </div>
-
-          {/* Founding Class — built, hidden until June 22 unveil */}
-          {SHOW_FOUNDING_CLASS && FOUNDING_CLASS.length > 0 && (
-            <div className="mt-16 pt-12 border-t border-[hsl(var(--ial-border))]">
-              <h3 className="font-[family-name:var(--font-playfair)] text-3xl font-bold mb-2">
-                The Founding Class
-              </h3>
-              <p className="text-[hsl(var(--ial-text-muted))] mb-8">
-                The leaders who moved when others froze.
-              </p>
-              <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
-                {FOUNDING_CLASS.map((name) => (
-                  <div
-                    key={name}
-                    className="flex items-center gap-3 p-4 rounded border border-[hsl(var(--ial-border))] bg-[hsl(var(--ial-bg))]"
-                  >
-                    <Check className="w-4 h-4 text-[hsl(var(--ial-green))] flex-shrink-0" />
-                    <span className="text-[hsl(var(--ial-text))] font-medium">
-                      {name}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-        </div>
-      </section>
-
-      {/* CHOOSE YOUR PATH (with InvoiceForm) */}
-      <section className="py-24 border-t border-[hsl(var(--ial-border))] bg-[hsl(var(--ial-surface))]">
-        <div className="container max-w-6xl mx-auto px-6">
-          <SectionLabel>Choose Your Path</SectionLabel>
-          <h2 className="font-[family-name:var(--font-playfair)] text-4xl md:text-5xl font-bold mb-12">
-            Two ways to move forward — pick what works.
-          </h2>
-          <div className="grid md:grid-cols-2 gap-6">
-            <Card className="bg-[hsl(var(--ial-bg))] border-[hsl(var(--ial-border))] p-8">
-              <div className="text-sm uppercase tracking-wider text-[hsl(var(--ial-green-soft))] mb-3">
-                Path A · Talk First
-              </div>
-              <h3 className="font-[family-name:var(--font-playfair)] text-2xl font-bold mb-4">
-                Book a Call
-              </h3>
-              <p className="text-[hsl(var(--ial-text-muted))] leading-relaxed mb-6">
-                Want to talk it through first? Book a call with Mark.
-                We'll confirm fit and answer any questions before you commit.
-                No pressure, no pitch.
-              </p>
-              <Button
-                asChild
-                className="w-full bg-[hsl(var(--ial-green))] hover:bg-[hsl(var(--ial-green-deep))] text-white h-12 font-semibold"
-              >
-                <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" data-track-cta="book_call_arrow">Book a Call →</a>
-              </Button>
-            </Card>
-
-            <Card className="bg-[hsl(var(--ial-bg))] border-[hsl(var(--ial-border))] p-8">
-              <div className="text-sm uppercase tracking-wider text-[hsl(var(--ial-green-soft))] mb-3">
-                Path B · Buy Direct
-              </div>
-              <h3 className="font-[family-name:var(--font-playfair)] text-2xl font-bold mb-4">
-                Request an Invoice
-              </h3>
-              <p className="text-[hsl(var(--ial-text-muted))] leading-relaxed mb-2">
-                Already sold? Pay by card via Stripe above, or request a
-                QuickBooks invoice below (Net 15 for company licenses).
-              </p>
-              <InvoiceForm />
-            </Card>
-          </div>
-        </div>
-      </section>
 
       {/* FAQ */}
       <section className="py-24 border-t border-[hsl(var(--ial-border))]" data-track-section="faq">
@@ -1727,12 +1210,12 @@ function IntentionalLeader() {
               <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" data-track-cta="book_call">Book a Call</a>
             </Button>
             <Button
+              asChild
               size="lg"
               variant="outline"
-              onClick={scrollToPricing}
               className="border-2 border-white bg-transparent text-white hover:bg-white hover:text-[hsl(var(--ial-green-deep))] h-14 px-8 font-semibold text-base"
             >
-              Buy Now
+              <Link to="/inaugural" data-track-cta="join_founding_class">Join the Founding Class →</Link>
             </Button>
           </div>
         </div>

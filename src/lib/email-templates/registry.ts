@@ -10,7 +10,9 @@ export interface TemplateEntry {
 }
 
 import { template as invoiceRequestNotification } from './invoice-request-notification'
+import { template as foundingClassClaimNotification } from './founding-class-claim-notification'
 
 export const TEMPLATES: Record<string, TemplateEntry> = {
   'invoice-request-notification': invoiceRequestNotification,
+  'founding-class-claim-notification': foundingClassClaimNotification,
 }
