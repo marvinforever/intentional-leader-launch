@@ -81,35 +81,6 @@ const STRIPE_COMPANY_URL = "https://buy.stripe.com/bJe6oHayP7jQa6c1TRds40S";
 const CALENDLY_URL = "https://calendar.app.google/Vs3an1FRGgmiMBL1A";
 const MARK_PHONE = "(402) 881-9986";
 
-// Inaugural Offering — instant-checkout Stripe links. Shep pastes final URLs here.
-const STRIPE_1K_URL = STRIPE_INDIVIDUAL_URL; // Founding Seat $1,000 (existing $1K link — swap if Shep issues a new one)
-const STRIPE_5K_URL = "#STRIPE_5K"; // Pay It Forward $5,000 — PLACEHOLDER, paste Stripe URL here
-
-// Founding Class section is built but stays hidden until the June 22 unveil.
-// Flip to true (and add names to FOUNDING_CLASS) the morning of June 22.
-const SHOW_FOUNDING_CLASS = false;
-const FOUNDING_CLASS: string[] = [];
-
-// Inaugural Offering closes June 30, 2026 11:59 PM Central Time
-const DEADLINE = new Date("2026-07-01T04:59:00Z").getTime();
-
-const useCountdown = () => {
-  // Start at null so SSR + first client render match (no time-based diff).
-  // After mount, tick every second.
-  const [now, setNow] = useState<number | null>(null);
-  useEffect(() => {
-    setNow(Date.now());
-    const t = setInterval(() => setNow(Date.now()), 1000);
-    return () => clearInterval(t);
-  }, []);
-  const diff = now === null ? 0 : Math.max(0, DEADLINE - now);
-  const days = Math.floor(diff / 86400000);
-  const hours = Math.floor((diff % 86400000) / 3600000);
-  const minutes = Math.floor((diff % 3600000) / 60000);
-  const seconds = Math.floor((diff % 60000) / 1000);
-  return { days, hours, minutes, seconds, mounted: now !== null };
-};
-
 const SectionLabel = ({ children }: { children: React.ReactNode }) => (
   <div className="text-xs font-semibold tracking-[0.2em] uppercase text-[hsl(var(--ial-green-soft))] mb-4">
     {children}
