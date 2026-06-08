@@ -272,7 +272,7 @@ function IntentionalLeader() {
     },
     {
       q: "What if I'm just one leader, not a whole company?",
-      a: "Individual enrollment is $1,000 (early bird). You get the full 90-day Jericho experience and all live group calls.",
+      a: "Individual enrollment starts at $1,000 through the Inaugural Offering (closes June 30). You get the full 90-day Jericho experience and all live group calls.",
     },
     {
       q: "What happens after Day 90?",
