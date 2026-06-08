@@ -648,7 +648,7 @@ function IntentionalLeader() {
               variant="outline"
               className="border-2 border-[hsl(var(--ial-green-deep))] bg-transparent text-[hsl(var(--ial-green-deep))] hover:bg-[hsl(var(--ial-green-deep))] hover:text-white font-semibold h-14 px-8"
             >
-              <a href={STRIPE_INDIVIDUAL_URL} target="_blank" rel="noopener noreferrer" data-track-cta="buy_now">Buy Now</a>
+              <Link to="/inaugural" data-track-cta="join_founding_class">Join the Founding Class →</Link>
             </Button>
           </div>
         </div>
@@ -747,7 +747,7 @@ function IntentionalLeader() {
                   variant="outline"
                   className="border-2 border-[hsl(var(--ial-green-deep))] bg-transparent text-[hsl(var(--ial-green-deep))] hover:bg-[hsl(var(--ial-green-deep))] hover:text-white font-semibold"
                 >
-                  <a href={STRIPE_INDIVIDUAL_URL} target="_blank" rel="noopener noreferrer" data-track-cta="buy_now">Buy Now</a>
+                  <Link to="/inaugural" data-track-cta="join_founding_class">Join the Founding Class →</Link>
                 </Button>
               </div>
             </div>
@@ -1146,7 +1146,7 @@ function IntentionalLeader() {
               size="lg"
               className="bg-[hsl(var(--ial-green))] hover:bg-[hsl(var(--ial-green-deep))] text-white font-semibold h-14 px-8"
             >
-              <a href={STRIPE_INDIVIDUAL_URL} target="_blank" rel="noopener noreferrer" data-track-cta="buy_now">Buy Now</a>
+              <Link to="/inaugural" data-track-cta="join_founding_class">Join the Founding Class →</Link>
             </Button>
             <Button
               asChild
