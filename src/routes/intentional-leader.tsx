@@ -51,7 +51,7 @@ export const Route = createFileRoute("/intentional-leader")({
       {
         name: "description",
         content:
-          "A 90-day leadership program for agribusiness leaders. Powered by Jericho AI coach. Built from 225+ podcast episodes. Early bird ends July 1.",
+          "A 90-day leadership program for agribusiness leaders. Powered by Jericho AI coach. Built from 225+ podcast episodes. Inaugural Offering closes June 30.",
       },
       {
         property: "og:title",
@@ -60,7 +60,7 @@ export const Route = createFileRoute("/intentional-leader")({
       {
         property: "og:description",
         content:
-          "Built from 225+ podcast episodes with the leaders of ag. 90 days. Powered by Jericho AI coach. Early bird ends July 1.",
+          "Built from 225+ podcast episodes with the leaders of ag. 90 days. Powered by Jericho AI coach. Inaugural Offering closes June 30.",
       },
       { property: "og:type", content: "website" },
       { property: "og:image", content: ogShareImage },
@@ -97,8 +97,8 @@ const STRIPE_5K_URL = "#STRIPE_5K"; // Pay It Forward $5,000 — PLACEHOLDER, pa
 const SHOW_FOUNDING_CLASS = false;
 const FOUNDING_CLASS: string[] = [];
 
-// Early bird ends July 1, 2026 11:59 PM Central Time
-const DEADLINE = new Date("2026-07-02T05:59:00Z").getTime();
+// Inaugural Offering closes June 30, 2026 11:59 PM Central Time
+const DEADLINE = new Date("2026-07-01T04:59:00Z").getTime();
 
 const useCountdown = () => {
   // Start at null so SSR + first client render match (no time-based diff).
@@ -362,7 +362,7 @@ const InvoiceForm = () => {
         </label>
         <label className="flex items-center gap-3 p-3 rounded border border-[hsl(var(--ial-border))] bg-[hsl(var(--ial-surface-2))] cursor-pointer">
           <RadioGroupItem value="company" id="lt-co" />
-          <span className="text-sm">Company · $10,000</span>
+          <span className="text-sm">Company · $5,000</span>
         </label>
       </RadioGroup>
 
@@ -594,7 +594,7 @@ function IntentionalLeader() {
         <div className="container max-w-6xl mx-auto px-6 py-24 md:py-32 relative z-10">
           <div className="flex flex-wrap items-center gap-2 mb-8">
             <div className="inline-flex items-center px-4 py-2 rounded-full border border-[hsl(var(--ial-green))]/40 bg-[hsl(var(--ial-green))]/10 text-[hsl(var(--ial-green-soft))] text-xs font-semibold tracking-wider uppercase">
-              Only 10 Company Spots for Early Bird · Closes July 1
+              Only 10 Company Spots · Inaugural Offering Closes June 30
             </div>
           </div>
           <h1 className="font-[family-name:var(--font-playfair)] text-5xl md:text-7xl font-black leading-[1.05] mb-6 max-w-5xl">
@@ -1382,7 +1382,7 @@ function IntentionalLeader() {
             Convinced? Lock your seat before the price moves.
           </h3>
           <p className="text-[hsl(var(--ial-text-muted))] mb-6">
-            Early bird ends July 1 — then prices go up 50%.
+            Inaugural Offering closes June 30 — then the program begins August 1.
           </p>
           <div className="flex flex-wrap justify-center gap-3">
             <Button
