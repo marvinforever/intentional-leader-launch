@@ -296,10 +296,6 @@ function IntentionalLeader() {
     },
   ];
 
-  const scrollToPricing = () => {
-    document.getElementById("pricing")?.scrollIntoView({ behavior: "smooth" });
-  };
-
   return (
     <div className="ial-page min-h-screen bg-[hsl(var(--ial-bg))] text-[hsl(var(--ial-text))] font-[family-name:var(--font-inter)]">
       {/* TOP HEADER */}
@@ -328,13 +324,21 @@ function IntentionalLeader() {
               </div>
             </div>
           </div>
-          <Button
-            asChild
-            size="sm"
-            className="bg-[hsl(var(--ial-green))] hover:bg-[hsl(var(--ial-green-deep))] text-white font-semibold"
-          >
-            <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" data-track-cta="book_call">Book a Call</a>
-          </Button>
+          <div className="flex items-center gap-3">
+            <Link
+              to="/inaugural"
+              className="hidden sm:inline text-xs font-semibold uppercase tracking-[0.15em] text-[hsl(var(--ial-green-soft))] hover:text-[hsl(var(--ial-text))]"
+            >
+              The Inaugural Offering
+            </Link>
+            <Button
+              asChild
+              size="sm"
+              className="bg-[hsl(var(--ial-green))] hover:bg-[hsl(var(--ial-green-deep))] text-white font-semibold"
+            >
+              <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" data-track-cta="book_call">Book a Call</a>
+            </Button>
+          </div>
         </div>
       </header>
 
@@ -346,7 +350,7 @@ function IntentionalLeader() {
         <div className="container max-w-6xl mx-auto px-6 py-24 md:py-32 relative z-10">
           <div className="flex flex-wrap items-center gap-2 mb-8">
             <div className="inline-flex items-center px-4 py-2 rounded-full border border-[hsl(var(--ial-green))]/40 bg-[hsl(var(--ial-green))]/10 text-[hsl(var(--ial-green-soft))] text-xs font-semibold tracking-wider uppercase">
-              Only 10 Company Spots · Inaugural Offering Closes June 30
+              The Founding Class is forming · Closes June 30
             </div>
           </div>
           <h1 className="font-[family-name:var(--font-playfair)] text-5xl md:text-7xl font-black leading-[1.05] mb-6 max-w-5xl">
@@ -379,12 +383,12 @@ function IntentionalLeader() {
               <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" data-track-cta="book_call">Book a Call</a>
             </Button>
             <Button
+              asChild
               size="lg"
               variant="outline"
-              onClick={scrollToPricing}
               className="border-2 border-[hsl(var(--ial-green-deep))] bg-transparent text-[hsl(var(--ial-green-deep))] hover:bg-[hsl(var(--ial-green-deep))] hover:text-white h-14 px-8 text-base font-semibold"
             >
-              See Pricing & Buy Now
+              <Link to="/inaugural" data-track-cta="join_founding_class">Join the Founding Class →</Link>
             </Button>
           </div>
           <div className="flex items-start gap-2 text-sm text-[hsl(var(--ial-text-muted))] leading-relaxed">
