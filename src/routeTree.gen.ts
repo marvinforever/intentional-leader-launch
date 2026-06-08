@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SponsorsRouteImport } from './routes/sponsors'
 import { Route as IntentionalLeaderRouteImport } from './routes/intentional-leader'
+import { Route as InauguralRouteImport } from './routes/inaugural'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as EmailUnsubscribeRouteImport } from './routes/email/unsubscribe'
 import { Route as LovableEmailSuppressionRouteImport } from './routes/lovable/email/suppression'
@@ -27,6 +28,11 @@ const SponsorsRoute = SponsorsRouteImport.update({
 const IntentionalLeaderRoute = IntentionalLeaderRouteImport.update({
   id: '/intentional-leader',
   path: '/intentional-leader',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InauguralRoute = InauguralRouteImport.update({
+  id: '/inaugural',
+  path: '/inaugural',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -70,6 +76,7 @@ const LovableEmailQueueProcessRoute =
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/inaugural': typeof InauguralRoute
   '/intentional-leader': typeof IntentionalLeaderRoute
   '/sponsors': typeof SponsorsRoute
   '/email/unsubscribe': typeof EmailUnsubscribeRoute
@@ -81,6 +88,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/inaugural': typeof InauguralRoute
   '/intentional-leader': typeof IntentionalLeaderRoute
   '/sponsors': typeof SponsorsRoute
   '/email/unsubscribe': typeof EmailUnsubscribeRoute
@@ -93,6 +101,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/inaugural': typeof InauguralRoute
   '/intentional-leader': typeof IntentionalLeaderRoute
   '/sponsors': typeof SponsorsRoute
   '/email/unsubscribe': typeof EmailUnsubscribeRoute
@@ -106,6 +115,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/inaugural'
     | '/intentional-leader'
     | '/sponsors'
     | '/email/unsubscribe'
@@ -117,6 +127,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/inaugural'
     | '/intentional-leader'
     | '/sponsors'
     | '/email/unsubscribe'
@@ -128,6 +139,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/inaugural'
     | '/intentional-leader'
     | '/sponsors'
     | '/email/unsubscribe'
@@ -140,6 +152,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  InauguralRoute: typeof InauguralRoute
   IntentionalLeaderRoute: typeof IntentionalLeaderRoute
   SponsorsRoute: typeof SponsorsRoute
   EmailUnsubscribeRoute: typeof EmailUnsubscribeRoute
@@ -164,6 +177,13 @@ declare module '@tanstack/react-router' {
       path: '/intentional-leader'
       fullPath: '/intentional-leader'
       preLoaderRoute: typeof IntentionalLeaderRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/inaugural': {
+      id: '/inaugural'
+      path: '/inaugural'
+      fullPath: '/inaugural'
+      preLoaderRoute: typeof InauguralRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -220,6 +240,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  InauguralRoute: InauguralRoute,
   IntentionalLeaderRoute: IntentionalLeaderRoute,
   SponsorsRoute: SponsorsRoute,
   EmailUnsubscribeRoute: EmailUnsubscribeRoute,
@@ -232,3 +253,12 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { createStart } from '@tanstack/react-start'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+  }
+}
