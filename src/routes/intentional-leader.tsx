@@ -86,7 +86,7 @@ export const Route = createFileRoute("/intentional-leader")({
 const STRIPE_INDIVIDUAL_URL = "https://buy.stripe.com/00wdR9fT933A6U0fKHds40R";
 const STRIPE_COMPANY_URL = "https://buy.stripe.com/bJe6oHayP7jQa6c1TRds40S";
 const CALENDLY_URL = "https://calendar.app.google/Vs3an1FRGgmiMBL1A";
-const MARK_PHONE = "402-881-986";
+const MARK_PHONE = "(402) 881-9986";
 
 // Early bird ends July 1, 2026 11:59 PM Central Time
 const DEADLINE = new Date("2026-07-02T05:59:00Z").getTime();
