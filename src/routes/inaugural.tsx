@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { Check, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -486,17 +486,16 @@ function ClaimForm() {
   });
 
   // Listen for tier-card pre-select events from Section 6.
-  if (typeof window !== "undefined") {
-    window.addEventListener(
-      "inaugural:preselect",
-      ((e: CustomEvent<string>) => {
-        if (e.detail && POSITIONS.includes(e.detail)) {
-          setForm((f) => ({ ...f, position: e.detail }));
-        }
-      }) as EventListener,
-      { once: false },
-    );
-  }
+  useEffect(() => {
+    const handler = (e: Event) => {
+      const detail = (e as CustomEvent<string>).detail;
+      if (detail && POSITIONS.includes(detail)) {
+        setForm((f) => ({ ...f, position: detail }));
+      }
+    };
+    window.addEventListener("inaugural:preselect", handler);
+    return () => window.removeEventListener("inaugural:preselect", handler);
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
