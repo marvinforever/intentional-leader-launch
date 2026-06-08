@@ -1135,10 +1135,10 @@ function IntentionalLeader() {
       <section className="py-16 border-t border-[hsl(var(--ial-border))] bg-[hsl(var(--ial-surface))]" data-track-section="inline_cta_2">
         <div className="container max-w-4xl mx-auto px-6 text-center">
           <h3 className="font-[family-name:var(--font-playfair)] text-2xl md:text-3xl font-bold mb-3 text-[hsl(var(--ial-text))]">
-            Convinced? Lock your seat before the price moves.
+            Convinced? Join the Founding Class.
           </h3>
           <p className="text-[hsl(var(--ial-text-muted))] mb-6">
-            Inaugural Offering closes June 30 — then the program begins August 1.
+            The Inaugural Offering closes June 30. The program begins August 1.
           </p>
           <div className="flex flex-wrap justify-center gap-3">
             <Button
@@ -1213,12 +1213,12 @@ function IntentionalLeader() {
               <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" data-track-cta="book_call">Book a Call</a>
             </Button>
             <Button
+              asChild
               size="lg"
               variant="outline"
-              onClick={scrollToPricing}
               className="border-2 border-white bg-transparent text-white hover:bg-white hover:text-[hsl(var(--ial-green-deep))] h-14 px-8 font-semibold text-base"
             >
-              Buy Now
+              <Link to="/inaugural" data-track-cta="join_founding_class">Join the Founding Class →</Link>
             </Button>
           </div>
         </div>
