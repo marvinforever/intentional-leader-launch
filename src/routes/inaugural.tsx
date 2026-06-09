@@ -566,16 +566,6 @@ function InauguralPage() {
                     </li>
                   ))}
                 </ul>
-                <Button
-                  onClick={() => {
-                    const event = new CustomEvent("inaugural:preselect", { detail: tier.position });
-                    window.dispatchEvent(event);
-                    scrollTo("claim");
-                  }}
-                  className="w-full bg-[hsl(var(--ial-green))] hover:bg-[hsl(var(--ial-green-deep))] text-white h-12 font-semibold"
-                >
-                  Claim or Pledge
-                </Button>
               </Card>
             ))}
           </div>
