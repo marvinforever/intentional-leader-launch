@@ -398,8 +398,6 @@ function InauguralPage() {
               </li>
             </ul>
           </Card>
-            </Card>
-          </div>
 
           {/* The safety net */}
           <Card
