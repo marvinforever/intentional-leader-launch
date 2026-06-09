@@ -744,7 +744,7 @@ function ClaimForm() {
                   className="bg-[hsl(var(--ial-surface-2))] border-[hsl(var(--ial-border))]" />
               </div>
               <div>
-                <Label htmlFor="leaders_count">Leaders you'll bring</Label>
+                <Label htmlFor="leaders_count">How many participants?</Label>
                 <Input id="leaders_count" type="number" min={0} value={form.leaders_count}
                   onChange={(e) => setForm({ ...form, leaders_count: e.target.value })}
                   className="bg-[hsl(var(--ial-surface-2))] border-[hsl(var(--ial-border))]" />
