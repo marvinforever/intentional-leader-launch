@@ -277,7 +277,7 @@ function IntentionalLeader() {
     },
     {
       q: "Payment terms for the company license?",
-      a: "Stripe: full payment at enrollment. Invoice path: Net 15 via QuickBooks.",
+      a: "Stripe: full payment at enrollment. Invoice path: due on receipt via QuickBooks.",
     },
     {
       q: "When does the program begin?",
