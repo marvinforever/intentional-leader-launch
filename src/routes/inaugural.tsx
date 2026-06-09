@@ -609,13 +609,6 @@ function InauguralPage() {
             people — and trust it. The window closes June 30.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button
-              size="lg"
-              onClick={() => scrollTo("tiers")}
-              className="bg-white hover:bg-[hsl(var(--ial-text))] text-[hsl(var(--ial-green-deep))] h-14 px-8 font-semibold text-base"
-            >
-              Claim Your Place
-            </Button>
             <a href={MARK_PHONE_TEL} className="text-white font-semibold text-lg underline-offset-4 hover:underline">
               {MARK_PHONE_DISPLAY}
             </a>
