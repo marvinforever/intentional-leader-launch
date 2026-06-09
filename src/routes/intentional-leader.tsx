@@ -269,7 +269,7 @@ function IntentionalLeader() {
     },
     {
       q: "What if I'm just one leader, not a whole company?",
-      a: "Individual enrollment starts at $1,000 through the Inaugural Offering (closes June 30). You get the full 90-day Jericho experience and all live group calls.",
+      a: "Grab a Founding Seat for $1,000 — the full 90-day experience and all live sessions, for one leader.",
     },
     {
       q: "What happens after Day 90?",
@@ -277,7 +277,7 @@ function IntentionalLeader() {
     },
     {
       q: "Payment terms for the company license?",
-      a: "Stripe: full payment at enrollment. Invoice path: Net 15 via QuickBooks.",
+      a: "Stripe: full payment at enrollment. Invoice path: due on receipt via QuickBooks.",
     },
     {
       q: "When does the program begin?",
