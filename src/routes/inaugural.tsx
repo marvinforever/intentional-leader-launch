@@ -398,21 +398,6 @@ function InauguralPage() {
             </p>
           </Card>
 
-          {/* What it's NOT */}
-          <div className="grid sm:grid-cols-3 gap-4 text-sm">
-            <div className="p-5 rounded border border-[hsl(var(--ial-border))] bg-[hsl(var(--ial-surface))]">
-              <div className="text-[hsl(var(--ial-text-muted))] uppercase tracking-wider text-xs mb-2">Not a Groupon</div>
-              <p className="text-[hsl(var(--ial-text-muted))] leading-relaxed">No group discount. No "if enough people sign up." The program runs August 1 regardless.</p>
-            </div>
-            <div className="p-5 rounded border border-[hsl(var(--ial-border))] bg-[hsl(var(--ial-surface))]">
-              <div className="text-[hsl(var(--ial-text-muted))] uppercase tracking-wider text-xs mb-2">Not a Kickstarter</div>
-              <p className="text-[hsl(var(--ial-text-muted))] leading-relaxed">No funding goal you have to hit. This isn't speculative — it's built and ready.</p>
-            </div>
-            <div className="p-5 rounded border border-[hsl(var(--ial-border))] bg-[hsl(var(--ial-surface))]">
-              <div className="text-[hsl(var(--ial-text-muted))] uppercase tracking-wider text-xs mb-2">Not a public auction</div>
-              <p className="text-[hsl(var(--ial-text-muted))] leading-relaxed">Pledges aren't public. Standings are shared privately on June 22 so you can decide whether to hold or raise — no live bidding war.</p>
-            </div>
-          </div>
         </div>
       </section>
 
