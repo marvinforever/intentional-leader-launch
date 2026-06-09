@@ -444,7 +444,7 @@ function InauguralPage() {
           </h2>
           <p className="text-lg text-[hsl(var(--ial-text-muted))] mb-12 max-w-3xl">
             Door 1 below — instant checkout, pay by card. Door 2 — the 10 sponsor positions you
-            either claim outright or pledge on (sealed until June 30).
+            either claim outright or pledge on (standings revealed June 22, awarded June 30).
           </p>
 
           <div className="text-xs font-bold uppercase tracking-[0.2em] text-[hsl(var(--ial-green-soft))] mb-4">
@@ -504,7 +504,9 @@ function InauguralPage() {
           <p className="text-[hsl(var(--ial-text-muted))] mb-6 max-w-3xl">
             Click <span className="text-[hsl(var(--ial-text))] font-semibold">Claim or Pledge</span> on
             any tier — the form lets you either claim the position at its listed price or pledge
-            your own number. Invoiced and due on receipt once awarded June 30.
+            your own number (you don't have to match the listed price to be in the running).
+            Standings are shared privately on June 22; positions awarded June 30 and invoiced due
+            on receipt.
           </p>
 
           <div className="grid md:grid-cols-3 gap-6">
