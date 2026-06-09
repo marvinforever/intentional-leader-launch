@@ -283,13 +283,11 @@ function InauguralPage() {
 
           <SectionLabel>How to get in</SectionLabel>
           <h2 className="font-[family-name:var(--font-playfair)] text-4xl md:text-5xl font-bold mb-6 leading-[1.1] max-w-3xl">
-            Think of it like a sealed-bid auction — with a safety net.
+            Pay what you think it is worth.
           </h2>
           <p className="text-lg md:text-xl text-[hsl(var(--ial-text-muted))] leading-relaxed max-w-3xl mb-12">
             There are <span className="text-[hsl(var(--ial-text))] font-semibold">two doors</span>{" "}
-            into the Founding Class. One is instant — pay by card, you're in. The other is the 10
-            sponsor positions, which work like a sealed-bid auction with a one-week reveal window.
-            Here's exactly how it works.
+            into the Founding Class. Here's exactly how it works.
           </p>
 
           {/* Two doors */}
