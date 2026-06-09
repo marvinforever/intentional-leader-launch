@@ -88,13 +88,6 @@ function InauguralPage() {
               Intentional Leader
             </span>
           </Link>
-          <Button
-            size="sm"
-            onClick={() => scrollTo("tiers")}
-            className="bg-[hsl(var(--ial-green))] hover:bg-[hsl(var(--ial-green-deep))] text-white font-semibold"
-          >
-            Claim Your Place
-          </Button>
         </div>
       </header>
 
