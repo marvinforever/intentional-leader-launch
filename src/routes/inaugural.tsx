@@ -301,8 +301,9 @@ function InauguralPage() {
           </h2>
           <p className="text-lg md:text-xl text-[hsl(var(--ial-text-muted))] leading-relaxed max-w-3xl mb-12">
             There are <span className="text-[hsl(var(--ial-text))] font-semibold">two doors</span>{" "}
-            into the Founding Class. One is instant. The other is the 10 sponsor positions — and
-            those work like sealed bids that open on June 30. Here's exactly how it works.
+            into the Founding Class. One is instant — pay by card, you're in. The other is the 10
+            sponsor positions, which work like a sealed-bid auction with a one-week reveal window.
+            Here's exactly how it works.
           </p>
 
           {/* Two doors */}
@@ -348,24 +349,55 @@ function InauguralPage() {
               <ul className="space-y-3 text-white/90 leading-relaxed mb-6 flex-1">
                 <li className="flex gap-3">
                   <span className="text-white font-bold">1.</span>
-                  <span><span className="font-semibold text-white">Claim outright</span> at the listed level ($50K / $25K / $10K) and lock the position now — first come, first served on the remaining slots.</span>
+                  <span><span className="font-semibold text-white">Claim outright</span> at the listed level ($50K / $25K / $10K) and lock the position immediately — first come, first served on the open slots.</span>
                 </li>
                 <li className="flex gap-3">
                   <span className="text-white font-bold">2.</span>
-                  <span><span className="font-semibold text-white">Or pledge your number</span> — what the position is worth to your company. Pledges stay sealed (nobody sees them, not even us, until close).</span>
+                  <span><span className="font-semibold text-white">Or pledge what the position is worth to you.</span> You don't have to hit the listed price to be in the running — you name your number for the position you want.</span>
                 </li>
                 <li className="flex gap-3">
                   <span className="text-white font-bold">3.</span>
-                  <span>On <span className="font-semibold text-white">June 30</span>, pledges open. The top pledges at each level are awarded the 10 positions.</span>
+                  <span>On <span className="font-semibold text-white">June 22</span>, every bidder gets a private note from Mark with where their pledge stands at that level (in / on the bubble / out).</span>
                 </li>
                 <li className="flex gap-3">
                   <span className="text-white font-bold">4.</span>
-                  <span>Awarded sponsors are invoiced, due on receipt. August 1, the cohort starts.</span>
+                  <span><span className="font-semibold text-white">June 22 – June 30:</span> one-week window to raise your pledge if you want to hold or claim the position.</span>
+                </li>
+                <li className="flex gap-3">
+                  <span className="text-white font-bold">5.</span>
+                  <span>On <span className="font-semibold text-white">June 30</span>, positions are awarded to the top pledges at each level. Awarded sponsors are invoiced, due on receipt. August 1, the cohort starts.</span>
                 </li>
               </ul>
               <div className="text-xs uppercase tracking-wider text-white/80 border-t border-white/20 pt-4">
-                10 positions · sealed pledges · awarded June 30
+                Pledge anytime · standings revealed June 22 · awarded June 30
               </div>
+            </Card>
+          </div>
+
+          {/* Worked example */}
+          <Card className="bg-[hsl(var(--ial-surface))] border-[hsl(var(--ial-border))] p-8 mb-8">
+            <div className="text-xs font-bold tracking-[0.2em] uppercase text-[hsl(var(--ial-green-soft))] mb-3">
+              A worked example
+            </div>
+            <p className="text-[hsl(var(--ial-text))] text-lg leading-relaxed mb-4">
+              You want a <span className="font-semibold">Founding Partner ($25,000)</span> position
+              but $25K isn't where you are right now. <span className="font-semibold">You pledge $15,000 on that position.</span>
+            </p>
+            <ul className="space-y-3 text-[hsl(var(--ial-text-muted))] leading-relaxed">
+              <li className="flex gap-3">
+                <span className="text-[hsl(var(--ial-green-soft))] font-bold">→</span>
+                <span>If the other top pledges at that level are below $15K, you're in at $15K.</span>
+              </li>
+              <li className="flex gap-3">
+                <span className="text-[hsl(var(--ial-green-soft))] font-bold">→</span>
+                <span>If they're above $15K, on June 22 you'll know exactly where you stand — and you have a week to raise your pledge if you want the position.</span>
+              </li>
+              <li className="flex gap-3">
+                <span className="text-[hsl(var(--ial-green-soft))] font-bold">→</span>
+                <span>If you don't win the position, your $15K still goes to work — see the safety net below.</span>
+              </li>
+            </ul>
+          </Card>
             </Card>
           </div>
 
@@ -377,8 +409,8 @@ function InauguralPage() {
               The safety net · Nobody loses
             </div>
             <p className="text-[hsl(var(--ial-text))] text-lg md:text-xl leading-relaxed">
-              This is the part a real auction doesn't give you: if you pledge and don't land
-              in the top 10, <span className="font-semibold">you still get full Founding Class access for your team at the amount you pledged.</span>{" "}
+              This is the part a real auction doesn't give you: if you pledge and don't land a
+              sponsor position, <span className="font-semibold">you still get full Founding Class access for your team at the amount you pledged.</span>{" "}
               You don't walk away empty-handed. You just don't carry the sponsor flag. Every
               dollar pledged is a dollar invested in your people either way.
             </p>
@@ -396,7 +428,7 @@ function InauguralPage() {
             </div>
             <div className="p-5 rounded border border-[hsl(var(--ial-border))] bg-[hsl(var(--ial-surface))]">
               <div className="text-[hsl(var(--ial-text-muted))] uppercase tracking-wider text-xs mb-2">Not a public auction</div>
-              <p className="text-[hsl(var(--ial-text-muted))] leading-relaxed">No bidding war. Pledges are sealed. You name your number once — what it's worth to you.</p>
+              <p className="text-[hsl(var(--ial-text-muted))] leading-relaxed">Pledges aren't public. Standings are shared privately on June 22 so you can decide whether to hold or raise — no live bidding war.</p>
             </div>
           </div>
         </div>
