@@ -65,9 +65,6 @@ const POSITIONS = [
   "Name my number",
 ];
 
-const scrollTo = (id: string) =>
-  document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
-
 const SectionLabel = ({ children }: { children: React.ReactNode }) => (
   <div className="text-xs font-semibold tracking-[0.2em] uppercase text-[hsl(var(--ial-green-soft))] mb-4">
     {children}
@@ -88,13 +85,6 @@ function InauguralPage() {
               Intentional Leader
             </span>
           </Link>
-          <Button
-            size="sm"
-            onClick={() => scrollTo("tiers")}
-            className="bg-[hsl(var(--ial-green))] hover:bg-[hsl(var(--ial-green-deep))] text-white font-semibold"
-          >
-            Claim Your Place
-          </Button>
         </div>
       </header>
 
@@ -117,13 +107,9 @@ function InauguralPage() {
             <p className="text-[hsl(var(--ial-text))] font-semibold">We're doing the opposite.</p>
           </div>
           <div className="flex flex-col sm:flex-row gap-4 mb-6">
-            <Button
-              size="lg"
-              onClick={() => scrollTo("tiers")}
-              className="bg-[hsl(var(--ial-green))] hover:bg-[hsl(var(--ial-green-deep))] text-white font-semibold h-14 px-8 text-base"
-            >
-              Claim Your Place
-            </Button>
+            <p className="text-sm text-[hsl(var(--ial-text-muted))] leading-relaxed">
+              Read on to see exactly how this works — and how to get in.
+            </p>
           </div>
           <div className="flex items-start gap-2 text-sm text-[hsl(var(--ial-text-muted))] leading-relaxed">
             <Phone className="w-4 h-4 mt-0.5 shrink-0" />
@@ -502,11 +488,10 @@ function InauguralPage() {
             Door 2 · The 10 Sponsor Positions
           </div>
           <p className="text-[hsl(var(--ial-text-muted))] mb-6 max-w-3xl">
-            Click <span className="text-[hsl(var(--ial-text))] font-semibold">Claim or Pledge</span> on
-            any tier — the form lets you either claim the position at its listed price or pledge
-            your own number (you don't have to match the listed price to be in the running).
-            Standings are shared privately on June 22; positions awarded June 30 and invoiced due
-            on receipt.
+            Scroll down to claim outright or pledge on any tier — the form lets you either claim
+            the position at its listed price or pledge your own number (you don't have to match
+            the listed price to be in the running). Standings are shared privately on June 22;
+            positions awarded June 30 and invoiced due on receipt.
           </p>
 
           <div className="grid md:grid-cols-3 gap-6">
@@ -577,16 +562,6 @@ function InauguralPage() {
                     </li>
                   ))}
                 </ul>
-                <Button
-                  onClick={() => {
-                    const event = new CustomEvent("inaugural:preselect", { detail: tier.position });
-                    window.dispatchEvent(event);
-                    scrollTo("claim");
-                  }}
-                  className="w-full bg-[hsl(var(--ial-green))] hover:bg-[hsl(var(--ial-green-deep))] text-white h-12 font-semibold"
-                >
-                  Claim or Pledge
-                </Button>
               </Card>
             ))}
           </div>
@@ -630,13 +605,6 @@ function InauguralPage() {
             people — and trust it. The window closes June 30.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button
-              size="lg"
-              onClick={() => scrollTo("tiers")}
-              className="bg-white hover:bg-[hsl(var(--ial-text))] text-[hsl(var(--ial-green-deep))] h-14 px-8 font-semibold text-base"
-            >
-              Claim Your Place
-            </Button>
             <a href={MARK_PHONE_TEL} className="text-white font-semibold text-lg underline-offset-4 hover:underline">
               {MARK_PHONE_DISPLAY}
             </a>
