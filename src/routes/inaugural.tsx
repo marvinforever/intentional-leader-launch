@@ -110,13 +110,9 @@ function InauguralPage() {
             <p className="text-[hsl(var(--ial-text))] font-semibold">We're doing the opposite.</p>
           </div>
           <div className="flex flex-col sm:flex-row gap-4 mb-6">
-            <Button
-              size="lg"
-              onClick={() => scrollTo("tiers")}
-              className="bg-[hsl(var(--ial-green))] hover:bg-[hsl(var(--ial-green-deep))] text-white font-semibold h-14 px-8 text-base"
-            >
-              Claim Your Place
-            </Button>
+            <p className="text-sm text-[hsl(var(--ial-text-muted))] leading-relaxed">
+              Read on to see exactly how this works — and how to get in.
+            </p>
           </div>
           <div className="flex items-start gap-2 text-sm text-[hsl(var(--ial-text-muted))] leading-relaxed">
             <Phone className="w-4 h-4 mt-0.5 shrink-0" />
