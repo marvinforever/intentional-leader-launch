@@ -295,41 +295,110 @@ function InauguralPage() {
             </p>
           </div>
 
-          <SectionLabel>Two ways to join</SectionLabel>
-          <h2 className="font-[family-name:var(--font-playfair)] text-4xl md:text-5xl font-bold mb-12 leading-[1.1]">
-            Two ways in.
+          <SectionLabel>How to get in</SectionLabel>
+          <h2 className="font-[family-name:var(--font-playfair)] text-4xl md:text-5xl font-bold mb-6 leading-[1.1] max-w-3xl">
+            Think of it like a sealed-bid auction — with a safety net.
           </h2>
-          <div className="grid md:grid-cols-2 gap-6 mb-10">
-            <Card className="bg-[hsl(var(--ial-surface))] border-[hsl(var(--ial-border))] p-8">
-              <div className="text-sm uppercase tracking-wider text-[hsl(var(--ial-green-soft))] mb-3">
-                Just want a seat?
+          <p className="text-lg md:text-xl text-[hsl(var(--ial-text-muted))] leading-relaxed max-w-3xl mb-12">
+            There are <span className="text-[hsl(var(--ial-text))] font-semibold">two doors</span>{" "}
+            into the Founding Class. One is instant. The other is the 10 sponsor positions — and
+            those work like sealed bids that open on June 30. Here's exactly how it works.
+          </p>
+
+          {/* Two doors */}
+          <div className="grid md:grid-cols-2 gap-6 mb-12">
+            {/* Door 1 — Instant */}
+            <Card className="bg-[hsl(var(--ial-surface))] border-[hsl(var(--ial-border))] p-8 flex flex-col">
+              <div className="text-xs font-bold tracking-[0.2em] uppercase text-[hsl(var(--ial-green-soft))] mb-3">
+                Door 1 · Instant
               </div>
-              <p className="text-[hsl(var(--ial-text-muted))] leading-relaxed">
-                Pick it up instantly below — one leader, or sponsor ten leaders from your client
-                organizations.
-              </p>
+              <h3 className="font-[family-name:var(--font-playfair)] text-2xl text-[hsl(var(--ial-text))] mb-4 leading-tight">
+                Buy a seat right now.
+              </h3>
+              <ul className="space-y-3 text-[hsl(var(--ial-text-muted))] leading-relaxed mb-6 flex-1">
+                <li className="flex gap-3">
+                  <span className="text-[hsl(var(--ial-green-soft))] font-bold">1.</span>
+                  <span>Pick <span className="text-[hsl(var(--ial-text))] font-semibold">Founding Seat ($1,000)</span> for one leader, or <span className="text-[hsl(var(--ial-text))] font-semibold">Pay It Forward ($5,000)</span> to sponsor 10 leaders from your client orgs.</span>
+                </li>
+                <li className="flex gap-3">
+                  <span className="text-[hsl(var(--ial-green-soft))] font-bold">2.</span>
+                  <span>Pay by card. You're in immediately.</span>
+                </li>
+                <li className="flex gap-3">
+                  <span className="text-[hsl(var(--ial-green-soft))] font-bold">3.</span>
+                  <span>August 1, the program starts. You're Founding Class.</span>
+                </li>
+              </ul>
+              <div className="text-xs uppercase tracking-wider text-[hsl(var(--ial-text-muted))] border-t border-[hsl(var(--ial-border))] pt-4">
+                Unlimited spots · no waiting · no bidding
+              </div>
             </Card>
-            <Card className="bg-[hsl(var(--ial-surface))] border-[hsl(var(--ial-border))] p-8">
-              <div className="text-sm uppercase tracking-wider text-[hsl(var(--ial-green-soft))] mb-3">
-                Want to sponsor the cohort?
+
+            {/* Door 2 — Sealed bid */}
+            <Card
+              className="border-2 border-[hsl(var(--ial-green))] p-8 flex flex-col"
+              style={{ background: "var(--ial-gradient-cta)" }}
+            >
+              <div className="text-xs font-bold tracking-[0.2em] uppercase text-white/80 mb-3">
+                Door 2 · The 10 Sponsor Positions
               </div>
-              <p className="text-[hsl(var(--ial-text-muted))] leading-relaxed">
-                There are 10 sponsor positions. You can claim one outright at its listed level,
-                or name your number — pledge what the position is worth to you. Pledges stay
-                sealed until June 30, when the top pledges are awarded the 10 positions.
-              </p>
+              <h3 className="font-[family-name:var(--font-playfair)] text-2xl text-white mb-4 leading-tight">
+                Claim a position — or pledge your number.
+              </h3>
+              <ul className="space-y-3 text-white/90 leading-relaxed mb-6 flex-1">
+                <li className="flex gap-3">
+                  <span className="text-white font-bold">1.</span>
+                  <span><span className="font-semibold text-white">Claim outright</span> at the listed level ($50K / $25K / $10K) and lock the position now — first come, first served on the remaining slots.</span>
+                </li>
+                <li className="flex gap-3">
+                  <span className="text-white font-bold">2.</span>
+                  <span><span className="font-semibold text-white">Or pledge your number</span> — what the position is worth to your company. Pledges stay sealed (nobody sees them, not even us, until close).</span>
+                </li>
+                <li className="flex gap-3">
+                  <span className="text-white font-bold">3.</span>
+                  <span>On <span className="font-semibold text-white">June 30</span>, pledges open. The top pledges at each level are awarded the 10 positions.</span>
+                </li>
+                <li className="flex gap-3">
+                  <span className="text-white font-bold">4.</span>
+                  <span>Awarded sponsors are invoiced, due on receipt. August 1, the cohort starts.</span>
+                </li>
+              </ul>
+              <div className="text-xs uppercase tracking-wider text-white/80 border-t border-white/20 pt-4">
+                10 positions · sealed pledges · awarded June 30
+              </div>
             </Card>
           </div>
+
+          {/* The safety net */}
           <Card
-            className="p-8 border-2 border-[hsl(var(--ial-green))]"
-            style={{ background: "var(--ial-gradient-cta)" }}
+            className="p-8 border-2 border-[hsl(var(--ial-green))] bg-[hsl(var(--ial-surface))] mb-8"
           >
-            <p className="text-white text-lg md:text-xl leading-relaxed">
-              <span className="font-bold">Nobody loses.</span> If you pledge and don't land in
-              the top 10, you still get full Founding Class access for your team at the amount
-              you committed. You're still in. You just don't get the sponsor flag.
+            <div className="text-xs font-bold tracking-[0.2em] uppercase text-[hsl(var(--ial-green-soft))] mb-3">
+              The safety net · Nobody loses
+            </div>
+            <p className="text-[hsl(var(--ial-text))] text-lg md:text-xl leading-relaxed">
+              This is the part a real auction doesn't give you: if you pledge and don't land
+              in the top 10, <span className="font-semibold">you still get full Founding Class access for your team at the amount you pledged.</span>{" "}
+              You don't walk away empty-handed. You just don't carry the sponsor flag. Every
+              dollar pledged is a dollar invested in your people either way.
             </p>
           </Card>
+
+          {/* What it's NOT */}
+          <div className="grid sm:grid-cols-3 gap-4 text-sm">
+            <div className="p-5 rounded border border-[hsl(var(--ial-border))] bg-[hsl(var(--ial-surface))]">
+              <div className="text-[hsl(var(--ial-text-muted))] uppercase tracking-wider text-xs mb-2">Not a Groupon</div>
+              <p className="text-[hsl(var(--ial-text-muted))] leading-relaxed">No group discount. No "if enough people sign up." The program runs August 1 regardless.</p>
+            </div>
+            <div className="p-5 rounded border border-[hsl(var(--ial-border))] bg-[hsl(var(--ial-surface))]">
+              <div className="text-[hsl(var(--ial-text-muted))] uppercase tracking-wider text-xs mb-2">Not a Kickstarter</div>
+              <p className="text-[hsl(var(--ial-text-muted))] leading-relaxed">No funding goal you have to hit. This isn't speculative — it's built and ready.</p>
+            </div>
+            <div className="p-5 rounded border border-[hsl(var(--ial-border))] bg-[hsl(var(--ial-surface))]">
+              <div className="text-[hsl(var(--ial-text-muted))] uppercase tracking-wider text-xs mb-2">Not a public auction</div>
+              <p className="text-[hsl(var(--ial-text-muted))] leading-relaxed">No bidding war. Pledges are sealed. You name your number once — what it's worth to you.</p>
+            </div>
+          </div>
         </div>
       </section>
 
