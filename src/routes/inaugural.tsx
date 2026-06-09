@@ -409,9 +409,17 @@ function InauguralPage() {
       >
         <div className="container max-w-6xl mx-auto px-6">
           <SectionLabel>Choose your place</SectionLabel>
-          <h2 className="font-[family-name:var(--font-playfair)] text-4xl md:text-5xl font-bold mb-12 leading-[1.1]">
+          <h2 className="font-[family-name:var(--font-playfair)] text-4xl md:text-5xl font-bold mb-4 leading-[1.1]">
             Choose your place in the Founding Class.
           </h2>
+          <p className="text-lg text-[hsl(var(--ial-text-muted))] mb-12 max-w-3xl">
+            Door 1 below — instant checkout, pay by card. Door 2 — the 10 sponsor positions you
+            either claim outright or pledge on (sealed until June 30).
+          </p>
+
+          <div className="text-xs font-bold uppercase tracking-[0.2em] text-[hsl(var(--ial-green-soft))] mb-4">
+            Door 1 · Instant — pay by card, you're in
+          </div>
 
           {/* Instant checkout */}
           <div className="grid md:grid-cols-2 gap-6 mb-16">
@@ -460,9 +468,14 @@ function InauguralPage() {
           </div>
 
           {/* Sponsor positions header */}
-          <div className="text-sm font-semibold uppercase tracking-[0.15em] text-[hsl(var(--ial-text-muted))] mb-6">
-            10 Sponsor Positions · claim outright or name your number · invoiced, due on receipt
+          <div className="text-xs font-bold uppercase tracking-[0.2em] text-[hsl(var(--ial-green-soft))] mb-3">
+            Door 2 · The 10 Sponsor Positions
           </div>
+          <p className="text-[hsl(var(--ial-text-muted))] mb-6 max-w-3xl">
+            Click <span className="text-[hsl(var(--ial-text))] font-semibold">Claim or Pledge</span> on
+            any tier — the form lets you either claim the position at its listed price or pledge
+            your own number. Invoiced and due on receipt once awarded June 30.
+          </p>
 
           <div className="grid md:grid-cols-3 gap-6">
             {[
