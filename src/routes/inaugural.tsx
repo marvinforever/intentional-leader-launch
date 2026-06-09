@@ -231,6 +231,70 @@ function InauguralPage() {
       {/* SECTION 5 — HOW IT WORKS */}
       <section className="py-24 border-t border-[hsl(var(--ial-border))]">
         <div className="container max-w-6xl mx-auto px-6">
+          <SectionLabel>How it actually works</SectionLabel>
+          <h2 className="font-[family-name:var(--font-playfair)] text-4xl md:text-5xl font-bold mb-6 leading-[1.1] max-w-3xl">
+            This is not a course you log into and watch.
+          </h2>
+          <p className="text-lg md:text-xl text-[hsl(var(--ial-text-muted))] leading-relaxed max-w-3xl mb-12">
+            It's 90 days inside a coaching system built around <em>your</em> leader, your team,
+            and your season — drawn from 225+ podcast interviews with the best operators in
+            agriculture, distilled into something your people can actually use on Monday morning.
+          </p>
+
+          {/* The 90 days — what actually happens */}
+          <div className="grid md:grid-cols-2 gap-6 mb-16">
+            {[
+              {
+                k: "Day 1",
+                t: "Your Intentional Leader Profile",
+                b: "Each leader sits with Jericho — our AI coach — and builds a personal profile. Goals, friction points, the team they lead, the season they're in. Everything that follows is built around that profile.",
+              },
+              {
+                k: "Every day",
+                t: "A personalized brief, built for you",
+                b: "Short daily prompts and a personalized podcast feed pulled from the Lead Intentional library. Not generic content — the exact interview, the exact 5-minute Friday, the exact framework that matches what you're working on this week.",
+              },
+              {
+                k: "Every Friday",
+                t: "5-Minute Friday voice check-in",
+                b: "A guided voice reflection. You talk, Jericho listens, patterns surface. Your manager (and you) get a private weekly read on momentum, blockers, and what you're actually building.",
+              },
+              {
+                k: "Anytime",
+                t: "Unlimited coaching on demand",
+                b: "Stuck in a hard conversation? Prepping a 1:1? Rewriting a job description? Open Jericho. It already knows your context — your team, your goals, the conversation you had last Tuesday — and coaches from there.",
+              },
+              {
+                k: "3 times in 90 days",
+                t: "Live half-day sessions with Mark",
+                b: "Three working sessions with the full Founding Class. Not lectures — live problem-solving on the things this cohort is actually running into. You leave with the next move, not notes.",
+              },
+              {
+                k: "Day 90",
+                t: "Your Intentional Leader Report",
+                b: "A real artifact: where each leader started, what shifted, the specific decisions they got more deliberate and more decisive about, and the plan for the next 90 days. For sponsors, you get the org-level read across every leader you sponsored.",
+              },
+            ].map((step) => (
+              <Card key={step.t} className="bg-[hsl(var(--ial-surface))] border-[hsl(var(--ial-border))] p-8">
+                <div className="text-xs font-semibold tracking-[0.18em] uppercase text-[hsl(var(--ial-green-soft))] mb-3">
+                  {step.k}
+                </div>
+                <h3 className="font-[family-name:var(--font-playfair)] text-2xl text-[hsl(var(--ial-text))] mb-3 leading-tight">
+                  {step.t}
+                </h3>
+                <p className="text-[hsl(var(--ial-text-muted))] leading-relaxed">{step.b}</p>
+              </Card>
+            ))}
+          </div>
+
+          <div className="max-w-3xl mb-16">
+            <p className="text-lg md:text-xl text-[hsl(var(--ial-text-muted))] leading-relaxed">
+              That's the difference. You're not buying access to a video library. You're buying a
+              90-day coaching engine that adapts to every leader you put inside it — and a report
+              at the end that proves what moved.
+            </p>
+          </div>
+
           <SectionLabel>Two ways to join</SectionLabel>
           <h2 className="font-[family-name:var(--font-playfair)] text-4xl md:text-5xl font-bold mb-12 leading-[1.1]">
             Two ways in.
