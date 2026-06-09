@@ -65,9 +65,6 @@ const POSITIONS = [
   "Name my number",
 ];
 
-const scrollTo = (id: string) =>
-  document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
-
 const SectionLabel = ({ children }: { children: React.ReactNode }) => (
   <div className="text-xs font-semibold tracking-[0.2em] uppercase text-[hsl(var(--ial-green-soft))] mb-4">
     {children}
