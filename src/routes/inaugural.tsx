@@ -1,25 +1,23 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { Check, Phone, ArrowUpRight, Mic, Sparkles, FileText } from "lucide-react";
+import { useServerFn } from "@tanstack/react-start";
 import { toast } from "sonner";
-import { Check, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { useServerFn } from "@tanstack/react-start";
-import { submitFoundingClassClaim } from "@/utils/founding-class.functions";
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import momentumLogoWhite from "@/assets/momentum-logo-white.png";
 import ogShareImage from "@/assets/og-share-intentional-leader.jpg";
-import { usePageAnalytics } from "@/hooks/use-analytics";
+import { usePageAnalytics, trackEvent } from "@/hooks/use-analytics";
+import { submitFoundingClassClaim } from "@/utils/founding-class.functions";
 
 export const Route = createFileRoute("/inaugural")({
   head: () => ({
@@ -28,13 +26,13 @@ export const Route = createFileRoute("/inaugural")({
       {
         name: "description",
         content:
-          "An invitation to the leaders of agriculture. The Inaugural Offering of the Intentional Leader program closes June 30. Program begins August 1.",
+          "One offer for the leaders of agriculture: a Jericho baseline assessment of your leadership team plus the full 90-day Intentional Leader program. $5,000. 15 founding spots. Closes June 30.",
       },
       { property: "og:title", content: "The Inaugural Offering · Intentional Leader" },
       {
         property: "og:description",
         content:
-          "When everyone else retreats, intentional leaders invest. Join the Founding Class. Closes June 30.",
+          "Assess your team. Develop your leaders. See the proof in 90 days. 15 Founding Company spots — closes June 30.",
       },
       { property: "og:type", content: "website" },
       { property: "og:image", content: ogShareImage },
@@ -46,24 +44,16 @@ export const Route = createFileRoute("/inaugural")({
 });
 
 // ============================================================
-// EDIT THIS LIST as Founding Class members commit:
-// Add company names as strings. Leave empty to hide the section.
-const foundingClass: string[] = [];
+// CONFIG
 // ============================================================
 
-// PLACEHOLDERS — paste final Stripe Payment Link URLs here.
-const STRIPE_1K_URL = "https://buy.stripe.com/28EdR936ncEabaggOLds40Z"; // Founding Seat — $1,000
-const STRIPE_5K_URL = "https://buy.stripe.com/5kQ14nayP7jQbagaqnds410"; // Pay It Forward — $5,000
+const STRIPE_COMPANY_URL = "https://buy.stripe.com/5kQ14nayP7jQbagaqnds410";
+const STRIPE_SEAT_URL = "https://buy.stripe.com/28EdR936ncEabaggOLds40Z";
 
 const MARK_PHONE_DISPLAY = "(402) 881-9986";
 const MARK_PHONE_TEL = "tel:4028819986";
 
-const POSITIONS = [
-  "Lead Sponsor — $50,000",
-  "Founding Partner — $25,000",
-  "Founding Member — $10,000",
-  "Name my number",
-];
+const foundingClass: string[] = [];
 
 const SectionLabel = ({ children }: { children: React.ReactNode }) => (
   <div className="text-xs font-semibold tracking-[0.2em] uppercase text-[hsl(var(--ial-green-soft))] mb-4">
@@ -71,12 +61,51 @@ const SectionLabel = ({ children }: { children: React.ReactNode }) => (
   </div>
 );
 
+// ============================================================
+// PAGE
+// ============================================================
+
 function InauguralPage() {
   usePageAnalytics("inaugural");
 
+  const faqs = [
+    {
+      q: "How many leaders does \u201cyour leadership team\u201d cover?",
+      a: "Up to 8 leaders per Founding Company spot. Bigger team? Call Mark — there's a straightforward path for larger organizations.",
+    },
+    {
+      q: "What exactly is the baseline assessment?",
+      a: "Each of your leaders has a structured conversation with Jericho, our AI coach — about 25 minutes. You receive an org snapshot: where each leader is across the core leadership dimensions, where the gaps are, and the top three development priorities for your team. That baseline is what the Day-90 report measures against.",
+    },
+    {
+      q: "Is Jericho really AI, or is it just automated email?",
+      a: "Jericho is a custom-built AI coach that learns each leader and adapts to their gaps. Not a drip sequence, not a chatbot wrapper.",
+    },
+    {
+      q: "How much time does it take per leader?",
+      a: "15\u201320 minutes per day inside Jericho, a 5-minute Friday voice check-in, and one 3-hour live session with Mark each month. Everything else moves at each leader's pace across the 90 days.",
+    },
+    {
+      q: "When does the program begin?",
+      a: "Baseline assessments run in July, as soon as you're in. The 90-day program begins August 1.",
+    },
+    {
+      q: "Payment terms?",
+      a: "Card via Stripe — you're in immediately. Prefer an invoice? Use the reserve form below; invoices are due on receipt.",
+    },
+    {
+      q: "What if I'm one leader, not a whole company?",
+      a: "Grab a Founding Seat for $1,000 — the full 90-day experience and all live sessions, for one leader.",
+    },
+    {
+      q: "What happens after Day 90?",
+      a: "You can continue with Momentum 360 (our flagship leadership system) or stay in the Jericho community at the standalone rate. No auto-renewal, no surprise charges.",
+    },
+  ];
+
   return (
     <div className="ial-page min-h-screen bg-[hsl(var(--ial-bg))] text-[hsl(var(--ial-text))] font-[family-name:var(--font-inter)]">
-      {/* HEADER */}
+      {/* ===================== HEADER ===================== */}
       <header className="sticky top-0 z-30 backdrop-blur-md bg-[hsl(var(--ial-bg))]/85 border-b border-[hsl(var(--ial-border))]">
         <div className="container max-w-6xl mx-auto px-6 h-16 flex items-center justify-between gap-6">
           <Link to="/intentional-leader" className="flex items-center gap-3">
@@ -85,31 +114,58 @@ function InauguralPage() {
               Intentional Leader
             </span>
           </Link>
+          <a
+            href={MARK_PHONE_TEL}
+            className="text-sm font-medium text-[hsl(var(--ial-text))] hover:text-[hsl(var(--ial-green-soft))] transition-colors"
+            onClick={() => trackEvent("interaction", "header_phone_click", { section: "header" })}
+          >
+            <span className="flex items-center gap-2">
+              <Phone className="w-4 h-4" />
+              {MARK_PHONE_DISPLAY}
+            </span>
+          </a>
         </div>
       </header>
 
-      {/* SECTION 1 — HERO */}
+      {/* ===================== HERO ===================== */}
       <section className="relative overflow-hidden" style={{ background: "var(--ial-gradient-hero)" }}>
         <div className="container max-w-5xl mx-auto px-6 py-24 md:py-32 relative z-10">
           <div className="inline-flex items-center px-4 py-2 rounded-full border border-[hsl(var(--ial-green))]/40 bg-[hsl(var(--ial-green))]/10 text-[hsl(var(--ial-green-soft))] text-xs font-semibold tracking-wider uppercase mb-8">
-            The Inaugural Offering
+            The Inaugural Offering · Closes June 30
           </div>
-          <h1 className="font-[family-name:var(--font-playfair)] text-4xl md:text-6xl font-black leading-[1.05] mb-8 max-w-4xl">
-            An invitation to the leaders of agriculture —{" "}
-            <span className="text-[hsl(var(--ial-green-soft))]">at the moment it matters most.</span>
+          <h1 className="font-[family-name:var(--font-playfair)] text-5xl md:text-7xl font-black leading-[1.05] mb-8 max-w-5xl">
+            Know exactly where your leaders are.
+            <br />
+            <span className="text-[hsl(var(--ial-green-soft))]">Then watch them move.</span>
           </h1>
-          <div className="space-y-4 text-lg md:text-xl text-[hsl(var(--ial-text-muted))] leading-relaxed max-w-2xl mb-10">
-            <p>
-              Ag is in a hard season. Tariffs. Commodity swings. Input costs up, output prices
-              down. Everyone feels it — and most are pulling back, cutting development,
-              white-knuckling through.
-            </p>
-            <p className="text-[hsl(var(--ial-text))] font-semibold">We're doing the opposite.</p>
+          <p className="text-lg md:text-xl text-[hsl(var(--ial-text-muted))] leading-relaxed max-w-2xl mb-10">
+            One offer for the founding class: a Jericho baseline assessment of your
+            leadership team, then all of them through the full 90-day Intentional
+            Leader program — finishing with the report that shows exactly what moved.
+          </p>
+          <div className="text-2xl md:text-3xl font-bold text-[hsl(var(--ial-text))] mb-10">
+            $5,000 · 15 Founding Company spots
           </div>
           <div className="flex flex-col sm:flex-row gap-4 mb-6">
-            <p className="text-sm text-[hsl(var(--ial-text-muted))] leading-relaxed">
-              Read on to see exactly how this works — and how to get in.
-            </p>
+            <Button
+              asChild
+              size="lg"
+              className="bg-[hsl(var(--ial-green))] hover:bg-[hsl(var(--ial-green-deep))] text-white font-semibold h-14 px-8 text-base"
+              onClick={() => trackEvent("interaction", "stripe_company_click", { section: "hero" })}
+            >
+              <a href={STRIPE_COMPANY_URL} target="_blank" rel="noopener noreferrer" data-track-cta="claim_founding_company">
+                Claim a Founding Company spot
+                <ArrowUpRight className="w-5 h-5 ml-1" />
+              </a>
+            </Button>
+            <Button
+              asChild
+              size="lg"
+              variant="outline"
+              className="border-2 border-[hsl(var(--ial-green-deep))] bg-transparent text-[hsl(var(--ial-green-deep))] hover:bg-[hsl(var(--ial-green-deep))] hover:text-white h-14 px-8 text-base font-semibold"
+            >
+              <a href="#how-it-works">See how it works</a>
+            </Button>
           </div>
           <div className="flex items-start gap-2 text-sm text-[hsl(var(--ial-text-muted))] leading-relaxed">
             <Phone className="w-4 h-4 mt-0.5 shrink-0" />
@@ -126,7 +182,7 @@ function InauguralPage() {
         </div>
       </section>
 
-      {/* SECTION 2 — CONTRARIAN MOVE */}
+      {/* ===================== THE CONTRARIAN MOVE ===================== */}
       <section className="py-24 border-t border-[hsl(var(--ial-border))] bg-[hsl(var(--ial-surface))]">
         <div className="container max-w-4xl mx-auto px-6">
           <SectionLabel>The Contrarian Move</SectionLabel>
@@ -136,469 +192,371 @@ function InauguralPage() {
           </h2>
           <div className="space-y-5 text-lg md:text-xl text-[hsl(var(--ial-text-muted))] leading-relaxed">
             <p>
-              The leaders who come out the other side of a down market with a strong bench
-              aren't the ones who froze. They're the ones who doubled down on their people while
-              it was hard. We're opening the entire inaugural cohort of the Intentional Leader
-              program wide — and inviting the leaders of this industry to step in together.
-            </p>
-            <p>
-              We're calling them the{" "}
-              <span className="text-[hsl(var(--ial-text))] font-semibold">Founding Class</span>:
-              the leaders who moved when others stood still.
+              Ag is in a hard season. Tariffs. Commodity swings. Input costs up, output
+              prices down. Most are pulling back, cutting development, white-knuckling
+              through. But the leaders who come out the other side of a down market with
+              a strong bench aren't the ones who froze — they're the ones who doubled
+              down on their people while it was hard. The Founding Class is the group
+              that moved when others stood still.
             </p>
           </div>
         </div>
       </section>
 
-      {/* SECTION 3 — THREE LEGS */}
+      {/* ===================== THE ARC: ASSESS / DEVELOP / PROVE ===================== */}
       <section className="py-24 border-t border-[hsl(var(--ial-border))]">
         <div className="container max-w-6xl mx-auto px-6">
-          <SectionLabel>The Three Legs</SectionLabel>
-          <h2 className="font-[family-name:var(--font-playfair)] text-4xl md:text-5xl font-bold mb-12 max-w-3xl leading-[1.1]">
-            Intentional leadership stands on three legs.
-          </h2>
-          <div className="grid md:grid-cols-3 gap-6 mb-12">
-            {[
-              {
-                t: "Deliberate.",
-                b: "You meant to do it. So much of what we resent traces back to drift — to what we let happen instead of chose. Intentional leaders choose. The most deliberate choice in this market is to develop your people on purpose.",
-              },
-              {
-                t: "Decisive.",
-                b: "Seeing what's needed isn't enough. Intentional leaders move. They don't wait on the sidelines for the market to turn — they act. This is the move.",
-              },
-              {
-                t: "Divine.",
-                b: "The way you lead is uniquely yours — carried by no one else. This program doesn't hand you someone else's playbook. It builds around the leader you already are, and helps your people find theirs.",
-              },
-            ].map((leg) => (
-              <Card key={leg.t} className="bg-[hsl(var(--ial-surface))] border-[hsl(var(--ial-border))] p-8">
-                <h3 className="font-[family-name:var(--font-playfair)] text-3xl text-[hsl(var(--ial-green-soft))] mb-4">
-                  {leg.t}
-                </h3>
-                <p className="text-[hsl(var(--ial-text-muted))] leading-relaxed">{leg.b}</p>
-              </Card>
-            ))}
-          </div>
-          <p className="text-center font-[family-name:var(--font-playfair)] italic text-2xl md:text-3xl text-[hsl(var(--ial-text))]">
-            Deliberate. Decisive. Divine.
-          </p>
-        </div>
-      </section>
-
-      {/* SECTION 4 — WHAT IT IS */}
-      <section className="py-24 border-t border-[hsl(var(--ial-border))] bg-[hsl(var(--ial-surface))]">
-        <div className="container max-w-4xl mx-auto px-6">
-          <SectionLabel>What it is</SectionLabel>
+          <SectionLabel>The Offer</SectionLabel>
           <h2 className="font-[family-name:var(--font-playfair)] text-4xl md:text-5xl font-bold mb-8 leading-[1.1]">
-            What the Inaugural Offering actually is.
+            Assess. Develop. Prove.
           </h2>
-          <p className="text-lg md:text-xl text-[hsl(var(--ial-text-muted))] leading-relaxed mb-8">
-            For this founding cohort, we're setting aside fixed pricing. Bring one leader or
-            bring your whole organization. Claim a sponsor position and plant your flag for the
-            industry — or name what this is worth to you and your team. Everyone who steps in is
-            part of the Founding Class.
+          <p className="text-lg md:text-xl text-[hsl(var(--ial-text-muted))] leading-relaxed max-w-3xl mb-12">
+            Not a video library. A 90-day coaching engine wrapped in measurement —
+            so you're never guessing whether it worked.
           </p>
-          <ul className="space-y-3 text-lg">
-            {[
-              "The invitation closes June 30.",
-              "The program begins August 1.",
-              "90 days. Unlimited Jericho coaching. 3 live half-day sessions. Friday voice check-ins. Your Day 90 Intentional Leader Report.",
-            ].map((x) => (
-              <li key={x} className="flex items-start gap-3 text-[hsl(var(--ial-text))]">
-                <Check className="w-5 h-5 mt-1 flex-shrink-0 text-[hsl(var(--ial-green))]" strokeWidth={3} />
-                <span className="leading-relaxed">{x}</span>
-              </li>
-            ))}
-          </ul>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            <Card className="bg-[hsl(var(--ial-surface))] border-[hsl(var(--ial-border))] p-8">
+              <div className="text-xs font-semibold tracking-[0.18em] uppercase text-[hsl(var(--ial-green-soft))] mb-3">
+                July · Before Day 1
+              </div>
+              <h3 className="font-[family-name:var(--font-playfair)] text-2xl text-[hsl(var(--ial-text))] mb-4 leading-tight">
+                The baseline assessment
+              </h3>
+              <p className="text-[hsl(var(--ial-text-muted))] leading-relaxed">
+                Each of your leaders (up to 8) sits with Jericho for a structured
+                25-minute conversation. You get an org snapshot: where each leader
+                actually is, where the gaps are, and the top three development
+                priorities for your team. Most companies tell us this alone is worth
+                the price.
+              </p>
+            </Card>
+
+            <Card className="bg-[hsl(var(--ial-surface))] border-[hsl(var(--ial-border))] p-8">
+              <div className="text-xs font-semibold tracking-[0.18em] uppercase text-[hsl(var(--ial-green-soft))] mb-3">
+                August 1 · 90 Days
+              </div>
+              <h3 className="font-[family-name:var(--font-playfair)] text-2xl text-[hsl(var(--ial-text))] mb-4 leading-tight">
+                The development engine
+              </h3>
+              <p className="text-[hsl(var(--ial-text-muted))] leading-relaxed">
+                Daily briefs and a personalized podcast feed built around each
+                leader's profile. Unlimited 1:1 Jericho coaching — voice or text,
+                whenever they're stuck. 5-minute Friday voice check-ins. Three live
+                half-day working sessions with Mark and the full Founding Class.
+              </p>
+            </Card>
+
+            <Card className="bg-[hsl(var(--ial-surface))] border-[hsl(var(--ial-border))] p-8">
+              <div className="text-xs font-semibold tracking-[0.18em] uppercase text-[hsl(var(--ial-green-soft))] mb-3">
+                Day 90 · The Proof
+              </div>
+              <h3 className="font-[family-name:var(--font-playfair)] text-2xl text-[hsl(var(--ial-text))] mb-4 leading-tight">
+                The Intentional Leader Report
+              </h3>
+              <p className="text-[hsl(var(--ial-text-muted))] leading-relaxed">
+                A real artifact, measured against July's baseline: where each leader
+                started, what shifted, the decisions they got more deliberate and
+                decisive about, and the plan for the next 90. You get the org-level
+                read across every leader — proof of what moved, in writing.
+              </p>
+            </Card>
+          </div>
         </div>
       </section>
 
-      {/* SECTION 5 — HOW IT WORKS */}
-      <section className="py-24 border-t border-[hsl(var(--ial-border))]">
+      {/* ===================== HOW THE 90 DAYS WORK ===================== */}
+      <section id="how-it-works" className="py-24 border-t border-[hsl(var(--ial-border))] bg-[hsl(var(--ial-surface))]">
         <div className="container max-w-6xl mx-auto px-6">
           <SectionLabel>How it actually works</SectionLabel>
-          <h2 className="font-[family-name:var(--font-playfair)] text-4xl md:text-5xl font-bold mb-6 leading-[1.1] max-w-3xl">
+          <h2 className="font-[family-name:var(--font-playfair)] text-4xl md:text-5xl font-bold mb-6 leading-[1.1]">
             This is not a course you log into and watch.
           </h2>
           <p className="text-lg md:text-xl text-[hsl(var(--ial-text-muted))] leading-relaxed max-w-3xl mb-12">
-            It's 90 days inside a coaching system built around <em>your</em> leader, your team,
-            and your season — drawn from 225+ podcast interviews with the best operators in
-            agriculture, distilled into something your people can actually use on Monday morning.
+            It's 90 days inside a coaching system built around your leaders,
+            your team, and your season — drawn from 225+ podcast interviews with the
+            best operators in agriculture, distilled into something your people can
+            actually use on Monday morning.
           </p>
 
-          {/* The 90 days — what actually happens */}
-          <div className="grid md:grid-cols-2 gap-6 mb-16">
+          <div className="space-y-8">
             {[
               {
-                k: "Day 1",
+                k: "Day 0",
                 t: "Your Intentional Leader Profile",
-                b: "Each leader sits with Jericho — our AI coach — and builds a personal profile. Goals, friction points, the team they lead, the season they're in. Everything that follows is built around that profile.",
+                b: "Each leader sits with Jericho and builds a personal profile. Goals, friction points, the team they lead, the season they're in. Everything that follows is built around that profile.",
               },
               {
                 k: "Every day",
-                t: "A personalized brief, built for you",
-                b: "Short daily prompts and a personalized podcast feed pulled from the Lead Intentional library. Not generic content — the exact interview, the exact 5-minute Friday, the exact framework that matches what you're working on this week.",
+                t: "A personalized brief, built for each leader",
+                b: "Short daily prompts and a personalized podcast feed pulled from the Lead Intentional library. Not generic content — the exact interview, the exact framework that matches what they're working on this week.",
               },
               {
                 k: "Every Friday",
                 t: "5-Minute Friday voice check-in",
-                b: "A guided voice reflection. You talk, Jericho listens, patterns surface. Your manager (and you) get a private weekly read on momentum, blockers, and what you're actually building.",
+                b: "Once a week, each leader voice-records their experience against a few simple prompts. Five minutes. The most consistent leadership habit they'll ever keep.",
               },
               {
                 k: "Anytime",
                 t: "Unlimited coaching on demand",
-                b: "Stuck in a hard conversation? Prepping a 1:1? Rewriting a job description? Open Jericho. It already knows your context — your team, your goals, the conversation you had last Tuesday — and coaches from there.",
+                b: "Stuck in a hard conversation? Prepping a 1:1? Open Jericho. It already knows their context — their team, their goals, the conversation they had last Tuesday — and coaches from there.",
               },
               {
                 k: "3 times in 90 days",
                 t: "Live half-day sessions with Mark",
-                b: "Three working sessions with the full Founding Class. Not lectures — live problem-solving on the things this cohort is actually running into. You leave with the next move, not notes.",
+                b: "Three working sessions with the full Founding Class. Not lectures — live problem-solving on the things this cohort is actually running into. Leaders leave with the next move, not notes.",
               },
               {
                 k: "Day 90",
-                t: "Your Intentional Leader Report",
-                b: "A real artifact: where each leader started, what shifted, the specific decisions they got more deliberate and more decisive about, and the plan for the next 90 days. For sponsors, you get the org-level read across every leader you sponsored.",
+                t: "The Intentional Leader Report",
+                b: "Where each leader started, what shifted, and the plan for the next 90 days — plus the org-level read for you.",
               },
             ].map((step) => (
-              <Card key={step.t} className="bg-[hsl(var(--ial-surface))] border-[hsl(var(--ial-border))] p-8">
-                <div className="text-xs font-semibold tracking-[0.18em] uppercase text-[hsl(var(--ial-green-soft))] mb-3">
+              <div key={step.k} className="flex gap-6">
+                <div className="w-24 shrink-0 text-xs font-bold tracking-[0.15em] uppercase text-[hsl(var(--ial-green-soft))] pt-1">
                   {step.k}
                 </div>
-                <h3 className="font-[family-name:var(--font-playfair)] text-2xl text-[hsl(var(--ial-text))] mb-3 leading-tight">
-                  {step.t}
-                </h3>
-                <p className="text-[hsl(var(--ial-text-muted))] leading-relaxed">{step.b}</p>
-              </Card>
+                <div>
+                  <h3 className="font-[family-name:var(--font-playfair)] text-xl md:text-2xl text-[hsl(var(--ial-text))] mb-2 leading-tight">
+                    {step.t}
+                  </h3>
+                  <p className="text-[hsl(var(--ial-text-muted))] leading-relaxed">{step.b}</p>
+                </div>
+              </div>
             ))}
           </div>
-
-          <div className="max-w-3xl mb-16">
-            <p className="text-lg md:text-xl text-[hsl(var(--ial-text-muted))] leading-relaxed">
-              That's the difference. You're not buying access to a video library. You're buying a
-              90-day coaching engine that adapts to every leader you put inside it — and a report
-              at the end that proves what moved.
-            </p>
-          </div>
-
-          <SectionLabel>How to get in</SectionLabel>
-          <h2 className="font-[family-name:var(--font-playfair)] text-4xl md:text-5xl font-bold mb-6 leading-[1.1] max-w-3xl">
-            Pay what you think it is worth.
-          </h2>
-          <p className="text-lg md:text-xl text-[hsl(var(--ial-text-muted))] leading-relaxed max-w-3xl mb-12">
-            There are <span className="text-[hsl(var(--ial-text))] font-semibold">two doors</span>{" "}
-            into the Founding Class. Here's exactly how it works.
-          </p>
-
-          {/* Two doors */}
-          <div className="grid md:grid-cols-2 gap-6 mb-12">
-            {/* Door 1 — Instant */}
-            <Card className="bg-[hsl(var(--ial-surface))] border-[hsl(var(--ial-border))] p-8 flex flex-col">
-              <div className="text-xs font-bold tracking-[0.2em] uppercase text-[hsl(var(--ial-green-soft))] mb-3">
-                Door 1 · Instant
-              </div>
-              <h3 className="font-[family-name:var(--font-playfair)] text-2xl text-[hsl(var(--ial-text))] mb-4 leading-tight">
-                Buy a seat right now.
-              </h3>
-              <ul className="space-y-3 text-[hsl(var(--ial-text-muted))] leading-relaxed mb-6 flex-1">
-                <li className="flex gap-3">
-                  <span className="text-[hsl(var(--ial-green-soft))] font-bold">1.</span>
-                  <span>Pick <span className="text-[hsl(var(--ial-text))] font-semibold">Founding Seat ($1,000)</span> for one leader, or <span className="text-[hsl(var(--ial-text))] font-semibold">Pay It Forward ($5,000)</span> to sponsor 10 leaders from your client orgs.</span>
-                </li>
-                <li className="flex gap-3">
-                  <span className="text-[hsl(var(--ial-green-soft))] font-bold">2.</span>
-                  <span>Pay by card. You're in immediately.</span>
-                </li>
-                <li className="flex gap-3">
-                  <span className="text-[hsl(var(--ial-green-soft))] font-bold">3.</span>
-                  <span>August 1, the program starts. You're Founding Class.</span>
-                </li>
-              </ul>
-              <div className="text-xs uppercase tracking-wider text-[hsl(var(--ial-text-muted))] border-t border-[hsl(var(--ial-border))] pt-4">
-                Unlimited spots · no waiting · no bidding
-              </div>
-            </Card>
-
-            {/* Door 2 — Sealed bid */}
-            <Card
-              className="border-2 border-[hsl(var(--ial-green))] p-8 flex flex-col"
-              style={{ background: "var(--ial-gradient-cta)" }}
-            >
-              <div className="text-xs font-bold tracking-[0.2em] uppercase text-white/80 mb-3">
-                Door 2 · The 10 Sponsor Positions
-              </div>
-              <h3 className="font-[family-name:var(--font-playfair)] text-2xl text-white mb-4 leading-tight">
-                Claim a position — or pledge your number.
-              </h3>
-              <ul className="space-y-3 text-white/90 leading-relaxed mb-6 flex-1">
-                <li className="flex gap-3">
-                  <span className="text-white font-bold">1.</span>
-                  <span><span className="font-semibold text-white">Claim outright</span> at the listed level ($50K / $25K / $10K) and lock the position immediately — first come, first served on the open slots.</span>
-                </li>
-                <li className="flex gap-3">
-                  <span className="text-white font-bold">2.</span>
-                  <span><span className="font-semibold text-white">Or pledge what the position is worth to you.</span> You don't have to hit the listed price to be in the running — you name your number for the position you want.</span>
-                </li>
-                <li className="flex gap-3">
-                  <span className="text-white font-bold">3.</span>
-                  <span>On <span className="font-semibold text-white">June 22</span>, every bidder gets a private note from Mark with where their pledge stands at that level (in / on the bubble / out).</span>
-                </li>
-                <li className="flex gap-3">
-                  <span className="text-white font-bold">4.</span>
-                  <span><span className="font-semibold text-white">June 22 – June 30:</span> one-week window to raise your pledge if you want to hold or claim the position.</span>
-                </li>
-                <li className="flex gap-3">
-                  <span className="text-white font-bold">5.</span>
-                  <span>On <span className="font-semibold text-white">June 30</span>, positions are awarded to the top pledges at each level. Awarded sponsors are invoiced, due on receipt. August 1, the cohort starts.</span>
-                </li>
-              </ul>
-              <div className="text-xs uppercase tracking-wider text-white/80 border-t border-white/20 pt-4">
-                Pledge anytime · standings revealed June 22 · awarded June 30
-              </div>
-            </Card>
-          </div>
-
-          {/* Worked example */}
-          <Card className="bg-[hsl(var(--ial-surface))] border-[hsl(var(--ial-border))] p-8 mb-8">
-            <div className="text-xs font-bold tracking-[0.2em] uppercase text-[hsl(var(--ial-green-soft))] mb-3">
-              A worked example
-            </div>
-            <p className="text-[hsl(var(--ial-text))] text-lg leading-relaxed mb-4">
-              You want a <span className="font-semibold">Founding Partner ($25,000)</span> position
-              but $25K isn't where you are right now. <span className="font-semibold">You pledge $15,000 on that position.</span>
-            </p>
-            <ul className="space-y-3 text-[hsl(var(--ial-text-muted))] leading-relaxed">
-              <li className="flex gap-3">
-                <span className="text-[hsl(var(--ial-green-soft))] font-bold">→</span>
-                <span>If the other top pledges at that level are below $15K, you're in at $15K.</span>
-              </li>
-              <li className="flex gap-3">
-                <span className="text-[hsl(var(--ial-green-soft))] font-bold">→</span>
-                <span>If they're above $15K, on June 22 you'll know exactly where you stand — and you have a week to raise your pledge if you want the position.</span>
-              </li>
-              <li className="flex gap-3">
-                <span className="text-[hsl(var(--ial-green-soft))] font-bold">→</span>
-                <span>If you don't win the position, your $15K still goes to work — see the safety net below.</span>
-              </li>
-            </ul>
-          </Card>
-
-          {/* The safety net */}
-          <Card
-            className="p-8 border-2 border-[hsl(var(--ial-green))] bg-[hsl(var(--ial-surface))] mb-8"
-          >
-            <div className="text-xs font-bold tracking-[0.2em] uppercase text-[hsl(var(--ial-green-soft))] mb-3">
-              The safety net · Nobody loses
-            </div>
-            <p className="text-[hsl(var(--ial-text))] text-lg md:text-xl leading-relaxed">
-              This is the part a real auction doesn't give you: if you pledge and don't land a
-              sponsor position, <span className="font-semibold">you still get full Founding Class access for your team at the amount you pledged.</span>{" "}
-              You don't walk away empty-handed. You just don't carry the sponsor flag. Every
-              dollar pledged is a dollar invested in your people either way.
-            </p>
-          </Card>
-
         </div>
       </section>
 
-      {/* SECTION 6 — TIERS */}
-      <section
-        id="tiers"
-        className="py-24 border-t border-[hsl(var(--ial-border))] bg-[hsl(var(--ial-surface))] scroll-mt-20"
-      >
+      {/* ===================== PROOF ===================== */}
+      <section className="py-24 border-t border-[hsl(var(--ial-border))]">
         <div className="container max-w-6xl mx-auto px-6">
-          <SectionLabel>Choose your place</SectionLabel>
-          <h2 className="font-[family-name:var(--font-playfair)] text-4xl md:text-5xl font-bold mb-4 leading-[1.1]">
-            Choose your place in the Founding Class.
-          </h2>
-          <p className="text-lg text-[hsl(var(--ial-text-muted))] mb-12 max-w-3xl">
-            Door 1 below — instant checkout, pay by card. Door 2 — the 10 sponsor positions you
-            either claim outright or pledge on (standings revealed June 22, awarded June 30).
-          </p>
-
-          <div className="text-xs font-bold uppercase tracking-[0.2em] text-[hsl(var(--ial-green-soft))] mb-4">
-            Door 1 · Instant — pay by card, you're in
-          </div>
-
-          {/* Instant checkout */}
-          <div className="grid md:grid-cols-2 gap-6 mb-16">
-            <Card className="bg-[hsl(var(--ial-bg))] border-[hsl(var(--ial-border))] p-8 flex flex-col">
-              <div className="text-sm uppercase tracking-wider text-[hsl(var(--ial-text-muted))] mb-3">
-                Founding Seat
-              </div>
-              <div className="text-5xl font-black mb-1">$1,000</div>
-              <div className="text-xs uppercase tracking-wider text-[hsl(var(--ial-green-soft))] mb-4">
-                Unlimited spots available
-              </div>
-              <p className="text-[hsl(var(--ial-text-muted))] mb-8 flex-1">
-                One leader · full 90-day program · Founding Class recognition.
-              </p>
-              <Button
-                asChild
-                className="w-full bg-[hsl(var(--ial-green))] hover:bg-[hsl(var(--ial-green-deep))] text-white h-12 font-semibold"
-              >
-                <a href={STRIPE_1K_URL} target="_blank" rel="noopener noreferrer">
-                  Enroll Now
-                </a>
-              </Button>
-            </Card>
-
-            <Card
-              className="border-2 border-[hsl(var(--ial-green))] p-8 flex flex-col"
-              style={{ background: "var(--ial-gradient-cta)" }}
-            >
-              <div className="text-sm uppercase tracking-wider text-white/80 mb-3">
-                Pay It Forward
-              </div>
-              <div className="text-5xl font-black text-white mb-4">$5,000</div>
-              <p className="text-white/85 mb-8 flex-1">
-                Sponsor 10 leaders from your client organizations · featured as a Pay It Forward
-                sponsor on the podcast and newsletter.
-              </p>
-              <Button
-                asChild
-                className="w-full bg-white hover:bg-[hsl(var(--ial-text))] text-[hsl(var(--ial-green-deep))] h-12 font-semibold"
-              >
-                <a href={STRIPE_5K_URL} target="_blank" rel="noopener noreferrer">
-                  Pay It Forward
-                </a>
-              </Button>
-            </Card>
-          </div>
-
-          {/* Sponsor positions header */}
-          <div className="text-xs font-bold uppercase tracking-[0.2em] text-[hsl(var(--ial-green-soft))] mb-3">
-            Door 2 · The 10 Sponsor Positions
-          </div>
-          <p className="text-[hsl(var(--ial-text-muted))] mb-6 max-w-3xl">
-            Scroll down to claim outright or pledge on any tier — the form lets you either claim
-            the position at its listed price or pledge your own number (you don't have to match
-            the listed price to be in the running). Standings are shared privately on June 22;
-            positions awarded June 30 and invoiced due on receipt.
-          </p>
+          <SectionLabel>Proof — from leaders running the playbook</SectionLabel>
+          {foundingClass.length > 0 && (
+            <p className="text-sm text-[hsl(var(--ial-text-muted))] mb-8 italic">
+              United Coop baseline results will anchor this section once Day 90 lands.
+            </p>
+          )}
 
           <div className="grid md:grid-cols-3 gap-6">
             {[
               {
-                t: "Founding Lead Sponsor",
-                price: "$50,000",
-                spots: "1 spot",
-                feature: true,
-                position: "Lead Sponsor — $50,000",
-                bullets: [
-                  "Presented in partnership with [your company] — elevated logo across the page, emails, podcast, and all Founding Class communications",
-                  "4 dedicated podcast spots",
-                  "Unlimited seats from your organization",
-                  "Organizational insight layer across all your people",
-                  "First right of refusal on the next cohort",
-                  "You own the industry narrative",
-                ],
+                quote:
+                  "Before our busy season, I actually sat down with the anhydrous team ahead of time — set expectations, walked through the processes, made sure everyone knew the plan. We got through the whole push with no accidents, good morale, and strong output. That doesn't happen by accident. It happens when you lead before the chaos hits instead of reacting to it.",
+                name: "Joe",
+                company: "Ag Retailer",
               },
               {
-                t: "Founding Partner",
-                price: "$25,000",
-                spots: "3 spots",
-                feature: false,
-                position: "Founding Partner — $25,000",
-                bullets: [
-                  "Logo on page and email footer",
-                  "1 dedicated podcast segment",
-                  "Unlimited seats from your organization",
-                  "Organizational insight layer · priority onboarding",
-                ],
+                quote:
+                  "Last spring was genuinely different. My phone wasn't blowing up the same way — fewer calls, fewer fires, fewer people needing me to make every call for them. I'd put in the work upfront to lead proactively, and it showed when it counted.",
+                name: "Mitch",
+                company: "Ag Retailer",
               },
               {
-                t: "Founding Member",
-                price: "$10,000",
-                spots: "6 spots",
-                feature: false,
-                position: "Founding Member — $10,000",
-                bullets: [
-                  "Named on the Founding Class wall",
-                  "Unlimited seats from your organization",
-                  "Organizational / team insight layer",
-                ],
+                quote:
+                  "I hadn't had operations and sales in the same room at two of my locations in three months. When I finally ran those meetings, I found out about gaps I didn't even know existed — and saw places I could hand things off. Turns out I'd been carrying a lot that wasn't mine to carry.",
+                name: "Matt",
+                company: "Multi-location Ag Company",
               },
-            ].map((tier) => (
+            ].map((t) => (
               <Card
-                key={tier.t}
-                className={`p-8 flex flex-col bg-[hsl(var(--ial-bg))] ${
-                  tier.feature
-                    ? "border-2 border-[hsl(var(--ial-green))] shadow-lg"
-                    : "border-[hsl(var(--ial-border))]"
-                }`}
+                key={t.name}
+                className="bg-[hsl(var(--ial-surface))] border-[hsl(var(--ial-border))] p-8"
               >
-                <div className="flex items-center justify-between mb-3">
-                  <div className="text-sm uppercase tracking-wider text-[hsl(var(--ial-green-soft))]">
-                    {tier.t}
-                  </div>
-                  <span className="text-[10px] uppercase tracking-wider font-bold px-2 py-1 rounded bg-[hsl(var(--ial-surface-2))] text-[hsl(var(--ial-text-muted))]">
-                    {tier.spots}
-                  </span>
+                <p className="text-[hsl(var(--ial-text-muted))] leading-relaxed mb-6 italic">
+                  &ldquo;{t.quote}&rdquo;
+                </p>
+                <div className="text-sm font-semibold text-[hsl(var(--ial-text))]">
+                  {t.name} · {t.company}
                 </div>
-                <div className="text-4xl font-black mb-6">{tier.price}</div>
-                <ul className="space-y-3 mb-8 flex-1">
-                  {tier.bullets.map((b) => (
-                    <li key={b} className="flex items-start gap-2 text-sm text-[hsl(var(--ial-text-muted))]">
-                      <Check className="w-4 h-4 text-[hsl(var(--ial-green))] mt-0.5 flex-shrink-0" />
-                      <span className="leading-relaxed">{b}</span>
-                    </li>
-                  ))}
-                </ul>
               </Card>
             ))}
           </div>
         </div>
       </section>
 
-      {/* SECTION 7 — FOUNDING CLASS LIST */}
+      {/* ===================== THE FOUNDING CLASS WALL ===================== */}
       {foundingClass.length > 0 && (
-        <section className="py-24 border-t border-[hsl(var(--ial-border))]">
-          <div className="container max-w-5xl mx-auto px-6">
-            <SectionLabel>The Founding Class</SectionLabel>
-            <h2 className="font-[family-name:var(--font-playfair)] text-4xl md:text-5xl font-bold mb-10 leading-[1.1]">
-              The Founding Class is forming.
-            </h2>
-            <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+        <section className="py-24 border-t border-[hsl(var(--ial-border))] bg-[hsl(var(--ial-surface))]">
+          <div className="container max-w-4xl mx-auto px-6 text-center">
+            <SectionLabel>The Founding Class is forming</SectionLabel>
+            <div className="flex flex-wrap justify-center gap-3">
               {foundingClass.map((name) => (
-                <div
+                <span
                   key={name}
-                  className="flex items-center gap-3 p-4 rounded border border-[hsl(var(--ial-border))] bg-[hsl(var(--ial-surface))]"
+                  className="inline-flex items-center px-4 py-2 rounded-full bg-[hsl(var(--ial-green))]/10 border border-[hsl(var(--ial-green))]/30 text-[hsl(var(--ial-green-soft))] text-sm font-medium"
                 >
-                  <Check className="w-4 h-4 text-[hsl(var(--ial-green))] flex-shrink-0" />
-                  <span className="text-[hsl(var(--ial-text))] font-medium">{name}</span>
-                </div>
+                  {name}
+                </span>
               ))}
             </div>
           </div>
         </section>
       )}
 
-      {/* SECTION 8 — FORM */}
-      <ClaimForm />
+      {/* ===================== PRICING ===================== */}
+      <section className="py-24 border-t border-[hsl(var(--ial-border))]">
+        <div className="container max-w-6xl mx-auto px-6">
+          <SectionLabel>Claim your place</SectionLabel>
+          <h2 className="font-[family-name:var(--font-playfair)] text-4xl md:text-5xl font-bold mb-6 leading-[1.1]">
+            Two ways in. Both close June 30.
+          </h2>
 
-      {/* SECTION 9 — CLOSING */}
-      <section className="py-28 border-t border-[hsl(var(--ial-border))]" style={{ background: "var(--ial-gradient-cta)" }}>
+          <div className="grid md:grid-cols-2 gap-6">
+            {/* Founding Company — the offer */}
+            <Card className="bg-[hsl(var(--ial-surface))] border-[hsl(var(--ial-border))] p-8 flex flex-col">
+              <div className="text-xs font-bold tracking-[0.2em] uppercase text-[hsl(var(--ial-green-soft))] mb-3">
+                For companies · 15 spots
+              </div>
+              <h3 className="font-[family-name:var(--font-playfair)] text-2xl text-[hsl(var(--ial-text))] mb-4 leading-tight">
+                Founding Company
+              </h3>
+              <div className="text-3xl font-bold text-[hsl(var(--ial-text))] mb-6">
+                $5,000
+              </div>
+              <ul className="space-y-3 text-[hsl(var(--ial-text-muted))] leading-relaxed mb-8 flex-1">
+                {[
+                  "Jericho baseline assessment — up to 8 leaders, with your org snapshot",
+                  "All 8 through the full 90-day Intentional Leader program",
+                  "Unlimited 1:1 Jericho coaching for every leader",
+                  "Three live half-day working sessions with Mark",
+                  "The Day-90 report: org-level proof of what moved",
+                  "Founding Class recognition — first cohort, named for good",
+                ].map((line) => (
+                  <li key={line} className="flex items-start gap-3">
+                    <Check className="w-4 h-4 mt-1 flex-shrink-0 text-[hsl(var(--ial-green))]" strokeWidth={3} />
+                    <span>{line}</span>
+                  </li>
+                ))}
+              </ul>
+              <Button
+                asChild
+                size="lg"
+                className="w-full bg-[hsl(var(--ial-green))] hover:bg-[hsl(var(--ial-green-deep))] text-white font-semibold h-12"
+                onClick={() => trackEvent("interaction", "stripe_company_click", { section: "pricing" })}
+              >
+                <a href={STRIPE_COMPANY_URL} target="_blank" rel="noopener noreferrer" data-track-cta="claim_founding_company">
+                  Claim your spot — pay by card
+                  <ArrowUpRight className="w-4 h-4 ml-1" />
+                </a>
+              </Button>
+              <p className="text-xs text-[hsl(var(--ial-text-muted))] mt-4 text-center">
+                Prefer an invoice?{" "}
+                <a href="#reserve" className="text-[hsl(var(--ial-green-soft))] hover:underline">
+                  Reserve below
+                </a>
+                {" "}— due on receipt. Team bigger than 8? Call Mark:{" "}
+                <a href={MARK_PHONE_TEL} className="text-[hsl(var(--ial-text))] hover:underline">
+                  {MARK_PHONE_DISPLAY}
+                </a>
+              </p>
+            </Card>
+
+            {/* Founding Seat — individuals */}
+            <Card className="bg-[hsl(var(--ial-surface))] border-[hsl(var(--ial-border))] p-8 flex flex-col">
+              <div className="text-xs font-bold tracking-[0.2em] uppercase text-[hsl(var(--ial-green-soft))] mb-3">
+                For one leader
+              </div>
+              <h3 className="font-[family-name:var(--font-playfair)] text-2xl text-[hsl(var(--ial-text))] mb-4 leading-tight">
+                Founding Seat
+              </h3>
+              <div className="text-3xl font-bold text-[hsl(var(--ial-text))] mb-6">
+                $1,000
+              </div>
+              <ul className="space-y-3 text-[hsl(var(--ial-text-muted))] leading-relaxed mb-8 flex-1">
+                {[
+                  "Your personal baseline + profile",
+                  "Full 90-day program & unlimited Jericho coaching",
+                  "All three live sessions with Mark",
+                  "Your Day-90 Intentional Leader Report",
+                ].map((line) => (
+                  <li key={line} className="flex items-start gap-3">
+                    <Check className="w-4 h-4 mt-1 flex-shrink-0 text-[hsl(var(--ial-green))]" strokeWidth={3} />
+                    <span>{line}</span>
+                  </li>
+                ))}
+              </ul>
+              <Button
+                asChild
+                size="lg"
+                variant="outline"
+                className="w-full border-2 border-[hsl(var(--ial-green-deep))] bg-transparent text-[hsl(var(--ial-green-deep))] hover:bg-[hsl(var(--ial-green-deep))] hover:text-white font-semibold h-12"
+                onClick={() => trackEvent("interaction", "stripe_seat_click", { section: "pricing" })}
+              >
+                <a href={STRIPE_SEAT_URL} target="_blank" rel="noopener noreferrer" data-track-cta="enroll_founding_seat">
+                  Enroll now
+                  <ArrowUpRight className="w-4 h-4 ml-1" />
+                </a>
+              </Button>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* ===================== RESERVE BY INVOICE ===================== */}
+      <section id="reserve" className="py-24 border-t border-[hsl(var(--ial-border))] bg-[hsl(var(--ial-surface))]">
+        <div className="container max-w-xl mx-auto px-6">
+          <ReserveForm />
+        </div>
+      </section>
+
+      {/* ===================== FAQ ===================== */}
+      <section className="py-24 border-t border-[hsl(var(--ial-border))]">
+        <div className="container max-w-3xl mx-auto px-6">
+          <SectionLabel>Questions</SectionLabel>
+          <Accordion type="single" collapsible className="w-full">
+            {faqs.map((f, i) => (
+              <AccordionItem key={i} value={`faq-${i}`} className="border-[hsl(var(--ial-border))]">
+                <AccordionTrigger className="text-left text-[hsl(var(--ial-text))] hover:text-[hsl(var(--ial-green-soft))] hover:no-underline">
+                  {f.q}
+                </AccordionTrigger>
+                <AccordionContent className="text-[hsl(var(--ial-text-muted))] leading-relaxed">
+                  {f.a}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </div>
+      </section>
+
+      {/* ===================== CLOSING ===================== */}
+      <section className="py-24 border-t border-[hsl(var(--ial-border))]" style={{ background: "var(--ial-gradient-cta)" }}>
         <div className="container max-w-4xl mx-auto px-6 text-center">
-          <h2 className="font-[family-name:var(--font-playfair)] text-4xl md:text-6xl font-black mb-8 text-white leading-[1.05]">
+          <h2 className="font-[family-name:var(--font-playfair)] text-4xl md:text-5xl font-bold mb-6 text-white leading-[1.1]">
             Decisive leaders move.
           </h2>
-          <p className="text-lg md:text-xl text-white/85 mb-10 max-w-2xl mx-auto leading-relaxed">
-            Don't name a number to beat someone else. Name what this is worth to you and your
-            people — and trust it. The window closes June 30.
+          <p className="text-lg md:text-xl text-white/80 leading-relaxed max-w-2xl mx-auto mb-10">
+            Fifteen companies will know exactly where their leaders stand — and watch
+            them move — before harvest. The window closes June 30.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <a href={MARK_PHONE_TEL} className="text-white font-semibold text-lg underline-offset-4 hover:underline">
+          <Button
+            asChild
+            size="lg"
+            className="bg-white text-[hsl(var(--ial-green-deep))] hover:bg-white/90 font-semibold h-14 px-8 text-base mb-6"
+            onClick={() => trackEvent("interaction", "stripe_company_click", { section: "closing" })}
+          >
+            <a href={STRIPE_COMPANY_URL} target="_blank" rel="noopener noreferrer" data-track-cta="claim_founding_company">
+              Claim a Founding Company spot
+              <ArrowUpRight className="w-5 h-5 ml-1" />
+            </a>
+          </Button>
+          <p className="text-sm text-white/70">
+            Or call Mark — no gatekeepers:{" "}
+            <a href={MARK_PHONE_TEL} className="text-white font-medium hover:underline">
               {MARK_PHONE_DISPLAY}
             </a>
-          </div>
+          </p>
         </div>
       </section>
     </div>
   );
 }
 
-function ClaimForm() {
+// ============================================================
+// RESERVE FORM (invoice path — reuses existing server fn)
+// ============================================================
+
+function ReserveForm() {
   const submit = useServerFn(submitFoundingClassClaim);
   const [submitting, setSubmitting] = useState(false);
   const [done, setDone] = useState(false);
@@ -607,27 +565,11 @@ function ClaimForm() {
     contact_name: "",
     email: "",
     phone: "",
-    position: POSITIONS[0],
-    claim_type: "claim" as "claim" | "pledge",
-    amount_usd: "",
     leaders_count: "",
     note: "",
   });
 
-  // Listen for tier-card pre-select events from Section 6.
-  useEffect(() => {
-    const handler = (e: Event) => {
-      const detail = (e as CustomEvent<string>).detail;
-      if (detail && POSITIONS.includes(detail)) {
-        setForm((f) => ({ ...f, position: detail }));
-      }
-    };
-    window.addEventListener("inaugural:preselect", handler);
-    return () => window.removeEventListener("inaugural:preselect", handler);
-  }, []);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = async () => {
     setSubmitting(true);
     try {
       await submit({
@@ -636,18 +578,19 @@ function ClaimForm() {
           contact_name: form.contact_name,
           email: form.email,
           phone: form.phone,
-          position: form.position,
-          claim_type: form.claim_type,
-          amount_usd: parseInt(form.amount_usd || "0", 10) || 0,
+          position: "Founding Company — $5,000",
+          claim_type: "claim",
+          amount_usd: 5000,
           leaders_count: parseInt(form.leaders_count || "0", 10) || 0,
           note: form.note,
         },
       });
       setDone(true);
+      trackEvent("interaction", "reserve_form_submitted", { section: "reserve" });
       toast.success("You're in.", {
-        description: "We'll confirm your Founding Class position before June 30.",
+        description: "Your invoice is on the way — due on receipt. Welcome to the Founding Class.",
       });
-    } catch (err) {
+    } catch {
       toast.error("Something went wrong", {
         description: "Please email mark@themomentumcompany.com and we'll handle it directly.",
       });
@@ -657,135 +600,119 @@ function ClaimForm() {
   };
 
   return (
-    <section id="claim" className="py-24 border-t border-[hsl(var(--ial-border))] scroll-mt-20">
-      <div className="container max-w-3xl mx-auto px-6">
-        <SectionLabel>Claim or pledge</SectionLabel>
-        <h2 className="font-[family-name:var(--font-playfair)] text-4xl md:text-5xl font-bold mb-10 leading-[1.1]">
-          Name your place in the Founding Class.
-        </h2>
+    <Card className="bg-[hsl(var(--ial-bg))] border-[hsl(var(--ial-border))] p-8">
+      <div className="text-xs font-bold tracking-[0.2em] uppercase text-[hsl(var(--ial-green-soft))] mb-3">
+        Reserve by invoice
+      </div>
+      <h3 className="font-[family-name:var(--font-playfair)] text-2xl text-[hsl(var(--ial-text))] mb-2 leading-tight">
+        Prefer an invoice?
+      </h3>
+      <p className="text-[hsl(var(--ial-text-muted))] leading-relaxed mb-6">
+        Reserve your spot here.
+      </p>
+      <p className="text-sm text-[hsl(var(--ial-text-muted))] leading-relaxed mb-6">
+        Founding Company — $5,000. We'll send the invoice same day; it's due on
+        receipt, and your spot is held the moment you submit.
+      </p>
 
-        {done ? (
-          <Card className="p-10 bg-[hsl(var(--ial-surface))] border-2 border-[hsl(var(--ial-green))] text-center">
-            <p className="text-xl md:text-2xl text-[hsl(var(--ial-text))] leading-relaxed mb-6">
-              You're in. We'll confirm your Founding Class position before June 30.
-            </p>
-            <p className="font-[family-name:var(--font-playfair)] italic text-2xl text-[hsl(var(--ial-green-soft))]">
-              Deliberate. Decisive. Divine.
-            </p>
-          </Card>
-        ) : (
-          <form onSubmit={handleSubmit} className="space-y-5">
-            <div className="grid sm:grid-cols-2 gap-4">
-              <div>
-                <Label htmlFor="company_name">Company name</Label>
-                <Input id="company_name" required value={form.company_name}
-                  onChange={(e) => setForm({ ...form, company_name: e.target.value })}
-                  className="bg-[hsl(var(--ial-surface-2))] border-[hsl(var(--ial-border))]" />
-              </div>
-              <div>
-                <Label htmlFor="contact_name">Contact name</Label>
-                <Input id="contact_name" required value={form.contact_name}
-                  onChange={(e) => setForm({ ...form, contact_name: e.target.value })}
-                  className="bg-[hsl(var(--ial-surface-2))] border-[hsl(var(--ial-border))]" />
-              </div>
-            </div>
-            <div className="grid sm:grid-cols-2 gap-4">
-              <div>
-                <Label htmlFor="email">Email</Label>
-                <Input id="email" type="email" required value={form.email}
-                  onChange={(e) => setForm({ ...form, email: e.target.value })}
-                  className="bg-[hsl(var(--ial-surface-2))] border-[hsl(var(--ial-border))]" />
-              </div>
-              <div>
-                <Label htmlFor="phone">Phone</Label>
-                <Input id="phone" type="tel" required maxLength={30} value={form.phone}
-                  onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                  className="bg-[hsl(var(--ial-surface-2))] border-[hsl(var(--ial-border))]" />
-              </div>
-            </div>
-
-            <div>
-              <Label>Position interested in</Label>
-              <Select value={form.position} onValueChange={(v) => setForm({ ...form, position: v })}>
-                <SelectTrigger className="bg-[hsl(var(--ial-surface-2))] border-[hsl(var(--ial-border))]">
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  {POSITIONS.map((p) => (
-                    <SelectItem key={p} value={p}>{p}</SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </div>
-
-            <div>
-              <Label className="mb-2 block">Are you claiming outright or pledging?</Label>
-              <RadioGroup
-                value={form.claim_type}
-                onValueChange={(v) => setForm({ ...form, claim_type: v as "claim" | "pledge" })}
-                className="grid grid-cols-2 gap-3"
-              >
-                <label className="flex items-center gap-3 p-3 rounded border border-[hsl(var(--ial-border))] bg-[hsl(var(--ial-surface-2))] cursor-pointer">
-                  <RadioGroupItem value="claim" id="ct-claim" />
-                  <span className="text-sm">Claim outright</span>
-                </label>
-                <label className="flex items-center gap-3 p-3 rounded border border-[hsl(var(--ial-border))] bg-[hsl(var(--ial-surface-2))] cursor-pointer">
-                  <RadioGroupItem value="pledge" id="ct-pledge" />
-                  <span className="text-sm">Pledge / name my number</span>
-                </label>
-              </RadioGroup>
-            </div>
-
-            <div className="grid sm:grid-cols-2 gap-4">
-              <div>
-                <Label htmlFor="amount_usd">Amount (USD)</Label>
-                <Input id="amount_usd" type="number" min={0} required value={form.amount_usd}
-                  onChange={(e) => setForm({ ...form, amount_usd: e.target.value })}
-                  className="bg-[hsl(var(--ial-surface-2))] border-[hsl(var(--ial-border))]" />
-              </div>
-              <div>
-                <Label htmlFor="leaders_count">How many participants?</Label>
-                <Input id="leaders_count" type="number" min={0} value={form.leaders_count}
-                  onChange={(e) => setForm({ ...form, leaders_count: e.target.value })}
-                  className="bg-[hsl(var(--ial-surface-2))] border-[hsl(var(--ial-border))]" />
-              </div>
-            </div>
-
-            <div>
-              <Label htmlFor="note">Note (optional)</Label>
-              <Textarea id="note" rows={3} value={form.note}
-                onChange={(e) => setForm({ ...form, note: e.target.value })}
-                className="bg-[hsl(var(--ial-surface-2))] border-[hsl(var(--ial-border))]" />
-            </div>
-
-            <Button type="submit" disabled={submitting}
-              className="w-full bg-[hsl(var(--ial-green))] hover:bg-[hsl(var(--ial-green-deep))] text-white font-semibold h-12">
-              {submitting ? "Sending..." : "Submit"}
-            </Button>
-          </form>
-        )}
-
-        {/* Repeat instant buttons */}
-        <div className="grid sm:grid-cols-2 gap-4 mt-10 pt-10 border-t border-[hsl(var(--ial-border))]">
+      {done ? (
+        <div className="text-center py-8">
+          <div className="text-2xl font-bold text-[hsl(var(--ial-green-soft))] mb-4">
+            You're in.
+          </div>
+          <p className="text-[hsl(var(--ial-text-muted))]">
+            Invoice on the way — due on receipt. Welcome to the Founding Class.
+          </p>
+        </div>
+      ) : (
+        <div className="space-y-4">
+          <div>
+            <Label htmlFor="company_name" className="text-[hsl(var(--ial-text))]">
+              Company name
+            </Label>
+            <Input
+              id="company_name"
+              value={form.company_name}
+              onChange={(e) => setForm({ ...form, company_name: e.target.value })}
+              className="bg-[hsl(var(--ial-surface))] border-[hsl(var(--ial-border))] text-[hsl(var(--ial-text))]"
+            />
+          </div>
+          <div>
+            <Label htmlFor="contact_name" className="text-[hsl(var(--ial-text))]">
+              Your name
+            </Label>
+            <Input
+              id="contact_name"
+              value={form.contact_name}
+              onChange={(e) => setForm({ ...form, contact_name: e.target.value })}
+              className="bg-[hsl(var(--ial-surface))] border-[hsl(var(--ial-border))] text-[hsl(var(--ial-text))]"
+            />
+          </div>
+          <div>
+            <Label htmlFor="email" className="text-[hsl(var(--ial-text))]">
+              Email
+            </Label>
+            <Input
+              id="email"
+              type="email"
+              value={form.email}
+              onChange={(e) => setForm({ ...form, email: e.target.value })}
+              className="bg-[hsl(var(--ial-surface))] border-[hsl(var(--ial-border))] text-[hsl(var(--ial-text))]"
+            />
+          </div>
+          <div>
+            <Label htmlFor="phone" className="text-[hsl(var(--ial-text))]">
+              Phone
+            </Label>
+            <Input
+              id="phone"
+              type="tel"
+              value={form.phone}
+              onChange={(e) => setForm({ ...form, phone: e.target.value })}
+              className="bg-[hsl(var(--ial-surface))] border-[hsl(var(--ial-border))] text-[hsl(var(--ial-text))]"
+            />
+          </div>
+          <div>
+            <Label htmlFor="leaders_count" className="text-[hsl(var(--ial-text))]">
+              How many leaders? (up to 8)
+            </Label>
+            <Input
+              id="leaders_count"
+              type="number"
+              min={0}
+              value={form.leaders_count}
+              onChange={(e) => setForm({ ...form, leaders_count: e.target.value })}
+              className="bg-[hsl(var(--ial-surface))] border-[hsl(var(--ial-border))] text-[hsl(var(--ial-text))]"
+            />
+          </div>
+          <div>
+            <Label htmlFor="note" className="text-[hsl(var(--ial-text))]">
+              Anything we should know? (optional)
+            </Label>
+            <Textarea
+              id="note"
+              value={form.note}
+              onChange={(e) => setForm({ ...form, note: e.target.value })}
+              className="bg-[hsl(var(--ial-surface))] border-[hsl(var(--ial-border))] text-[hsl(var(--ial-text))] min-h-[80px]"
+            />
+          </div>
           <Button
-            asChild
-            className="bg-[hsl(var(--ial-green))] hover:bg-[hsl(var(--ial-green-deep))] text-white h-12 font-semibold"
+            type="button"
+            size="lg"
+            disabled={
+              submitting ||
+              !form.company_name ||
+              !form.contact_name ||
+              !form.email ||
+              !form.phone
+            }
+            onClick={handleSubmit}
+            className="w-full bg-[hsl(var(--ial-green))] hover:bg-[hsl(var(--ial-green-soft))] text-white font-semibold"
           >
-            <a href={STRIPE_1K_URL} target="_blank" rel="noopener noreferrer">
-              Founding Seat · $1,000
-            </a>
-          </Button>
-          <Button
-            asChild
-            variant="outline"
-            className="border-2 border-[hsl(var(--ial-green-deep))] bg-transparent text-[hsl(var(--ial-green-deep))] hover:bg-[hsl(var(--ial-green-deep))] hover:text-white h-12 font-semibold"
-          >
-            <a href={STRIPE_5K_URL} target="_blank" rel="noopener noreferrer">
-              Pay It Forward · $5,000
-            </a>
+            {submitting ? "Reserving…" : "Reserve my Founding Company spot"}
           </Button>
         </div>
-      </div>
-    </section>
+      )}
+    </Card>
   );
 }
