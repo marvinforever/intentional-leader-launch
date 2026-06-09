@@ -231,7 +231,7 @@ function InauguralPage() {
       {/* SECTION 5 — HOW IT WORKS */}
       <section className="py-24 border-t border-[hsl(var(--ial-border))]">
         <div className="container max-w-6xl mx-auto px-6">
-          <SectionLabel>How it works</SectionLabel>
+          <SectionLabel>Two ways to join</SectionLabel>
           <h2 className="font-[family-name:var(--font-playfair)] text-4xl md:text-5xl font-bold mb-12 leading-[1.1]">
             Two ways in.
           </h2>
