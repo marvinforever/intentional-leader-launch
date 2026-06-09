@@ -491,11 +491,10 @@ function InauguralPage() {
             Door 2 · The 10 Sponsor Positions
           </div>
           <p className="text-[hsl(var(--ial-text-muted))] mb-6 max-w-3xl">
-            Click <span className="text-[hsl(var(--ial-text))] font-semibold">Claim or Pledge</span> on
-            any tier — the form lets you either claim the position at its listed price or pledge
-            your own number (you don't have to match the listed price to be in the running).
-            Standings are shared privately on June 22; positions awarded June 30 and invoiced due
-            on receipt.
+            Scroll down to claim outright or pledge on any tier — the form lets you either claim
+            the position at its listed price or pledge your own number (you don't have to match
+            the listed price to be in the running). Standings are shared privately on June 22;
+            positions awarded June 30 and invoiced due on receipt.
           </p>
 
           <div className="grid md:grid-cols-3 gap-6">
