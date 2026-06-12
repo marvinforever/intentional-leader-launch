@@ -9,7 +9,6 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as SponsorsRouteImport } from './routes/sponsors'
 import { Route as IntentionalLeaderRouteImport } from './routes/intentional-leader'
 import { Route as InauguralRouteImport } from './routes/inaugural'
 import { Route as IndexRouteImport } from './routes/index'
@@ -20,11 +19,6 @@ import { Route as LovableEmailTransactionalSendRouteImport } from './routes/lova
 import { Route as LovableEmailTransactionalPreviewRouteImport } from './routes/lovable/email/transactional/preview'
 import { Route as LovableEmailQueueProcessRouteImport } from './routes/lovable/email/queue/process'
 
-const SponsorsRoute = SponsorsRouteImport.update({
-  id: '/sponsors',
-  path: '/sponsors',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const IntentionalLeaderRoute = IntentionalLeaderRouteImport.update({
   id: '/intentional-leader',
   path: '/intentional-leader',
@@ -78,7 +72,6 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/inaugural': typeof InauguralRoute
   '/intentional-leader': typeof IntentionalLeaderRoute
-  '/sponsors': typeof SponsorsRoute
   '/email/unsubscribe': typeof EmailUnsubscribeRoute
   '/api/public/track': typeof ApiPublicTrackRoute
   '/lovable/email/suppression': typeof LovableEmailSuppressionRoute
@@ -90,7 +83,6 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/inaugural': typeof InauguralRoute
   '/intentional-leader': typeof IntentionalLeaderRoute
-  '/sponsors': typeof SponsorsRoute
   '/email/unsubscribe': typeof EmailUnsubscribeRoute
   '/api/public/track': typeof ApiPublicTrackRoute
   '/lovable/email/suppression': typeof LovableEmailSuppressionRoute
@@ -103,7 +95,6 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/inaugural': typeof InauguralRoute
   '/intentional-leader': typeof IntentionalLeaderRoute
-  '/sponsors': typeof SponsorsRoute
   '/email/unsubscribe': typeof EmailUnsubscribeRoute
   '/api/public/track': typeof ApiPublicTrackRoute
   '/lovable/email/suppression': typeof LovableEmailSuppressionRoute
@@ -117,7 +108,6 @@ export interface FileRouteTypes {
     | '/'
     | '/inaugural'
     | '/intentional-leader'
-    | '/sponsors'
     | '/email/unsubscribe'
     | '/api/public/track'
     | '/lovable/email/suppression'
@@ -129,7 +119,6 @@ export interface FileRouteTypes {
     | '/'
     | '/inaugural'
     | '/intentional-leader'
-    | '/sponsors'
     | '/email/unsubscribe'
     | '/api/public/track'
     | '/lovable/email/suppression'
@@ -141,7 +130,6 @@ export interface FileRouteTypes {
     | '/'
     | '/inaugural'
     | '/intentional-leader'
-    | '/sponsors'
     | '/email/unsubscribe'
     | '/api/public/track'
     | '/lovable/email/suppression'
@@ -154,7 +142,6 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   InauguralRoute: typeof InauguralRoute
   IntentionalLeaderRoute: typeof IntentionalLeaderRoute
-  SponsorsRoute: typeof SponsorsRoute
   EmailUnsubscribeRoute: typeof EmailUnsubscribeRoute
   ApiPublicTrackRoute: typeof ApiPublicTrackRoute
   LovableEmailSuppressionRoute: typeof LovableEmailSuppressionRoute
@@ -165,13 +152,6 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/sponsors': {
-      id: '/sponsors'
-      path: '/sponsors'
-      fullPath: '/sponsors'
-      preLoaderRoute: typeof SponsorsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/intentional-leader': {
       id: '/intentional-leader'
       path: '/intentional-leader'
@@ -242,7 +222,6 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   InauguralRoute: InauguralRoute,
   IntentionalLeaderRoute: IntentionalLeaderRoute,
-  SponsorsRoute: SponsorsRoute,
   EmailUnsubscribeRoute: EmailUnsubscribeRoute,
   ApiPublicTrackRoute: ApiPublicTrackRoute,
   LovableEmailSuppressionRoute: LovableEmailSuppressionRoute,

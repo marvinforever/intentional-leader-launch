@@ -48,7 +48,6 @@ export const Route = createFileRoute("/inaugural")({
 // ============================================================
 
 const STRIPE_COMPANY_URL = "https://buy.stripe.com/5kQ14nayP7jQbagaqnds410";
-const STRIPE_SEAT_URL = "https://buy.stripe.com/28EdR936ncEabaggOLds40Z";
 
 const MARK_PHONE_DISPLAY = "(402) 881-9986";
 const MARK_PHONE_TEL = "tel:4028819986";
@@ -92,10 +91,6 @@ function InauguralPage() {
     {
       q: "Payment terms?",
       a: "Card via Stripe — you're in immediately. Prefer an invoice? Use the reserve form below; invoices are due on receipt.",
-    },
-    {
-      q: "What if I'm one leader, not a whole company?",
-      a: "Grab a Founding Seat for $1,000 — the full 90-day experience and all live sessions, for one leader.",
     },
     {
       q: "What happens after Day 90?",
@@ -399,10 +394,10 @@ function InauguralPage() {
         <div className="container max-w-6xl mx-auto px-6">
           <SectionLabel>Claim your place</SectionLabel>
           <h2 className="font-[family-name:var(--font-playfair)] text-4xl md:text-5xl font-bold mb-6 leading-[1.1]">
-            Two ways in. Both close June 30.
+            Founding Company · Closes June 30.
           </h2>
 
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid md:grid-cols-1 max-w-2xl mx-auto gap-6">
             {/* Founding Company — the offer */}
             <Card className="bg-[hsl(var(--ial-surface))] border-[hsl(var(--ial-border))] p-8 flex flex-col">
               <div className="text-xs font-bold tracking-[0.2em] uppercase text-[hsl(var(--ial-green-soft))] mb-3">
@@ -450,44 +445,6 @@ function InauguralPage() {
                   {MARK_PHONE_DISPLAY}
                 </a>
               </p>
-            </Card>
-
-            {/* Founding Seat — individuals */}
-            <Card className="bg-[hsl(var(--ial-surface))] border-[hsl(var(--ial-border))] p-8 flex flex-col">
-              <div className="text-xs font-bold tracking-[0.2em] uppercase text-[hsl(var(--ial-green-soft))] mb-3">
-                For one leader
-              </div>
-              <h3 className="font-[family-name:var(--font-playfair)] text-2xl text-[hsl(var(--ial-text))] mb-4 leading-tight">
-                Founding Seat
-              </h3>
-              <div className="text-3xl font-bold text-[hsl(var(--ial-text))] mb-6">
-                $1,000
-              </div>
-              <ul className="space-y-3 text-[hsl(var(--ial-text-muted))] leading-relaxed mb-8 flex-1">
-                {[
-                  "Your personal baseline + profile",
-                  "Full 90-day program & unlimited Jericho coaching",
-                  "All three live sessions with Mark",
-                  "Your Day-90 Intentional Leader Report",
-                ].map((line) => (
-                  <li key={line} className="flex items-start gap-3">
-                    <Check className="w-4 h-4 mt-1 flex-shrink-0 text-[hsl(var(--ial-green))]" strokeWidth={3} />
-                    <span>{line}</span>
-                  </li>
-                ))}
-              </ul>
-              <Button
-                asChild
-                size="lg"
-                variant="outline"
-                className="w-full border-2 border-[hsl(var(--ial-green-deep))] bg-transparent text-[hsl(var(--ial-green-deep))] hover:bg-[hsl(var(--ial-green-deep))] hover:text-white font-semibold h-12"
-                onClick={() => trackEvent("interaction", "stripe_seat_click", { section: "pricing" })}
-              >
-                <a href={STRIPE_SEAT_URL} target="_blank" rel="noopener noreferrer" data-track-cta="enroll_founding_seat">
-                  Enroll now
-                  <ArrowUpRight className="w-4 h-4 ml-1" />
-                </a>
-              </Button>
             </Card>
           </div>
         </div>
