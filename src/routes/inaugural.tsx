@@ -597,9 +597,12 @@ function InauguralPage() {
               <h3 className="font-[family-name:var(--font-playfair)] text-2xl text-[hsl(var(--ial-text))] mb-4 leading-tight">
                 Founding Company
               </h3>
-              <div className="text-3xl font-bold text-[hsl(var(--ial-text))] mb-6">
+              <div className="text-3xl font-bold text-[hsl(var(--ial-text))] mb-2">
                 $5,000
               </div>
+              <p className="text-sm text-[hsl(var(--ial-text-muted))] mb-6">
+                Inaugural pricing for the Founding Class. Future programs start at $2,500 per person for a similar experience.
+              </p>
               <ul className="space-y-3 text-[hsl(var(--ial-text-muted))] leading-relaxed mb-8 flex-1">
                 {[
                   "Jericho baseline assessment — up to 8 leaders, with your org snapshot",
