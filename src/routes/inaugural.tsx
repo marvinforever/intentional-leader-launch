@@ -303,6 +303,106 @@ function InauguralPage() {
         </div>
       </section>
 
+      {/* ===================== TODAY vs AFTER 90 DAYS ===================== */}
+      <section className="py-24 border-t border-[hsl(var(--ial-border))]">
+        <div className="container max-w-6xl mx-auto px-6">
+          <SectionLabel>Today vs. After 90 Days</SectionLabel>
+          <h2 className="font-[family-name:var(--font-playfair)] text-4xl md:text-5xl font-bold mb-6 leading-[1.1]">
+            What changes in 90 days.
+          </h2>
+          <p className="text-lg md:text-xl text-[hsl(var(--ial-text-muted))] leading-relaxed max-w-3xl mb-16">
+            Three problems. Where you are today. Where you'll be by the end of the program.
+          </p>
+
+          <div className="space-y-16">
+            {[
+              {
+                quote: "I'm managing everything and leading nothing.",
+                today: [
+                  "Phone buzzing at 9pm with decisions only you can make",
+                  "Every meeting waits for your answer",
+                  "Calendar packed wall-to-wall — no white space, no thinking time",
+                  "You're the referee, the firefighter, and the bottleneck",
+                ],
+                after: [
+                  "Your team makes decisions without texting you at 9pm",
+                  "You stop being the bottleneck in every meeting",
+                  "Your calendar has white space for the first time in years — and your team runs better without you in the room",
+                  "You coach instead of referee. You ask instead of tell. You've stopped doing the work your team should be doing.",
+                ],
+              },
+              {
+                quote: "My best people are walking out and I don't have a bench.",
+                today: [
+                  "Top performers giving notice with no warning",
+                  "Succession is a prayer, not a plan",
+                  "You don't actually know who's ready, who's stuck, who's leaving",
+                  "Stepping back for a week feels reckless",
+                ],
+                after: [
+                  "You know exactly who's ready for more, who's plateaued, and who's a flight risk — and you have a plan for each",
+                  "Succession isn't prayer anymore. It's a process you're actively running.",
+                  "Your top people feel SEEN. They stay because they're growing, not because of perks.",
+                  "There's a bench. For the first time, you can imagine stepping back without the whole thing collapsing.",
+                ],
+              },
+              {
+                quote: "We're busy, but we're not building anything that lasts.",
+                today: [
+                  "Culture is a vibe nobody can describe out loud",
+                  "Strategy is whatever's loudest this week",
+                  "Revenue inside existing customers sits untapped",
+                  "Activity is high. Direction is fuzzy.",
+                ],
+                after: [
+                  "Your culture is named, not vibed. Your team can repeat it back to you.",
+                  "Strategic clarity has replaced operational noise. Every person knows what winning looks like this quarter.",
+                  "Untapped revenue inside your existing customers has surfaced — because you're finally being intentional about growth instead of reactive.",
+                  "You're building something that will outlast you.",
+                ],
+              },
+            ].map((block) => (
+              <div key={block.quote}>
+                <div className="text-xs font-semibold tracking-[0.18em] uppercase text-[hsl(var(--ial-green-soft))] mb-3">
+                  You said
+                </div>
+                <p className="font-[family-name:var(--font-playfair)] text-2xl md:text-3xl text-[hsl(var(--ial-text))] italic mb-8 leading-snug">
+                  &ldquo;{block.quote}&rdquo;
+                </p>
+                <div className="grid md:grid-cols-2 gap-6">
+                  <Card className="bg-[hsl(var(--ial-surface))] border-[hsl(var(--ial-border))] p-8">
+                    <div className="text-xs font-semibold tracking-[0.18em] uppercase text-[hsl(var(--ial-text-muted))] mb-4">
+                      Today
+                    </div>
+                    <ul className="space-y-3">
+                      {block.today.map((item) => (
+                        <li key={item} className="flex items-start gap-3 text-[hsl(var(--ial-text-muted))] leading-relaxed">
+                          <span className="mt-2 w-1.5 h-1.5 rounded-full bg-[hsl(var(--ial-text-muted))] flex-shrink-0" />
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </Card>
+                  <Card className="bg-[hsl(var(--ial-surface))] border-[hsl(var(--ial-green))]/40 p-8">
+                    <div className="text-xs font-semibold tracking-[0.18em] uppercase text-[hsl(var(--ial-green-soft))] mb-4">
+                      After 90 Days
+                    </div>
+                    <ul className="space-y-3">
+                      {block.after.map((item) => (
+                        <li key={item} className="flex items-start gap-3 text-[hsl(var(--ial-text))] leading-relaxed">
+                          <Check className="w-4 h-4 mt-1.5 flex-shrink-0 text-[hsl(var(--ial-green))]" strokeWidth={3} />
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </Card>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ===================== THE ARC: ASSESS / DEVELOP / PROVE ===================== */}
       <section className="py-24 border-t border-[hsl(var(--ial-border))]">
         <div className="container max-w-6xl mx-auto px-6">
