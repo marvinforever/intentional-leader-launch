@@ -262,7 +262,7 @@ function InauguralPage() {
       </section>
 
       {/* ===================== THE THREE PROBLEMS ===================== */}
-      <section className="py-24 border-t border-[hsl(var(--ial-border))]">
+      <section className="py-24 border-t border-[hsl(var(--ial-border))] bg-[hsl(var(--ial-surface))]">
         <div className="container max-w-6xl mx-auto px-6">
           <SectionLabel>The big three — in your own words</SectionLabel>
           <h2 className="font-[family-name:var(--font-playfair)] text-4xl md:text-5xl font-bold mb-6 leading-[1.1]">
@@ -276,24 +276,24 @@ function InauguralPage() {
               {
                 t: "Managing everything, leading nothing",
                 q: "I'm managing everything and leading nothing.",
-                b: "Babysitting other people's incompetency. Overwhelmed by the day-to-day. Stuck on the hamster wheel.",
+                b: "Having to babysit other people's incompetency. Leaders are overwhelmed with the day-to-day and often feel stuck on a hamster wheel.",
               },
               {
                 t: "Best people walk, no bench",
                 q: "My best people are walking out and I don't have a bench.",
-                b: "When the top performer leaves, it falls back to you. There was never a plan, and there isn't one now.",
+                b: "Best people leave and there is no plan, so it falls back to you. When the top performer walks, you're the one who picks it up.",
               },
               {
                 t: "Busy, but not productive",
                 q: "We're busy, but we're not building anything that lasts.",
-                b: "Activity is up. Output looks fine. But nothing compounding is being built underneath it.",
+                b: "Activity is up. Output looks fine. But nothing compounding is being built underneath it. Busy, but not productive.",
               },
             ].map((p) => (
-              <Card key={p.t} className="bg-[hsl(var(--ial-surface))] border-[hsl(var(--ial-border))] p-8">
+              <Card key={p.t} className="bg-[hsl(var(--ial-bg))] border-[hsl(var(--ial-border))] p-8">
                 <h3 className="font-[family-name:var(--font-playfair)] text-2xl text-[hsl(var(--ial-text))] mb-4 leading-tight">
                   {p.t}
                 </h3>
-                <p className="text-[hsl(var(--ial-green-soft))] italic mb-4 leading-relaxed">
+                <p className="text-[hsl(var(--ial-green-soft))] italic mb-4 leading-relaxed text-lg">
                   &ldquo;{p.q}&rdquo;
                 </p>
                 <p className="text-[hsl(var(--ial-text-muted))] leading-relaxed">{p.b}</p>
