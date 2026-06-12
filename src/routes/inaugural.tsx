@@ -134,7 +134,10 @@ function InauguralPage() {
             <span className="text-[hsl(var(--ial-green-soft))]">Inaugural Program</span>
           </h1>
           <p className="text-lg md:text-xl text-[hsl(var(--ial-text-muted))] leading-relaxed max-w-2xl mb-10">
-            After 225 interviews and 750+ production hours — we have learned a lot about intentional leadership. We have learned a lot from you. And we've learned the big three things affecting leaders in ag...
+            225+ interviews. 300+ production hours. 30,000+ listening hours logged
+            by leaders in agriculture. We turned everything you taught us into a
+            90-day program — built around the three things you told us, over and
+            over, are quietly costing you the most.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 mb-6">
             <Button
@@ -189,6 +192,113 @@ function InauguralPage() {
               down on their people while it was hard. The Founding Class is the group
               that moved when others stood still.
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ===================== WHERE THIS CAME FROM ===================== */}
+      <section className="py-24 border-t border-[hsl(var(--ial-border))]">
+        <div className="container max-w-5xl mx-auto px-6">
+          <SectionLabel>Where this came from</SectionLabel>
+          <h2 className="font-[family-name:var(--font-playfair)] text-4xl md:text-5xl font-bold mb-8 leading-[1.1]">
+            You built this with us.
+          </h2>
+          <div className="grid md:grid-cols-4 gap-6 mb-10">
+            {[
+              { n: "225+", l: "Podcast interviews with ag leaders" },
+              { n: "300+", l: "Hours of production" },
+              { n: "30,000+", l: "Listening hours logged by leaders" },
+              { n: "25,000+", l: "Hours of 1:1 coaching behind Jericho" },
+            ].map((s) => (
+              <div key={s.n} className="border-l-2 border-[hsl(var(--ial-green))] pl-4">
+                <div className="font-[family-name:var(--font-playfair)] text-3xl md:text-4xl font-bold text-[hsl(var(--ial-text))] mb-2">
+                  {s.n}
+                </div>
+                <div className="text-sm text-[hsl(var(--ial-text-muted))] leading-snug">{s.l}</div>
+              </div>
+            ))}
+          </div>
+          <div className="space-y-5 text-lg text-[hsl(var(--ial-text-muted))] leading-relaxed">
+            <p>
+              We've never taken a dime to produce the Intentional Agribusiness
+              Leader podcast. We don't intend to. Our aim is to add more value to
+              ag than we ever ask from it.
+            </p>
+            <p>
+              But we did do something with everything you — our guests, listeners,
+              and coaching clients — taught us: we built our first leadership
+              training program from the show's content. 90 days. Starts August 1.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ===================== WHO IT'S FOR ===================== */}
+      <section className="py-24 border-t border-[hsl(var(--ial-border))] bg-[hsl(var(--ial-surface))]">
+        <div className="container max-w-4xl mx-auto px-6">
+          <SectionLabel>Who it's for</SectionLabel>
+          <h2 className="font-[family-name:var(--font-playfair)] text-4xl md:text-5xl font-bold mb-8 leading-[1.1]">
+            Not just the CEO.
+          </h2>
+          <p className="text-lg md:text-xl text-[hsl(var(--ial-text-muted))] leading-relaxed mb-6">
+            This isn't only for CEOs, GMs, or founders. It's for anyone leading,
+            growing in leadership, or on their way up. Send up to 8 people from
+            your organization as part of the Founding Class:
+          </p>
+          <ul className="grid md:grid-cols-2 gap-x-8 gap-y-3 text-lg text-[hsl(var(--ial-text-muted))]">
+            {[
+              "Your operations manager",
+              "Your rising agronomist",
+              "The one you're betting the future on",
+              "The leader you keep promoting around",
+            ].map((line) => (
+              <li key={line} className="flex items-start gap-3">
+                <Check className="w-4 h-4 mt-1.5 flex-shrink-0 text-[hsl(var(--ial-green))]" strokeWidth={3} />
+                <span>{line}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* ===================== THE THREE PROBLEMS ===================== */}
+      <section className="py-24 border-t border-[hsl(var(--ial-border))]">
+        <div className="container max-w-6xl mx-auto px-6">
+          <SectionLabel>The big three — in your own words</SectionLabel>
+          <h2 className="font-[family-name:var(--font-playfair)] text-4xl md:text-5xl font-bold mb-6 leading-[1.1]">
+            Across 225+ conversations, the same three problems came up — again and again.
+          </h2>
+          <p className="text-lg md:text-xl text-[hsl(var(--ial-text-muted))] leading-relaxed max-w-3xl mb-12">
+            The inaugural program is built directly around solving them.
+          </p>
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              {
+                t: "Managing everything, leading nothing",
+                q: "I'm managing everything and leading nothing.",
+                b: "Babysitting other people's incompetency. Overwhelmed by the day-to-day. Stuck on the hamster wheel.",
+              },
+              {
+                t: "Best people walk, no bench",
+                q: "My best people are walking out and I don't have a bench.",
+                b: "When the top performer leaves, it falls back to you. There was never a plan, and there isn't one now.",
+              },
+              {
+                t: "Busy, but not productive",
+                q: "We're busy, but we're not building anything that lasts.",
+                b: "Activity is up. Output looks fine. But nothing compounding is being built underneath it.",
+              },
+            ].map((p) => (
+              <Card key={p.t} className="bg-[hsl(var(--ial-surface))] border-[hsl(var(--ial-border))] p-8">
+                <h3 className="font-[family-name:var(--font-playfair)] text-2xl text-[hsl(var(--ial-text))] mb-4 leading-tight">
+                  {p.t}
+                </h3>
+                <p className="text-[hsl(var(--ial-green-soft))] italic mb-4 leading-relaxed">
+                  &ldquo;{p.q}&rdquo;
+                </p>
+                <p className="text-[hsl(var(--ial-text-muted))] leading-relaxed">{p.b}</p>
+              </Card>
+            ))}
           </div>
         </div>
       </section>
@@ -262,11 +372,16 @@ function InauguralPage() {
           <h2 className="font-[family-name:var(--font-playfair)] text-4xl md:text-5xl font-bold mb-6 leading-[1.1]">
             This is not a course you log into and watch.
           </h2>
+          <p className="text-lg md:text-xl text-[hsl(var(--ial-text-muted))] leading-relaxed max-w-3xl mb-4">
+            It's 90% podcast-driven, so it fits the life your leaders actually
+            live. Listen in the cab, in the truck, between calls. No travel. No
+            endless calendar invites or Zoom marathons. Five minutes on Fridays
+            when they decide. Time is a non-issue.
+          </p>
           <p className="text-lg md:text-xl text-[hsl(var(--ial-text-muted))] leading-relaxed max-w-3xl mb-12">
-            It's 90 days inside a coaching system built around your leaders,
-            your team, and your season — drawn from 225+ podcast interviews with the
-            best operators in agriculture, distilled into something your people can
-            actually use on Monday morning.
+            Distilled from 225+ podcast interviews with the best operators in
+            agriculture — into something your people can actually use on Monday
+            morning.
           </p>
 
           <div className="space-y-8">
@@ -313,6 +428,46 @@ function InauguralPage() {
                   <p className="text-[hsl(var(--ial-text-muted))] leading-relaxed">{step.b}</p>
                 </div>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ===================== FIRST OF ITS KIND ===================== */}
+      <section className="py-24 border-t border-[hsl(var(--ial-border))]">
+        <div className="container max-w-5xl mx-auto px-6">
+          <SectionLabel>We built something totally new</SectionLabel>
+          <h2 className="font-[family-name:var(--font-playfair)] text-4xl md:text-5xl font-bold mb-8 leading-[1.1]">
+            To our knowledge, there has never been a course like this.
+          </h2>
+          <div className="space-y-5 text-lg text-[hsl(var(--ial-text-muted))] leading-relaxed mb-10">
+            <p>
+              15 years ago, we were among the very first to pair classroom
+              training with virtual coaching. 25,000+ coaching hours and hundreds
+              of live events later — 155 on our flagship Thriving Leader program
+              alone — we're innovating again.
+            </p>
+            <p>
+              As far as we know, nobody has ever paired live training + a
+              dedicated podcast feed + an AI coach designed to adapt to each
+              leader as they grow. This is the training program of the future.
+              The more you bring, the sharper it gets — and you'll have a front
+              row seat.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              { icon: Mic, t: "Podcast-driven", b: "225+ interviews, personalized to each leader's profile." },
+              { icon: Sparkles, t: "Jericho AI coach", b: "Trained on every episode, 25K+ coaching hours, our frameworks and models." },
+              { icon: FileText, t: "Live + measured", b: "Three live sessions with Mark, a Day-90 report that proves what moved." },
+            ].map((f) => (
+              <Card key={f.t} className="bg-[hsl(var(--ial-surface))] border-[hsl(var(--ial-border))] p-6">
+                <f.icon className="w-6 h-6 text-[hsl(var(--ial-green-soft))] mb-3" />
+                <h3 className="font-[family-name:var(--font-playfair)] text-xl text-[hsl(var(--ial-text))] mb-2 leading-tight">
+                  {f.t}
+                </h3>
+                <p className="text-[hsl(var(--ial-text-muted))] leading-relaxed">{f.b}</p>
+              </Card>
             ))}
           </div>
         </div>
@@ -408,8 +563,10 @@ function InauguralPage() {
                 {[
                   "Jericho baseline assessment — up to 8 leaders, with your org snapshot",
                   "All 8 through the full 90-day Intentional Leader program",
-                  "Unlimited 1:1 Jericho coaching for every leader",
-                  "Three live half-day working sessions with Mark",
+                  "Unlimited 1:1 Jericho AI coaching for every leader",
+                  "Three live working sessions with Mark",
+                  "Mark's personal booking link — call as needed",
+                  "Full training needs analysis for your team",
                   "The Day-90 report: org-level proof of what moved",
                   "Founding Class recognition — first cohort, named for good",
                 ].map((line) => (
@@ -439,6 +596,11 @@ function InauguralPage() {
                 <a href={MARK_PHONE_TEL} className="text-[hsl(var(--ial-text))] hover:underline">
                   {MARK_PHONE_DISPLAY}
                 </a>
+              </p>
+              <p className="text-xs text-[hsl(var(--ial-text-muted))] mt-3 text-center italic">
+                It's been a rough year in ag. We're not letting money get in the
+                way — if the price is the only thing standing between you and a
+                spot, call Mark.
               </p>
             </Card>
           </div>
