@@ -48,7 +48,6 @@ export const Route = createFileRoute("/inaugural")({
 // ============================================================
 
 const STRIPE_COMPANY_URL = "https://buy.stripe.com/5kQ14nayP7jQbagaqnds410";
-const STRIPE_SEAT_URL = "https://buy.stripe.com/28EdR936ncEabaggOLds40Z";
 
 const MARK_PHONE_DISPLAY = "(402) 881-9986";
 const MARK_PHONE_TEL = "tel:4028819986";
@@ -92,10 +91,6 @@ function InauguralPage() {
     {
       q: "Payment terms?",
       a: "Card via Stripe — you're in immediately. Prefer an invoice? Use the reserve form below; invoices are due on receipt.",
-    },
-    {
-      q: "What if I'm one leader, not a whole company?",
-      a: "Grab a Founding Seat for $1,000 — the full 90-day experience and all live sessions, for one leader.",
     },
     {
       q: "What happens after Day 90?",
