@@ -126,7 +126,7 @@ function InauguralPage() {
       <section className="relative overflow-hidden" style={{ background: "var(--ial-gradient-hero)" }}>
         <div className="container max-w-5xl mx-auto px-6 py-24 md:py-32 relative z-10">
           <div className="inline-flex items-center px-4 py-2 rounded-full border border-[hsl(var(--ial-green))]/40 bg-[hsl(var(--ial-green))]/10 text-[hsl(var(--ial-green-soft))] text-xs font-semibold tracking-wider uppercase mb-8">
-            The Inaugural Offering · Closes June 30
+            The Intentional Leader Inaugural Program · Closes June 30
           </div>
           <h1 className="font-[family-name:var(--font-playfair)] text-5xl md:text-7xl font-black leading-[1.05] mb-8 max-w-5xl">
             Know exactly where your leaders are.
@@ -138,9 +138,6 @@ function InauguralPage() {
             leadership team, then all of them through the full 90-day Intentional
             Leader program — finishing with the report that shows exactly what moved.
           </p>
-          <div className="text-2xl md:text-3xl font-bold text-[hsl(var(--ial-text))] mb-10">
-            $5,000 · 15 Founding Company spots
-          </div>
           <div className="flex flex-col sm:flex-row gap-4 mb-6">
             <Button
               asChild
