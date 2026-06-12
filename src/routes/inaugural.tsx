@@ -82,7 +82,7 @@ function InauguralPage() {
     },
     {
       q: "How much time does it take per leader?",
-      a: "15\u201320 minutes per day inside Jericho, a 5-minute Friday voice check-in, and one 3-hour live session with Mark each month. Everything else moves at each leader's pace across the 90 days.",
+      a: "15\u201320 minutes per day inside Jericho, a 5-minute Friday voice check-in, and one half-day virtual session with Mark each month. Everything else moves at each leader's pace across the 90 days.",
     },
     {
       q: "When does the program begin?",
@@ -343,7 +343,7 @@ function InauguralPage() {
                 Daily briefs and a personalized podcast feed built around each
                 leader's profile. Unlimited 1:1 Jericho coaching — voice or text,
                 whenever they're stuck. 5-minute Friday voice check-ins. Three live
-                half-day working sessions with Mark and the full Founding Class.
+                half-day virtual working sessions with Mark and the full Founding Class.
               </p>
             </Card>
 
@@ -408,8 +408,8 @@ function InauguralPage() {
               },
               {
                 k: "3 times in 90 days",
-                t: "Live half-day sessions with Mark",
-                b: "Three working sessions with the full Founding Class. Not lectures — live problem-solving on the things this cohort is actually running into. Leaders leave with the next move, not notes.",
+                t: "Live half-day virtual sessions with Mark",
+                b: "Three virtual working sessions with the full Founding Class — no travel required. Not lectures — live problem-solving on the things this cohort is actually running into. Leaders leave with the next move, not notes.",
               },
               {
                 k: "Day 90",
@@ -459,7 +459,7 @@ function InauguralPage() {
             {[
               { icon: Mic, t: "Podcast-driven", b: "225+ interviews, personalized to each leader's profile." },
               { icon: Sparkles, t: "Jericho AI coach", b: "Trained on every episode, 25K+ coaching hours, our frameworks and models." },
-              { icon: FileText, t: "Live + measured", b: "Three live sessions with Mark, a Day-90 report that proves what moved." },
+              { icon: FileText, t: "Live + measured", b: "Three half-day virtual sessions with Mark, a Day-90 report that proves what moved." },
             ].map((f) => (
               <Card key={f.t} className="bg-[hsl(var(--ial-surface))] border-[hsl(var(--ial-border))] p-6">
                 <f.icon className="w-6 h-6 text-[hsl(var(--ial-green-soft))] mb-3" />
@@ -606,7 +606,7 @@ function InauguralPage() {
                   "All 8 through the full 90-day Intentional Leader program",
                   "A first-of-its-kind growth playbook — hyperpersonalized and evolving — for every participant",
                   "Unlimited 1:1 Jericho AI coaching for every leader",
-                  "Three live working sessions with Mark",
+                  "Three half-day virtual working sessions with Mark — no travel required",
                   "Mark's personal booking link — call as needed",
                   "A development snapshot: strategic learning design showing what your people need",
                   "The Day-90 report: org-level proof of what moved",
