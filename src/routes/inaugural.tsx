@@ -607,7 +607,6 @@ function InauguralPage() {
                   "A first-of-its-kind growth playbook — hyperpersonalized and evolving — for every participant",
                   "Unlimited 1:1 Jericho AI coaching for every leader",
                   "Three half-day virtual working sessions with Mark — no travel required",
-                  "Mark's personal booking link — call as needed",
                   "A development snapshot: strategic learning design showing what your people need",
                   "The Day-90 report: org-level proof of what moved",
                   "Founding Class recognition — first cohort, named for good",
