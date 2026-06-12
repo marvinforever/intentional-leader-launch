@@ -641,6 +641,12 @@ function InauguralPage() {
                   {MARK_PHONE_DISPLAY}
                 </a>
               </p>
+              <p className="text-xs text-[hsl(var(--ial-text-muted))] mt-2 text-center">
+                Need to book a call? Just text{" "}
+                <a href="sms:4028819986" className="text-[hsl(var(--ial-text))] hover:underline">
+                  402.881.9986
+                </a>
+              </p>
               <p className="text-xs text-[hsl(var(--ial-text-muted))] mt-3 text-center italic">
                 It's been a rough year in ag. We're not letting money get in the
                 way — if the price is the only thing standing between you and a
