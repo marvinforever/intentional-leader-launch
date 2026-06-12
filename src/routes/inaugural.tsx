@@ -129,9 +129,9 @@ function InauguralPage() {
             The Intentional Leader Inaugural Program · Closes June 30
           </div>
           <h1 className="font-[family-name:var(--font-playfair)] text-5xl md:text-7xl font-black leading-[1.05] mb-8 max-w-5xl">
-            Know exactly where your leaders are.
+            The Intentional Leader
             <br />
-            <span className="text-[hsl(var(--ial-green-soft))]">Then watch them move.</span>
+            <span className="text-[hsl(var(--ial-green-soft))]">Inaugural Program</span>
           </h1>
           <p className="text-lg md:text-xl text-[hsl(var(--ial-text-muted))] leading-relaxed max-w-2xl mb-10">
             One offer for the founding class: a Jericho baseline assessment of your
