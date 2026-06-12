@@ -268,10 +268,6 @@ function IntentionalLeader() {
       a: "Jericho is a custom-built AI coach that learns your team and adapts to your gaps. Not a drip sequence, not a chatbot wrapper.",
     },
     {
-      q: "What if I'm just one leader, not a whole company?",
-      a: "Grab a Founding Seat for $1,000 — the full 90-day experience and all live sessions, for one leader.",
-    },
-    {
       q: "What happens after Day 90?",
       a: "You can continue with Momentum 360 (our flagship leadership system) or stay in the Jericho community at the standalone rate.",
     },
