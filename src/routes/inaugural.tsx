@@ -134,9 +134,7 @@ function InauguralPage() {
             <span className="text-[hsl(var(--ial-green-soft))]">Inaugural Program</span>
           </h1>
           <p className="text-lg md:text-xl text-[hsl(var(--ial-text-muted))] leading-relaxed max-w-2xl mb-10">
-            One offer for the founding class: a Jericho baseline assessment of your
-            leadership team, then all of them through the full 90-day Intentional
-            Leader program — finishing with the report that shows exactly what moved.
+            After 225 interviews and 750+ production hours — we have learned a lot about intentional leadership. We have learned a lot from you. And we've learned the big three things affecting leaders in ag...
           </p>
           <div className="flex flex-col sm:flex-row gap-4 mb-6">
             <Button
