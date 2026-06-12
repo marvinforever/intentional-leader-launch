@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
-import { Check, Phone, ArrowUpRight, Mic, Sparkles, FileText } from "lucide-react";
+import { Check, Phone, ArrowUpRight, Mic, Sparkles, FileText, BookOpen, BarChart3 } from "lucide-react";
 import { useServerFn } from "@tanstack/react-start";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
@@ -473,6 +473,47 @@ function InauguralPage() {
         </div>
       </section>
 
+      {/* ===================== WHAT EVERY PARTICIPANT RECEIVES ===================== */}
+      <section className="py-24 border-t border-[hsl(var(--ial-border))] bg-[hsl(var(--ial-surface))]">
+        <div className="container max-w-5xl mx-auto px-6">
+          <SectionLabel>What every participant receives</SectionLabel>
+          <h2 className="font-[family-name:var(--font-playfair)] text-4xl md:text-5xl font-bold mb-6 leading-[1.1]">
+            Two deliverables you won't find anywhere else.
+          </h2>
+          <p className="text-lg md:text-xl text-[hsl(var(--ial-text-muted))] leading-relaxed max-w-3xl mb-12">
+            Most programs hand you a certificate. We're handing you something that keeps working.
+          </p>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            <Card className="bg-[hsl(var(--ial-bg))] border-[hsl(var(--ial-border))] p-8">
+              <BookOpen className="w-8 h-8 text-[hsl(var(--ial-green-soft))] mb-4" />
+              <h3 className="font-[family-name:var(--font-playfair)] text-2xl text-[hsl(var(--ial-text))] mb-4 leading-tight">
+                A first-of-its-kind growth playbook
+              </h3>
+              <p className="text-[hsl(var(--ial-text-muted))] leading-relaxed mb-4">
+                Every participant receives a personalized growth plan built from their Jericho baseline — hyper-targeted to their gaps, their goals, and the season they're in.
+              </p>
+              <p className="text-[hsl(var(--ial-text-muted))] leading-relaxed">
+                And it doesn't sit still. It evolves as they do — updated by Jericho as each leader progresses, so the plan is always current, never stale.
+              </p>
+            </Card>
+
+            <Card className="bg-[hsl(var(--ial-bg))] border-[hsl(var(--ial-border))] p-8">
+              <BarChart3 className="w-8 h-8 text-[hsl(var(--ial-green-soft))] mb-4" />
+              <h3 className="font-[family-name:var(--font-playfair)] text-2xl text-[hsl(var(--ial-text))] mb-4 leading-tight">
+                A development snapshot for team leaders
+              </h3>
+              <p className="text-[hsl(var(--ial-text-muted))] leading-relaxed mb-4">
+                Leaders who enroll teams get a partial strategic learning design — a clear read on what kind of coaching and training each person on their team actually needs.
+              </p>
+              <p className="text-[hsl(var(--ial-text-muted))] leading-relaxed">
+                Not a generic assessment. A targeted snapshot that shows you where to invest your development energy — and where you don't need to.
+              </p>
+            </Card>
+          </div>
+        </div>
+      </section>
+
       {/* ===================== PROOF ===================== */}
       <section className="py-24 border-t border-[hsl(var(--ial-border))]">
         <div className="container max-w-6xl mx-auto px-6">
@@ -563,10 +604,11 @@ function InauguralPage() {
                 {[
                   "Jericho baseline assessment — up to 8 leaders, with your org snapshot",
                   "All 8 through the full 90-day Intentional Leader program",
+                  "A first-of-its-kind growth playbook — hyperpersonalized and evolving — for every participant",
                   "Unlimited 1:1 Jericho AI coaching for every leader",
                   "Three live working sessions with Mark",
                   "Mark's personal booking link — call as needed",
-                  "Full training needs analysis for your team",
+                  "A development snapshot: strategic learning design showing what your people need",
                   "The Day-90 report: org-level proof of what moved",
                   "Founding Class recognition — first cohort, named for good",
                 ].map((line) => (
