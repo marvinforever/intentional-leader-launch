@@ -26,13 +26,13 @@ export const Route = createFileRoute("/inaugural")({
         {
           name: "description",
           content:
-            "One offer for the leaders of agriculture: a Jericho baseline assessment of your leadership team plus the full 90-day Intentional Leader program. Closes June 30.",
+            "One offer for the leaders of agriculture: a Jericho baseline assessment of your leadership team plus the full 90-day Intentional Leader program. Closes December 11, 2026.",
         },
         { property: "og:title", content: "The Intentional Leader Inaugural Program" },
         {
           property: "og:description",
           content:
-            "Assess your team. Develop your leaders. See the proof in 90 days. The inaugural program for agriculture leaders — closes June 30.",
+            "Assess your team. Develop your leaders. See the proof in 90 days. The inaugural program for agriculture leaders — closes December 11, 2026.",
         },
         { property: "og:type", content: "website" },
         { property: "og:image", content: ogShareImage },
@@ -86,7 +86,7 @@ function InauguralPage() {
     },
     {
       q: "When does the program begin?",
-      a: "Baseline assessments run in July, as soon as you're in. The 90-day program begins August 1.",
+      a: "Baseline assessments take place after enrollment and before the program begins. The 90-day program begins January 7, 2027.",
     },
     {
       q: "Payment terms?",
@@ -126,7 +126,7 @@ function InauguralPage() {
       <section className="relative overflow-hidden" style={{ background: "var(--ial-gradient-hero)" }}>
         <div className="container max-w-5xl mx-auto px-6 py-24 md:py-32 relative z-10">
           <div className="inline-flex items-center px-4 py-2 rounded-full border border-[hsl(var(--ial-green))]/40 bg-[hsl(var(--ial-green))]/10 text-[hsl(var(--ial-green-soft))] text-xs font-semibold tracking-wider uppercase mb-8">
-            The Intentional Leader Inaugural Program · Closes June 30
+            The Intentional Leader Inaugural Program · Closes December 11, 2026
           </div>
           <h1 className="font-[family-name:var(--font-playfair)] text-5xl md:text-7xl font-black leading-[1.05] mb-8 max-w-5xl">
             The Intentional Leader
@@ -227,7 +227,7 @@ function InauguralPage() {
             <p>
               But we did do something with everything you — our guests, listeners,
               and coaching clients — taught us: we built our first leadership
-              training program from the show's content. 90 days. Starts August 1.
+              training program from the show's content. 90 days. Starts January 7, 2027.
             </p>
           </div>
         </div>
@@ -418,7 +418,7 @@ function InauguralPage() {
           <div className="grid md:grid-cols-3 gap-6">
             <Card className="bg-[hsl(var(--ial-surface))] border-[hsl(var(--ial-border))] p-8">
               <div className="text-xs font-semibold tracking-[0.18em] uppercase text-[hsl(var(--ial-green-soft))] mb-3">
-                July · Before Day 1
+                After Enrollment · Before Day 1
               </div>
               <h3 className="font-[family-name:var(--font-playfair)] text-2xl text-[hsl(var(--ial-text))] mb-4 leading-tight">
                 The baseline assessment
@@ -434,7 +434,7 @@ function InauguralPage() {
 
             <Card className="bg-[hsl(var(--ial-surface))] border-[hsl(var(--ial-border))] p-8">
               <div className="text-xs font-semibold tracking-[0.18em] uppercase text-[hsl(var(--ial-green-soft))] mb-3">
-                August 1 · 90 Days
+                January 7, 2027 · 90 Days
               </div>
               <h3 className="font-[family-name:var(--font-playfair)] text-2xl text-[hsl(var(--ial-text))] mb-4 leading-tight">
                 The development engine
@@ -455,7 +455,7 @@ function InauguralPage() {
                 The Intentional Leader Report
               </h3>
               <p className="text-[hsl(var(--ial-text-muted))] leading-relaxed">
-                A real artifact, measured against July's baseline: where each leader
+                A real artifact, measured against your initial baseline: where each leader
                 started, what shifted, the decisions they got more deliberate and
                 decisive about, and the plan for the next 90. You get the org-level
                 read across every leader — proof of what moved, in writing.
@@ -685,7 +685,7 @@ function InauguralPage() {
         <div className="container max-w-6xl mx-auto px-6">
           <SectionLabel>Claim your place</SectionLabel>
           <h2 className="font-[family-name:var(--font-playfair)] text-4xl md:text-5xl font-bold mb-6 leading-[1.1]">
-            Founding Company · Closes June 30.
+            Founding Company · Closes December 11, 2026.
           </h2>
 
           <div className="grid md:grid-cols-1 max-w-2xl mx-auto gap-6">
@@ -791,7 +791,7 @@ function InauguralPage() {
           </h2>
           <p className="text-lg md:text-xl text-white/80 leading-relaxed max-w-2xl mx-auto mb-10">
             Fifteen companies will know exactly where their leaders stand — and watch
-            them move — before harvest. The window closes June 30.
+            them move over the next 90 days. The window closes December 11, 2026.
           </p>
           <Button
             asChild

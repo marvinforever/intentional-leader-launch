@@ -44,7 +44,7 @@ export const Route = createFileRoute("/intentional-leader")({
       {
         name: "description",
         content:
-          "A 90-day leadership program for agribusiness leaders. Powered by Jericho AI coach. Built from 225+ podcast episodes. Inaugural Offering closes June 30.",
+          "A 90-day leadership program for agribusiness leaders. Powered by Jericho AI coach. Built from 225+ podcast episodes. Inaugural Offering closes December 11, 2026.",
       },
       {
         property: "og:title",
@@ -53,7 +53,7 @@ export const Route = createFileRoute("/intentional-leader")({
       {
         property: "og:description",
         content:
-          "Built from 225+ podcast episodes with the leaders of ag. 90 days. Powered by Jericho AI coach. Inaugural Offering closes June 30.",
+          "Built from 225+ podcast episodes with the leaders of ag. 90 days. Powered by Jericho AI coach. Inaugural Offering closes December 11, 2026.",
       },
       { property: "og:type", content: "website" },
       { property: "og:image", content: ogShareImage },
@@ -277,7 +277,7 @@ function IntentionalLeader() {
     },
     {
       q: "When does the program begin?",
-      a: "August 1. From there it's 90 days of move-at-your-own-pace work — Jericho, the AI coach, adapts to your schedule. The only fixed dates on the calendar are three monthly half-day (3-hour) live sessions hosted by Mark.",
+      a: "January 7, 2027. From there it's 90 days of move-at-your-own-pace work — Jericho, the AI coach, adapts to your schedule. The only fixed dates on the calendar are three monthly half-day (3-hour) live sessions hosted by Mark.",
     },
     {
       q: "How much time does it take?",
@@ -343,7 +343,7 @@ function IntentionalLeader() {
         <div className="container max-w-6xl mx-auto px-6 py-24 md:py-32 relative z-10">
           <div className="flex flex-wrap items-center gap-2 mb-8">
             <div className="inline-flex items-center px-4 py-2 rounded-full border border-[hsl(var(--ial-green))]/40 bg-[hsl(var(--ial-green))]/10 text-[hsl(var(--ial-green-soft))] text-xs font-semibold tracking-wider uppercase">
-              The Founding Class is forming · Closes June 30
+              The Founding Class is forming · Closes December 11, 2026
             </div>
           </div>
           <h1 className="font-[family-name:var(--font-playfair)] text-5xl md:text-7xl font-black leading-[1.05] mb-6 max-w-5xl">
@@ -625,7 +625,7 @@ function IntentionalLeader() {
             Ready to bring this into your team?
           </h3>
           <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-[hsl(var(--ial-green))]/40 bg-[hsl(var(--ial-green))]/10 text-[hsl(var(--ial-green-soft))] text-xs font-semibold tracking-wider uppercase mb-6">
-            Starts August 1, 2026
+            Starts January 7, 2027
           </div>
           <div className="flex flex-wrap justify-center gap-3">
             <Button
@@ -1131,7 +1131,7 @@ function IntentionalLeader() {
             Convinced? Join the Founding Class.
           </h3>
           <p className="text-[hsl(var(--ial-text-muted))] mb-6">
-            The Inaugural Offering closes June 30. The program begins August 1.
+            The Inaugural Offering closes December 11, 2026. The program begins January 7, 2027.
           </p>
           <div className="flex flex-wrap justify-center gap-3">
             <Button
@@ -1191,7 +1191,7 @@ function IntentionalLeader() {
             organization — or exactly where you are today, one quarter older.
           </h2>
           <p className="text-lg md:text-xl text-white/80 mb-10 max-w-2xl mx-auto">
-            The Inaugural Offering closes June 30. The program begins August 1.
+            The Inaugural Offering closes December 11, 2026. The program begins January 7, 2027.
             Join the Founding Class — the leaders who moved when others froze.
           </p>
           <p className="font-[family-name:var(--font-playfair)] italic text-xl md:text-2xl text-white mb-10 max-w-2xl mx-auto leading-snug">
