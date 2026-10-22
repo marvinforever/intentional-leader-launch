@@ -7,7 +7,7 @@ import { usePageAnalytics, trackEvent } from "@/hooks/use-analytics";
 
 const TITLE = "Intentional Leader | The Momentum Company";
 const DESCRIPTION =
-  "The place to learn intentional leadership. Built on 250+ episodes of The Intentional Leader Podcast. Up to 8 leaders per company. Next class starts January 7, 2027.";
+  "The place to learn what it takes to lead with greater intention. Built on 250+ episodes of The Intentional Leader Podcast. Up to 8 leaders per company. Next class starts January 7, 2027.";
 const BOOKING_URL = "https://api.leadconnectorhq.com/widget/booking/UbCJCIeu4SNTUChma1tF";
 
 export const Route = createFileRoute("/intentional-leader")({
@@ -23,7 +23,7 @@ export const Route = createFileRoute("/intentional-leader")({
       { property: "og:image", content: `https://leadintentional.tools${ogShareImage}` },
       { property: "og:image:width", content: "1200" },
       { property: "og:image:height", content: "630" },
-      { property: "og:image:alt", content: "Intentional Leader, from The Momentum Company. The place to learn intentional leadership." },
+      { property: "og:image:alt", content: "Intentional Leader, from The Momentum Company. The place to learn what it takes to lead with greater intention." },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Intentional Leader" },
       { name: "twitter:description", content: DESCRIPTION },
